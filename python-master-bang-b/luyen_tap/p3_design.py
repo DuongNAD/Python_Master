@@ -23,7 +23,25 @@ def thong_ke_diem(diem):
       {"min": .., "max": .., "trung_binh": lam tron 2 chu so, "trung_vi": ..}
     List rong -> tra ve {} (dict rong).
     """
-    pass  # <-- viet code cua ban o day
+    if not diem:
+        return {}
+        
+    n = len(diem)
+    s = sorted(diem)
+
+    if n%2 == 0:
+        trung_vi = (s[n // 2 - 1] + s[n // 2]) / 2
+    else:
+        trung_vi = s[n // 2]
+
+    return{
+        "min": min(diem),
+        "max": max(diem),
+        "trung_binh": round(sum(diem)/n, 2),
+        "trung_vi": trung_vi
+    }
+
+    
 
 
 # ---------------------------------------------------------------- Bai 3.02
@@ -33,7 +51,18 @@ def gom_nhom_anagram(tu):
     moi nhom sap xep A-Z, cac nhom sap xep theo phan tu dau tien.
     ["eat","tea","tan","ate","nat"] -> [["ate","eat","tea"],["nat","tan"]]
     """
-    pass  # <-- viet code cua ban o day
+    if not tu:
+        return []
+
+    result = {}
+    for i in tu:
+        key = "".join(sorted(i))
+        if i not in result:
+            result[key] = []
+
+        result[key].append(i)
+        
+
 
 
 # ---------------------------------------------------------------- Bai 3.03

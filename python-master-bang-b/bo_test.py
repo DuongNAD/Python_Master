@@ -358,3 +358,16 @@ NHOM = {
     2: (TEST_P2, TEST_P2_DAC_BIET, "p2_debug"),
     3: (TEST_P3, TEST_P3_DAC_BIET, "p3_design"),
 }
+
+
+# ============================================================ NAP NHOM MO RONG
+# Cac nhom 4/5/6 nam o file rieng (bo_test_p4.py ...) de de mo rong.
+# Moi file phai co: TEN_FILE (str), TESTS (list), TESTS_DAC_BIET (list, tuy chon)
+import importlib as _importlib
+
+for _so, _ten_mod in ((4, "bo_test_p4"), (5, "bo_test_p5"), (6, "bo_test_p6")):
+    try:
+        _m = _importlib.import_module(_ten_mod)
+    except ImportError:
+        continue
+    NHOM[_so] = (_m.TESTS, getattr(_m, "TESTS_DAC_BIET", []), _m.TEN_FILE)

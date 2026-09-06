@@ -128,7 +128,7 @@ def main():
     dung_dap_an = "-d" in tham_so or "--dapan" in tham_so
     chi_tiet = "-v" in tham_so
     muc_tieu = next((t for t in tham_so if not t.startswith("-")), "all")
-    nhom = [1, 2, 3] if muc_tieu == "all" else [int(muc_tieu)]
+    nhom = sorted(bo_test.NHOM) if muc_tieu == "all" else [int(muc_tieu)]
 
     tong_dat = tong_bai = 0
     for n in nhom:

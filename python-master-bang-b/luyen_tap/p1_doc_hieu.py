@@ -55,10 +55,10 @@ def max_thu_hai(arr):
     Neu khong ton tai (mang co it hon 2 gia tri phan biet) tra ve None.
     [3,1,4,1,5] -> 4 ; [7,7,7] -> None
     """
-    phan_biet = ___1___
+    phan_biet = set(arr)
     if len(phan_biet) < 2:
         return None
-    phan_biet.remove(___2___)
+    phan_biet.remove(max(phan_biet))
     return max(phan_biet)
 
 
@@ -67,7 +67,7 @@ def dem_tan_suat(arr):
     """Tra ve dict {phan_tu: so_lan_xuat_hien}. Chi duoc dung 1 dong trong vong lap."""
     bang = {}
     for x in arr:
-        bang[x] = ___1___
+        bang[x] = bang.get(x,0)+1
     return bang
 
 
@@ -78,7 +78,7 @@ def dao_thu_tu_tu(s):
     "hom nay troi dep" -> "dep troi nay hom"
     """
     cac_tu = s.split()
-    cac_tu.___1___()
+    cac_tu.reverse()
     return " ".join(cac_tu)
 
 
@@ -88,8 +88,8 @@ def la_doi_xung(s):
     Kiem tra chuoi doi xung, BO QUA ky tu khong phai chu/so va khong phan biet hoa thuong.
     "A man, a plan, a canal: Panama" -> True ; "race a car" -> False
     """
-    sach = [c.lower() for c in s if ___1___]
-    return sach == ___2___
+    sach = [c.lower() for c in s if c.isalnum()]
+    return sach == sach[::-1]
 
 
 # ---------------------------------------------------------------- Bai 1.08
@@ -98,9 +98,9 @@ def gop_dict_cong_don(a, b):
     Gop 2 dict. Khoa trung nhau thi CONG gia tri. Khong duoc sua a hay b.
     {"x": 1, "y": 2} + {"y": 5, "z": 3} -> {"x": 1, "y": 7, "z": 3}
     """
-    ket_qua = 
-    for khoa, gia_tri in ___2___:
-        ket_qua[khoa] = ___3___
+    ket_qua = a.copy()
+    for khoa, gia_tri in b.items():
+        ket_qua[khoa] = ket_qua.get(khoa,0)+gia_tri
     return ket_qua
 
 
@@ -111,13 +111,13 @@ def loc_so_nguyen_to(arr):
         if n < 2:
             return False
         i = 2
-        while ___1___:          # dieu kien nay quyet dinh do phuc tap O(sqrt(n))
+        while i*i <= n:          # dieu kien nay quyet dinh do phuc tap O(sqrt(n))
             if n % i == 0:
                 return False
             i += 1
         return True
 
-    return ___2___
+    return [x for x in arr if la_nguyen_to(x)]
 
 
 # ---------------------------------------------------------------- Bai 1.10
@@ -128,11 +128,11 @@ def nen_chuoi(s):
     ket_qua = []
     ky_tu_truoc = s[0]
     dem = 1
-    for c in ___1___:
+    for c in s[1:]:
         if c == ky_tu_truoc:
             dem += 1
         else:
-            ket_qua.append(___2___)
+            ket_qua.append(ky_tu_truoc + str(dem))
             ky_tu_truoc = c
             dem = 1
     ket_qua.append(ky_tu_truoc + str(dem))

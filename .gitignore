@@ -5,3 +5,4 @@ __pycache__/
 *.py[cod]
 *$py.class
 .DS_Store
+tien_do.json
