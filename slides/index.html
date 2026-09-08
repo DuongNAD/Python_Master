@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Master 2026 · Zero → Hero Pro</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  html, body { height: auto; min-height: 100%; overflow: visible; }
+  body { overflow-x: hidden; }
+  .page { position: relative; z-index: 1; max-width: 1160px; margin: 0 auto; padding: clamp(2rem,5vw,4.5rem) clamp(1rem,4vw,2.5rem) 5rem; display: grid; gap: clamp(2.5rem,5vw,4rem); }
+  .masthead { text-align: center; display: grid; gap: 1.1rem; justify-items: center; }
+  .masthead h1 { font-size: clamp(2.3rem,6.5vw,4.4rem); background: linear-gradient(105deg, var(--py-blue), var(--py-gold) 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .sec { display: grid; gap: 1.2rem; }
+  .sec > header { display: grid; gap: .35rem; }
+  .sec > header h2 { font-size: clamp(1.25rem,2.4vw,1.75rem); display: flex; align-items: center; gap: 0.6rem; }
+  .eyebrow { font-size: .74rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--text-3); }
+  .phase { display: grid; gap: .55rem; text-decoration: none; border-bottom: 0; position: relative; overflow: hidden; transition: all 0.2s ease; }
+  .phase .no { position: absolute; right: .7rem; top: .1rem; font-size: 4.5rem; font-weight: 900; color: rgba(255,255,255,.04); line-height: 1; transition: 0.2s; }
+  .phase h3 { font-size: 1.15rem; color: var(--text); }
+  .phase p { font-size: .93rem; color: var(--text-2); line-height: 1.5; }
+  .phase:hover { border-color: var(--py-blue); background: var(--surface-2); transform: translateY(-2px); }
+  .phase:hover .no { color: rgba(56, 189, 248, 0.12); }
+  .start { border: 1px solid rgba(56, 189, 248, .36); background: linear-gradient(115deg, rgba(56, 189, 248, .09), rgba(251, 191, 36, .06)); border-radius: var(--r-lg); padding: clamp(1.3rem,3vw,2rem); display: grid; gap: 1.1rem; }
+  .steps { display: grid; gap: .8rem; counter-reset: s; }
+  .step { display: grid; grid-template-columns: 1.85rem 1fr; gap: .85rem; align-items: start; }
+  .step::before { counter-increment: s; content: counter(s); font-family: var(--mono); font-size: .84rem; font-weight: 800; color: var(--bg); background: var(--py-blue); width: 1.65rem; height: 1.65rem; border-radius: 50%; display: grid; place-items: center; }
+  .step .st { display: grid; gap: .3rem; }
+  .matrix-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); font-size: 0.92rem; }
+  .matrix-table th, .matrix-table td { padding: 0.85rem 1.1rem; text-align: left; border-bottom: 1px solid var(--line-soft); }
+  .matrix-table th { background: rgba(255,255,255,0.05); font-weight: 700; color: var(--text-3); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .matrix-table tr:hover { background: var(--surface-2); }
+  .hero-orb { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; font-size: 2.2rem; background: radial-gradient(circle at 35% 35%, rgba(56,189,248,0.25), rgba(251,191,36,0.15)); border: 1px solid rgba(56,189,248,0.4); box-shadow: 0 0 35px rgba(56,189,248,0.25); }
+  footer { text-align: center; color: var(--text-3); font-size: .85rem; display: grid; gap: .4rem; padding-top: 2rem; border-top: 1px solid var(--line-soft); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="hero-orb">🐍</div>
+    <h1>Python Master 2026<br>Zero → Hero Pro</h1>
+    <p class="lead" style="max-width:720px">Giáo trình bài giảng tương tác & phòng luyện thi toàn diện bám sát chứng chỉ <b>COS Pro Level 2</b> (Vòng loại) và <b>Level 1</b> (Chung kết) — <em class="q">xen kẽ giữa lý thuyết chuẩn xác và thực hành code trực tiếp</em>.</p>
+    <div class="row" style="justify-content:center; flex-wrap:wrap; gap:0.6rem">
+      <span class="chip py-blue">90 Bài tập chấm tự động</span>
+      <span class="chip py-gold">5 Slide Decks lý thuyết & thực hành</span>
+      <span class="chip rose">50 Bẫy Python tử thần</span>
+      <span class="chip violet">11 Thuật toán kinh điển (≤15 dòng)</span>
+      <span class="chip green">5 Đề thi thử thang 1000 điểm</span>
+      <span class="chip">Phòng luyện tập Web trực quan</span>
+    </div>
+  </header>
+
+  <!-- ── BẮT ĐẦU TỪ ĐÂU ─────────────────────────────────────────────────── -->
+  <section class="sec">
+    <div class="start">
+      <div class="row" style="justify-content:space-between; flex-wrap:wrap">
+        <span class="chip py-blue">Bắt đầu ở đây</span>
+        <span class="tiny">Lộ trình chuẩn 4 bước để đạt chứng chỉ COS Pro ≥600/1000 và tiến thẳng vào Chung kết</span>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="st">
+          <b>Mở bài giảng <a href="deck1_foundation.html">Phase 1 — Nền tảng cốt lõi & Xử lý Chuỗi</a></b>
+          <span class="tiny">~50 phút. Nắm vững chân trị (truthiness), phép chia số âm, bẫy <code>int() vs round()</code>, f-string, và các chiêu thức slicing danh sách bước âm.</span>
+        </div></div>
+        <div class="step"><div class="st">
+          <b>Xem kẽ thực hành sau mỗi khái niệm</b>
+          <span class="tiny">Mỗi slide lý thuyết đều kèm 1 khối <b>Thực hành</b> và 1 <b>Quiz trắc nghiệm phản xạ</b>. Tự tay sửa code trên slide hoặc mở terminal gõ ngay.</span>
+        </div></div>
+        <div class="step"><div class="st">
+          <b>Bật hệ thống chấm tự động 90 bài tập</b>
+          <span class="tiny">Chạy lệnh chấm trực tiếp trong thư mục <code>python-master-bang-b</code>:</span>
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Terminal (PowerShell / Command Prompt)</span></div>
+<pre class="code" data-lang="bash">cd D:\02_Learning_Knowledge\Python_Master\python-master-bang-b
+py cham_diem.py 1     # Chấm nhóm 1 (Đọc hiểu 15 bài - 440đ)
+py cham_diem.py all   # Chấm toàn bộ 6 nhóm</pre>
+        </div></div>
+        <div class="step"><div class="st">
+          <b>Luyện tập phòng thi và giải đề mô phỏng tại <a href="practice.html">Phòng Luyện Tập Trực Tuyến</a></b>
+          <span class="tiny">Trực tiếp xem 90 bài tập, 50 bẫy trực quan, trực quan hóa thuật toán (Two Pointers, Sliding Window, Spiral Matrix), và thi thử bấm giờ 50 phút.</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HỆ THỐNG SLIDE BÀI GIẢNG ──────────────────────────────────────── -->
+  <section class="sec">
+    <header>
+      <span class="eyebrow">Giáo trình bài giảng tương tác</span>
+      <h2>5 Slide Decks theo lộ trình Zero → Hero</h2>
+      <p class="sub">Điều hướng bằng phím <code>←</code> <code>→</code> hoặc <code>Space</code>. Nhấn <code>O</code> mở mục lục · <code>/</code> tìm kiếm siêu tốc · <code>D</code> đánh dấu đã hiểu · <code>?</code> bảng phím tắt. Tự động lưu tiến độ vào trình duyệt.</p>
+    </header>
+    <div class="grid-2">
+      <a class="card phase" href="deck1_foundation.html">
+        <span class="no">1</span>
+        <div class="row"><span class="chip py-blue">Phase 1</span><span class="chip">~50 phút</span><span class="chip green">Nền tảng</span></div>
+        <h3>Nền tảng Cốt lõi & Xử lý Chuỗi (Foundation & Strings)</h3>
+        <p>Kiểu dữ liệu, chân trị Truthiness, phép chia số âm, bẫy <code>int vs round</code>. Xử lý chuỗi đỉnh cao với <code>split</code>, <code>join</code>, <code>slicing</code> bước âm, List Comprehension, và Shallow vs Deep copy.</p>
+      </a>
+
+      <a class="card phase" href="deck2_structures.html">
+        <span class="no">2</span>
+        <div class="row"><span class="chip py-gold">Phase 2</span><span class="chip">~60 phút</span><span class="chip violet">Cấu trúc dữ liệu</span></div>
+        <h3>Ma trận 2D, Dict, Set & Lập trình Hướng đối tượng (OOP)</h3>
+        <p>Tạo ma trận 2D an toàn chống dính reference, Transpose <code>zip(*m)</code>, Xoay 90°, Duyệt xoắn ốc (Spiral). Kỹ thuật Dict hash table, Set operations, bẫy mutable default argument, và OOP cho Level 1.</p>
+      </a>
+
+      <a class="card phase" href="deck3_traps_stdlib.html">
+        <span class="no">3</span>
+        <div class="row"><span class="chip rose">Phase 3</span><span class="chip">~65 phút</span><span class="chip amber">Thư viện & Bẫy</span></div>
+        <h3>Thư viện Chuẩn Thiết Yếu & Tuyển Tập 50 Bẫy Tử Thần</h3>
+        <p>Làm chủ <code>collections</code> (Counter, defaultdict, deque), <code>heapq</code>, <code>itertools</code>, <code>bisect</code>, <code>math</code>. Bóc tách 50 bẫy kinh điển trong đề thi COS Pro kèm mẹo phát hiện lỗi trong 30 giây.</p>
+      </a>
+
+      <a class="card phase" href="deck4_algorithms.html">
+        <span class="no">4</span>
+        <div class="row"><span class="chip violet">Phase 4</span><span class="chip">~75 phút</span><span class="chip py-blue">Thuật toán Pro</span></div>
+        <h3>11 Thuật Toán Kinh Điển Thuộc Lòng (≤15 Dòng Code)</h3>
+        <p>Hai con trỏ (Two Pointers), Cửa sổ trượt (Sliding Window), Mảng tiền tố (Prefix Sum 1D & 2D), Chặt nhị phân, Hợp nhất khoảng, Ngăn xếp Stack, BFS/DFS lưới ma trận, Quy hoạch động DP.</p>
+      </a>
+
+      <a class="card phase" href="deck5_exam_strategy.html">
+        <span class="no">5</span>
+        <div class="row"><span class="chip green">Phase 5</span><span class="chip">~45 phút</span><span class="chip rose">Thực chiến phòng thi</span></div>
+        <h3>Chiến Thuật Phòng Thi COS Pro & Giải Đề Mẫu Chính Thức</h3>
+        <p>Chiến lược ăn trọn 440đ Đọc hiểu → 280đ Debugging → 280đ Design. Quy tắc bỏ câu bảo toàn tâm lý, checklist 30 giây đọc đề, checklist 7 phút cuối giờ, và phân tích chi tiết đề mẫu 27/08.</p>
+      </a>
+
+      <a class="card phase" href="practice.html" style="border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(251, 191, 36, 0.06));">
+        <span class="no">★</span>
+        <div class="row"><span class="chip py-blue">Đấu Trường Code</span><span class="chip green">Tương tác 100%</span><span class="chip py-gold">Luyện thi</span></div>
+        <h3>Phòng Luyện Tập Trực Tuyến (Interactive Kata & Lab)</h3>
+        <p>Chấm 90 bài tập trực tiếp trên web, thử thách truy tìm 50 bẫy Python, tương tác trực quan hóa thuật toán (Two Pointers, Sliding Window, Spiral Matrix, Stack), và thi thử có đồng hồ bấm giờ.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── CẤU TRÚC ĐỀ THI COS PRO ────────────────────────────────────────── -->
+  <section class="sec">
+    <header>
+      <span class="eyebrow">Quy chuẩn kỳ thi</span>
+      <h2>Cấu trúc Đề Thi COS Pro Bảng B</h2>
+      <p class="sub">Điểm đạt chứng chỉ: <b>≥ 600 / 1000 điểm</b>. Không cần giải hoàn hảo cả 10 câu vẫn chắc chắn đạt chứng chỉ nếu phân bổ đúng chiến lược.</p>
+    </header>
+
+    <div style="overflow-x:auto">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Hạng mục</th>
+            <th>Vòng loại (COS Pro Level 2)</th>
+            <th>Chung kết (COS Pro Level 1)</th>
+            <th>Mẹo ghi điểm vàng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Thời lượng</b></td>
+            <td><b>50 phút</b> / 10 câu</td>
+            <td><b>90 phút</b> / 10 câu</td>
+            <td>Áp dụng quy tắc Hard Stop: quá 5 phút/câu bỏ ngay</td>
+          </tr>
+          <tr>
+            <td><b>Đọc hiểu code (Điền khuyết)</b></td>
+            <td><b style="color:var(--cyan)">440 điểm</b> (4-5 câu)</td>
+            <td>340 điểm (3-4 câu)</td>
+            <td>Dễ nhất đề! Làm đầu tiên trong 12 phút để bỏ túi 440đ</td>
+          </tr>
+          <tr>
+            <td><b>Debugging (Sửa 1-2 dòng)</b></td>
+            <td><b style="color:var(--amber)">280 điểm</b> (2-3 câu)</td>
+            <td>240 điểm (2-3 câu)</td>
+            <td>Chỉ sai đúng 1 dòng logic hoặc cú pháp. Đạt mốc này là đỗ chứng chỉ</td>
+          </tr>
+          <tr>
+            <td><b>Design (Tự viết hàm)</b></td>
+            <td>280 điểm (2-3 câu)</td>
+            <td><b style="color:var(--rose)">420 điểm</b> (3-4 câu)</td>
+            <td>Tập trung cấu trúc dữ liệu, Two Pointers, BFS, DP</td>
+          </tr>
+          <tr>
+            <td><b>Quy ước tên hàm</b></td>
+            <td>Luôn là <code>def solution(...)</code></td>
+            <td>Luôn là <code>def solution(...)</code></td>
+            <td>Không dùng tên tiếng Việt, bám đúng tham số và kiểu return</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── LỘ TRÌNH 5 TUẦN ────────────────────────────────────────────────── -->
+  <section class="sec">
+    <header>
+      <span class="eyebrow">Kế hoạch hành động</span>
+      <h2>Lộ trình 5 tuần Zero → Hero</h2>
+      <p class="sub">Kế hoạch luyện tập kỷ luật giúp bạn xây dựng phản xạ gõ code dưới áp lực thời gian.</p>
+    </header>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="row"><span class="chip py-blue">Tuần 1</span><span class="tiny">Phản xạ cú pháp</span></div>
+        <h4>Chuỗi & Mảng 1 Chiều</h4>
+        <p class="tiny">Đọc Phase 1. Làm trọn <b>Nhóm 1</b> và <b>Nhóm 4</b>. Bấm giờ <b>90 giây/bài</b> cho nhóm 1, <b>2 phút/bài</b> cho nhóm 4. Mục tiêu đạt 30/30 câu đọc hiểu.</p>
+      </div>
+
+      <div class="card">
+        <div class="row"><span class="chip py-gold">Tuần 2</span><span class="tiny">Nhận diện bẫy</span></div>
+        <h4>50 Bẫy & Debugging</h4>
+        <p class="tiny">Đọc Phase 3 & `BAY_PYTHON.md`. Làm <b>Nhóm 2</b> và <b>Nhóm 5</b>, <b>3 phút/bài</b>. Tuyệt đối không xem đáp án trước khi chạy bộ test.</p>
+      </div>
+
+      <div class="card">
+        <div class="row"><span class="chip amber">Tuần 3</span><span class="tiny">Tốc độ viết hàm</span></div>
+        <h4>Design Level 2 & Đề 1</h4>
+        <p class="tiny">Đọc Phase 2 & Phase 4. Làm <b>Nhóm 3</b> (8 phút/bài). Tự lực viết hàm không tra cứu. Làm <b>Đề 1 Vòng loại</b> bấm đúng 50 phút.</p>
+      </div>
+
+      <div class="card">
+        <div class="row"><span class="chip violet">Tuần 4</span><span class="tiny">Mức Chung kết</span></div>
+        <h4>Thuật toán Level 1 & OOP</h4>
+        <p class="tiny">Thuộc lòng 11 mẫu thuật toán trong Phase 4. Làm <b>Nhóm 6</b> (10 phút/bài). Giải <b>Đề 2 & Đề 3 Vòng loại</b> đạt ≥900/1000 điểm.</p>
+      </div>
+
+      <div class="card">
+        <div class="row"><span class="chip rose">Tuần 5</span><span class="tiny">Thực chiến phòng thi</span></div>
+        <h4>Mô phỏng & Đề Chung kết</h4>
+        <p class="tiny">Chạy <code>so_theo_doi.py yeu</code> để dứt điểm mọi bài sai. Làm <b>Đề 4 Chung kết</b> (90 phút). Đọc lại Phase 5 và CHEATSHEET trước giờ thi.</p>
+      </div>
+
+      <div class="card" style="border-color:rgba(74,222,128,0.4); background:rgba(74,222,128,0.04)">
+        <div class="row"><span class="chip green">Mục tiêu đích</span><span class="tiny">Ngày thi</span></div>
+        <h4>Vào Phòng Thi Là Thắng</h4>
+        <p class="tiny">Tâm lý vững vàng, ăn chắc 440đ đọc hiểu trong 12 phút đầu, giải quyết gọn gàng các bẫy debug, và thong thả triển khai các mẫu thuật toán Design!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CHECKLIST CÁ NHÂN ──────────────────────────────────────────────── -->
+  <section class="sec">
+    <header>
+      <div class="row" style="justify-content:space-between; align-items:center">
+        <div>
+          <span class="eyebrow">Theo dõi tiến độ</span>
+          <h2>Checklist Ôn Luyện Cốt Lõi</h2>
+        </div>
+        <span class="chip py-blue" data-check-count="#home-check">0/8</span>
+      </div>
+    </header>
+
+    <ul class="check" id="home-check">
+      <li>Nắm vững quy tắc chân trị (truthiness) và bẫy <code>int()</code> vs <code>round()</code></li>
+      <li>Thành thạo Slicing bước âm <code>s[::-1]</code>, <code>split()</code> không đối số, và <code>" ".join()</code></li>
+      <li>Biết cách khởi tạo ma trận 2D an toàn <code>[[0]*m for _ in range(n)]</code> chống dính tham chiếu</li>
+      <li>Hiểu sâu cơ chế <code>Counter</code>, <code>defaultdict</code>, và <code>deque</code> trong <code>collections</code></li>
+      <li>Gõ thuộc lòng 11 mẫu thuật toán kinh điển (Two Pointers, Sliding Window, Prefix Sum, BFS, Stack, DP)</li>
+      <li>Thuộc lòng 50 bẫy Python trong đề thi COS Pro và nhận diện được trong 30 giây</li>
+      <li>Hoàn thành 90 bài tập trong 6 nhóm và đạt 1000/1000 điểm trên <code>cham_diem.py</code></li>
+      <li>Làm trọn vẹn Đề mẫu 27/08 và Đề thi thử số 1 trong vòng 50 phút đạt ≥800 điểm</li>
+    </ul>
+  </section>
+
+  <!-- ── BẢNG LỆNH CLI PHÒNG THI ────────────────────────────────────────── -->
+  <section class="sec">
+    <header>
+      <span class="eyebrow">Tra cứu nhanh</span>
+      <h2>Các lệnh Terminal luyện tập thường dùng</h2>
+    </header>
+    <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>PowerShell / Terminal trong thư mục python-master-bang-b</span></div>
+<pre class="code" data-lang="bash"># Chấm từng nhóm bài tập
+py cham_diem.py 1               # Nhóm 1: Đọc hiểu 15 bài (440đ)
+py cham_diem.py 2               # Nhóm 2: Debugging 15 bài (280đ)
+py cham_diem.py 3               # Nhóm 3: Design Level 2 (280đ)
+py cham_diem.py all             # Chấm cả 6 nhóm bài tập
+
+# Chấm đề thi thử mô phỏng thang 1000
+py de_mo_phong/de_mau_2708.py   # Đề mẫu chính thức 27/08
+py de_mo_phong/de_1_vong_loai.py # Đề thi thử vòng loại số 1 (50 phút)
+py de_mo_phong/de_4_chung_ket.py # Đề thi thử chung kết Level 1 (90 phút)
+
+# Sổ theo dõi tiến độ & Lịch ôn lặp lại ngắt quãng
+py so_theo_doi.py all           # Chấm và ghi nhận lịch sử học
+py so_theo_doi.py hom_nay       # Xem hôm nay cần làm lại bài nào
+py so_theo_doi.py yeu           # Xem các bài hay làm sai nhất
+py so_theo_doi.py tom_tat       # Bảng tổng kết tiến độ</pre>
+  </section>
+
+  <footer>
+    <p><b>Python Master 2026 — Bảng B</b> · Lộ trình luyện thi chuẩn COS Pro Level 2 & Level 1</p>
+    <p class="tiny">Hệ thống giáo trình slide tương tác tự động lưu trữ tiến độ trên trình duyệt của bạn.</p>
+  </footer>
+
+</div>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

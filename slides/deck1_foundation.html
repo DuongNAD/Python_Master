@@ -1,0 +1,639 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1 · Nền tảng cốt lõi & Xử lý Chuỗi · Python Master</title>
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body data-deck="deck1">
+<div class="deck">
+
+<!-- ══ SLIDE 1: HERO COVER ═══════════════════════════════════════════════ -->
+<div class="slide" data-part="Mở đầu" data-title="Phase 1 — Nền tảng & Xử lý Chuỗi">
+  <div class="wrap hero">
+    <div class="orb">🐍</div>
+    <h1 style="background: linear-gradient(105deg, var(--py-blue), var(--py-gold) 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Phase 1 · Nền Tảng Cốt Lõi & Xử Lý Chuỗi</h1>
+    <p class="lead" style="max-width:680px">Từ chưa biết gì đến phản xạ gõ code chuẩn xác trong 90 giây. Xóa bỏ hoàn toàn các lỗi sai logic về ép kiểu số học, chân trị, cắt lát chuỗi, và sao chép danh sách.</p>
+    <div class="row" style="justify-content:center; gap:0.6rem">
+      <span class="chip py-blue">~50 phút</span>
+      <span class="chip green">Zero → Hero</span>
+      <span class="chip rose">Ăn trọn 440 điểm Đọc hiểu</span>
+      <span class="chip py-gold">3 Bài thực hành trực tiếp</span>
+    </div>
+    <p class="kbd-hint">Dùng phím <kbd>→</kbd> hoặc <kbd>Space</kbd> để đi tiếp · <kbd>O</kbd> mục lục · <kbd>/</kbd> tìm kiếm · <kbd>?</kbd> phím tắt</p>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2: BẢN ĐỒ PHASE 1 ═══════════════════════════════════════════ -->
+<div class="slide" data-title="Bản đồ 50 phút tới">
+  <div class="wrap">
+    <h2><span class="k">01</span> Bản đồ học tập Phase 1</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>1. Số học & Ép kiểu chuẩn xác</h3>
+        <p>Phân biệt triệt để <code>int()</code> vs <code>round()</code> vs <code>//</code>. Cơ chế modulo <code>%</code> với số âm giải quyết bài toán chu kỳ vòng tròn.</p>
+      </div>
+      <div class="card">
+        <h3>2. Xử lý Chuỗi (Strings) đỉnh cao</h3>
+        <p>Bẫy khoảng trắng thừa trong <code>split()</code>, kỹ thuật ghép chuỗi <code>" ".join()</code>, và slicing bước âm <code>[::-1]</code>.</p>
+      </div>
+      <div class="card">
+        <h3>3. Danh sách (List) & Comprehension</h3>
+        <p>Cắt lát mảng toàn diện, lọc điều kiện trong Comprehension, <code>enumerate</code>, <code>zip</code>, và sắp xếp đa khóa với <code>lambda</code>.</p>
+      </div>
+      <div class="card">
+        <h3>4. Bẫy tham chiếu bộ nhớ</h3>
+        <p>Bản chất của biến trong Python: Phân biệt <b>Shallow Copy</b> và <b>Deep Copy</b> để không bao giờ bị dính bug âm thầm.</p>
+      </div>
+    </div>
+    <div class="note"><b>Quy tắc học xen kẽ:</b> Cứ sau 1 khái niệm lý thuyết, bạn sẽ có ngay 1 khối <b>Thực hành</b> và 1 <b>Quiz kiểm tra phản xạ</b>. Đừng lướt qua khi chưa hiểu cặn kẽ.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3: CHÂN TRỊ (TRUTHINESS) ════════════════════════════════════ -->
+<div class="slide" data-part="Phần 1 · Kiểu dữ liệu & Số học" data-title="Chân trị Truthiness">
+  <div class="wrap">
+    <h2><span class="k">02</span> Kiểu dữ liệu cơ bản & Chân trị (Truthiness)</h2>
+    <p>Trong Python, mọi đối tượng đều mang giá trị chân lý (Truthiness) khi đặt trong biểu thức điều kiện <code>if</code>.</p>
+    
+    <div class="grid-2">
+      <div class="card bad">
+        <h4 class="rose">✗ Các giá trị Falsy (Luôn coi là False)</h4>
+        <ul style="padding-left:1.2rem; display:grid; gap:0.35rem; font-size:0.9rem">
+          <li>Số 0: <code>0</code>, <code>0.0</code>, <code>0j</code></li>
+          <li>Hằng số: <code>None</code>, <code>False</code></li>
+          <li>Tập hợp & Chuỗi rỗng: <code>""</code>, <code>[]</code>, <code>()</code>, <code>{}</code>, <code>set()</code></li>
+        </ul>
+      </div>
+      <div class="card good">
+        <h4 class="green">✓ Cách viết Pythonic chuẩn</h4>
+        <p class="tiny">Thay vì viết dài dòng <code>if len(arr) > 0:</code> hay <code>if s != "":</code>, hãy tận dụng chân trị trực tiếp:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">if arr:   # arr có ít nhất 1 phần tử
+    first = arr[0]
+if not s: # s là chuỗi rỗng "" hoặc None
+    return 0</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Bẫy đề thi:</b> Nếu biến nhận giá trị <code>0</code>, kiểm tra <code>if x:</code> sẽ bị nhảy vào nhánh False! Nếu muốn kiểm tra biến khác <code>None</code> (kể cả khi nó bằng 0), bắt buộc viết <code>if x is not None:</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4: INT VS ROUND VS // ═══════════════════════════════════════ -->
+<div class="slide" data-title="int vs round vs //">
+  <div class="wrap">
+    <h2><span class="k">03</span> Bẫy kinh điển: int() vs round() vs //</h2>
+    <p>Đề thi COS Pro cực kỳ hay cài bẫy ở câu cuối phần return: <i>"Chỉ return phần số nguyên"</i>.</p>
+
+    <div class="diff-grid">
+      <div class="diff-bad">
+        <div class="diff-head"><span>✗ Code SAI (Dùng round)</span><span class="chip rose">Mất điểm</span></div>
+        <div class="diff-body">
+          <p class="tiny">Làm tròn số học kiểu Banker's Rounding của Python làm tròn tới số chẵn gần nhất:</p>
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python"># Đề bài: "Nếu điểm trung bình là số lẻ, chỉ lấy phần nguyên"
+avg = round(161 / 2) # 80.5 -> 80
+avg2 = round(163 / 2) # 81.5 -> 82 (BỊ LÀM TRÒN LÊN!)</pre>
+        </div>
+      </div>
+
+      <div class="diff-good">
+        <div class="diff-head"><span>✓ Code ĐÚNG (Dùng int hoặc //)</span><span class="chip green">Chuẩn 100%</span></div>
+        <div class="diff-body">
+          <p class="tiny">Cắt bỏ toàn bộ phần thập phân mà không làm tròn:</p>
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">avg = 161 // 2      # Ra đúng 80
+avg = int(161 / 2)  # Ra đúng 80
+# Với số âm: int(-2.7) ra -2 (cắt về 0), nhưng -3 // 2 ra -2</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz" style="margin-top:0.6rem">
+      <div class="quiz-q">Câu hỏi nhanh: Đề bài yêu cầu: "Điểm trung bình của sinh viên chỉ lấy phần nguyên". Phép tính nào luôn đúng với <code>a = 15, b = 2</code>?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="round(7.5) trong Python ra 8 (vì 8 là số chẵn), sai yêu cầu cắt phần nguyên.">A. round(a / b)</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! a // b thực hiện phép chia nguyên, ra đúng 7.">B. a // b</button>
+        <button class="opt" data-k="C" data-why="math.ceil làm tròn lên trần nhà, 7.5 thành 8.">C. math.ceil(a / b)</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5: MODULO ÂM TRONG PYTHON ════════════════════════════════════ -->
+<div class="slide" data-title="Modulo âm trong Python">
+  <div class="wrap">
+    <h2><span class="k">04</span> Phép chia lấy dư (%) với số âm & Tọa độ xoay vòng</h2>
+    <p>Trong C++ hay Java, <code>-7 % 3 = -1</code>. Nhưng trong Python, <b>kết quả của phép modulo luôn cùng dấu với số chia!</b></p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Toán học của Python</h4>
+        <p>Python định nghĩa: <code>a % b = a - b * (a // b)</code></p>
+        <p>Với <code>-7 % 3</code>:</p>
+        <ul style="padding-left:1.2rem; font-size:0.88rem; display:grid; gap:0.3rem">
+          <li><code>-7 // 3 = -3</code> (làm tròn xuống số nguyên nhỏ hơn)</li>
+          <li><code>-7 - 3 * (-3) = -7 + 9 = 2</code></li>
+        </ul>
+        <p class="tiny green" style="margin-top:0.4rem"><b>Kết quả:</b> <code>-7 % 3 == 2</code> (Số dư dương [0 .. b-1])</p>
+      </div>
+
+      <div class="card">
+        <h4>Ứng dụng đỉnh cao: Đi lùi trên vòng tròn</h4>
+        <p class="tiny">Khi một kim đồng hồ có 12 số, đang ở vị trí 2 mà lùi 5 bước:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">pos = 2
+buoc_lui = 5
+n = 12
+# Không cần viết if pos < 0: pos += n
+pos_moi = (pos - buoc_lui) % n # (2 - 5) % 12 = -3 % 12 = 9!
+print(pos_moi) # Ra đúng 9</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Quy tắc phòng thi:</b> Khi cần di chuyển tiến/lùi theo chu kỳ N phần tử, công thức luôn là <code>(cur + step) % N</code>, bất kể step là số âm hay dương!</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6: THỰC HÀNH 1.1 ════════════════════════════════════════════ -->
+<div class="slide" data-title="Thực hành 1.1">
+  <div class="wrap">
+    <h2><span class="k">05</span> Thực hành 1.1 · Điểm trung bình & Tọa độ chu kỳ</h2>
+    
+    <div class="ex">
+      <div class="ex-head"><span class="ex-tag">Thực hành 1.1</span><span class="ex-title">Viết hàm tính tọa độ sau khi di chuyển vòng tròn</span><span class="chip py-blue">5 phút</span></div>
+      <div class="ex-body">
+        <p>Cho vị trí xuất phát <code>start</code>, danh sách các bước di chuyển <code>steps</code> (số dương là tiến, số âm là lùi), và kích thước vòng tròn <code>n</code> (đánh số từ <code>0</code> đến <code>n - 1</code>). Tính vị trí cuối cùng.</p>
+        
+        <div class="py-runner">
+          <div class="py-runner-head">
+            <span class="tiny"><b>Interactive Python Runner</b> — Bạn có thể sửa code và chạy trực tiếp:</span>
+            <button class="btn cyan btn-run">Chạy code ▶</button>
+          </div>
+          <textarea class="py-editor">
+def solution(start, steps, n):
+    pos = start
+    for s in steps:
+        pos = (pos + s) % n
+    return pos
+
+# Test thử:
+print("Test 1 (start=2, steps=[3, -7, 4], n=10):", solution(2, [3, -7, 4], 10))
+print("Test 2 (start=0, steps=[-1], n=5):", solution(0, [-1], 5))
+</textarea>
+          <div class="py-console-head">Console Output</div>
+          <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+        </div>
+      </div>
+      <details class="reveal"><summary>Xem giải thích lời giải</summary>
+        <div class="reveal-in">
+          <p>Mỗi lần cộng thêm <code>s</code> (kể cả âm), toán tử <code>% n</code> tự động cuốn tọa độ về miền an toàn <code>[0 .. n-1]</code> mà không cần bất kỳ câu lệnh điều kiện rườm rà nào.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7: ĐỊNH DẠNG F-STRING ═══════════════════════════════════════ -->
+<div class="slide" data-part="Phần 2 · Xử lý Chuỗi (Strings)" data-title="Định dạng f-string nâng cao">
+  <div class="wrap">
+    <h2><span class="k">06</span> Định dạng chuỗi siêu tốc với f-string</h2>
+    <p>f-string ra mắt từ Python 3.6 và là cách định dạng chuỗi nhanh nhất, trực quan nhất.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4>Padding số 0</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">d, m, y = 5, 9, 2026
+s = f"{d:02d}/{m:02d}/{y}"
+# "05/09/2026"</pre>
+      </div>
+
+      <div class="card">
+        <h4>Định dạng số thực (Float)</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">pi = 3.14159265
+s = f"{pi:.2f}"   # "3.14"
+p = f"{0.856:.1%}" # "85.6%"</pre>
+      </div>
+
+      <div class="card">
+        <h4>Phân tách hàng ngàn & Căn lề</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">money = 1500000
+s = f"{money:,}" # "1,500,000"
+tag = f"{'PYTHON':^10}"
+# "  PYTHON  "</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Thủ thuật thi cử:</b> Khi cần in giờ phút giây dạng <code>HH:MM:SS</code>: <code>f"{h:02d}:{m:02d}:{s:02d}"</code> giúp bạn tiết kiệm 4 dòng code <code>str(h).zfill(2)</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 8: SPLIT TRAPS ═════════════════════════════════════════════ -->
+<div class="slide" data-title="Bẫy split() vs split(' ')">
+  <div class="wrap">
+    <h2><span class="k">07</span> Bẫy tử thần: split() vs split(" ")</h2>
+    <p>Đây là một trong những bẫy phổ biến nhất khiến bài chuẩn hóa văn bản bị chấm 0 điểm.</p>
+
+    <div class="diff-grid">
+      <div class="diff-bad">
+        <div class="diff-head"><span>✗ Code SAI: s.split(" ")</span><span class="chip rose">Dính phần tử rỗng</span></div>
+        <div class="diff-body">
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">s = "  Nguyen   Anh   Duong  "
+words = s.split(" ")
+# Kết quả bị dính một loạt chuỗi rỗng "":
+# ['', '', 'Nguyen', '', '', 'Anh', '', '', 'Duong', '', '']</pre>
+        </div>
+      </div>
+
+      <div class="diff-good">
+        <div class="diff-head"><span>✓ Code ĐÚNG: s.split() không đối số</span><span class="chip green">Tự động gom khoảng trắng</span></div>
+        <div class="diff-body">
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">s = "  Nguyen   Anh   Duong  "
+words = s.split() # Không truyền tham số gì
+# Tự động loại bỏ mọi khoảng trắng thừa ở đầu, cuối và giữa:
+# ['Nguyen', 'Anh', 'Duong']</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="note"><b>Quy tắc vàng:</b> Luôn dùng <code>s.split()</code> (không truyền chuỗi cách) khi tách từ trong câu. Chỉ truyền <code>s.split(",")</code> khi tách theo dấu phẩy cụ thể.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 9: STRIP, JOIN, TITLE ══════════════════════════════════════ -->
+<div class="slide" data-title="Các hàm chuỗi sống còn">
+  <div class="wrap">
+    <h2><span class="k">08</span> Bộ ba phương thức chuỗi: strip, join & title vs capitalize</h2>
+    
+    <div class="grid-3">
+      <div class="card">
+        <h4>1. strip(), lstrip(), rstrip()</h4>
+        <p class="tiny">Cắt bỏ ký tự thừa ở hai đầu chuỗi:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">raw = "  hello world\n"
+clean = raw.strip() # "hello world"
+num = "###123###".strip("#")
+# "123"</pre>
+      </div>
+
+      <div class="card">
+        <h4>2. join() nối chuỗi tối ưu</h4>
+        <p class="tiny">Nối danh sách thành chuỗi O(N):</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">words = ["Python", "Master"]
+res = " ".join(words)
+# "Python Master"
+# TUYỆT ĐỐI KHÔNG dùng s += word trong vòng lặp (O(N^2))</pre>
+      </div>
+
+      <div class="card">
+        <h4>3. capitalize() vs title()</h4>
+        <p class="tiny">Bẫy chữ hoa đầu từ:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python"># title() dính bẫy với từ có dấu nháy:
+"o'reilly".title() # "O'Reilly" -> "O'Reilly"
+"o'connor".title() # "O'Connor"
+# capitalize() chỉ viết hoa chữ đầu:
+"hello WORLD".capitalize()
+# "Hello world"</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Mẫu code chuẩn hóa họ tên:</b> <code>" ".join(w.capitalize() for w in s.split())</code>. Đây là mẫu ngắn gọn nhất, không bao giờ dính lỗi khoảng trắng thừa.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 10: THỰC HÀNH 1.2 ═══════════════════════════════════════════ -->
+<div class="slide" data-title="Thực hành 1.2">
+  <div class="wrap">
+    <h2><span class="k">09</span> Thực hành 1.2 · Chuẩn hóa họ tên & Đảo ngược từ</h2>
+    
+    <div class="ex">
+      <div class="ex-head"><span class="ex-tag">Thực hành 1.2</span><span class="ex-title">Chuẩn hóa chuỗi họ tên bị nhập lộn xộn</span><span class="chip py-blue">3 phút</span></div>
+      <div class="ex-body">
+        <p>Cho chuỗi <code>s = "  nGUYEN   anh   duong "</code>. Viết hàm <code>chuan_hoa_ten(s)</code> trả về <code>"Nguyen Anh Duong"</code>. (Đây chính là <b>Bài 1.02</b> trong bộ 90 bài luyện tập).</p>
+        
+        <div class="py-runner">
+          <div class="py-runner-head">
+            <span class="tiny">Chạy thử nghiệm thuật toán:</span>
+            <button class="btn cyan btn-run">Chạy code ▶</button>
+          </div>
+          <textarea class="py-editor">
+def chuan_hoa_ten(s):
+    cac_tu = s.split()
+    ket_qua = [tu.capitalize() for tu in cac_tu]
+    return " ".join(ket_qua)
+
+def dao_thu_tu_tu(s):
+    # Đảo thứ tự các từ: "hom nay dep" -> "dep nay hom"
+    return " ".join(s.split()[::-1])
+
+print("Chuẩn hóa:", chuan_hoa_ten("  nGUYEN   anh   duong "))
+print("Đảo từ:   ", dao_thu_tu_tu("  hom   nay  troi  dep  "))
+</textarea>
+          <div class="py-console-head">Console Output</div>
+          <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 11: SLICING BƯỚC ÂM ═════════════════════════════════════════ -->
+<div class="slide" data-part="Phần 3 · Danh sách (List) & Slicing" data-title="Slicing toàn diện & Bước âm">
+  <div class="wrap">
+    <h2><span class="k">10</span> Danh sách (List) & Slicing bước âm đỉnh cao</h2>
+    <p>Cú pháp cắt lát: <code>arr[start : stop : step]</code>. Chỉ số lấy từ <code>start</code> đến <code>stop - 1</code>.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Các lát cắt kinh điển</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">a = [10, 20, 30, 40, 50, 60]
+
+a[1:4]     # [20, 30, 40] (từ 1 đến 3)
+a[:3]      # [10, 20, 30] (3 phần tử đầu)
+a[-2:]     # [50, 60] (2 phần tử cuối)
+a[::2]     # [10, 30, 50] (bước nhảy 2)
+a[::-1]    # [60, 50, 40, 30, 20, 10] (ĐẢO NGƯỢC)</pre>
+      </div>
+
+      <div class="card">
+        <h4>Slicing bước âm: a[stop : start : -1]</h4>
+        <p class="tiny">Khi <code>step < 0</code>, <code>start</code> phải lớn hơn <code>stop</code>:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python"># Đảo ngược danh sách không tốn thêm biến:
+s = "racecar"
+is_palindrome = (s == s[::-1]) # True
+
+# Gán lát cắt thay thế tại chỗ (in-place):
+nums = [1, 2, 3, 4, 5]
+nums[1:4] = [99, 99] # [1, 99, 99, 5]</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Mẹo phòng thi:</b> Cắt lát không bao giờ báo lỗi <code>IndexError</code> kể cả khi chỉ số vượt quá độ dài danh sách (ví dụ <code>a[:1000]</code> khi <code>len(a) = 5</code> vẫn trả về toàn bộ <code>a</code>).</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 12: LIST COMPREHENSION ══════════════════════════════════════ -->
+<div class="slide" data-title="List Comprehension">
+  <div class="wrap">
+    <h2><span class="k">11</span> List Comprehension: Cú pháp & Kỹ thuật lọc</h2>
+    <p>Thay thế vòng lặp <code>for</code> + <code>append()</code> bằng biểu thức 1 dòng chạy nhanh gấp 2 lần bằng mã C ngầm.</p>
+
+    <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python"># Cú pháp 1: Lọc điều kiện if (chỉ lấy phần tử thỏa mãn)
+chan = [x for x in range(10) if x % 2 == 0] # [0, 2, 4, 6, 8]
+
+# Cú pháp 2: Biến đổi if - else (áp dụng cho mọi phần tử)
+nhan_dien = ["CHẴN" if x % 2 == 0 else "LẺ" for x in range(5)]
+# ['CHẴN', 'LẺ', 'CHẴN', 'LẺ', 'CHẴN']
+
+# Cú pháp 3: Làm phẳng ma trận 2D (Flatten)
+matrix = [[1, 2, 3], [4, 5, 6]]
+flat = [x for row in matrix for x in row] # [1, 2, 3, 4, 5, 6]</pre>
+
+    <div class="diff-bad" style="margin-top:0.6rem">
+      <div class="diff-head"><span>⚠️ Bẫy đề thi: List Comprehension xóa Max/Min</span></div>
+      <div class="diff-body">
+        <p class="tiny">Nếu đề bài: <i>"Bỏ 1 điểm cao nhất và 1 điểm thấp nhất của ban giám khảo"</i> mà bạn viết: <code>[x for x in scores if x != max_s and x != min_s]</code> thì khi có 2 điểm 10 trùng nhau, nó sẽ <b>xóa sạch cả 2 điểm 10</b>!</p>
+        <p class="tiny green"><b>Cách viết đúng:</b> Sắp xếp rồi cắt lát bỏ phần tử đầu và cuối: <code>sorted(scores)[1:-1]</code></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 13: ENUMERATE & ZIP ═════════════════════════════════════════ -->
+<div class="slide" data-title="enumerate() và zip()">
+  <div class="wrap">
+    <h2><span class="k">12</span> Duyệt song song với enumerate() & zip()</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>enumerate(iterable, start=0)</h4>
+        <p class="tiny">Lấy cả chỉ số <code>i</code> lẫn giá trị <code>val</code> cùng lúc, không dùng <code>range(len(a))</code>:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">arr = ["Táo", "Cam", "Xoài"]
+for idx, qua in enumerate(arr, start=1):
+    print(f"{idx}. {qua}")
+# 1. Táo
+# 2. Cam
+# 3. Xoài</pre>
+      </div>
+
+      <div class="card">
+        <h4>zip(*iterables)</h4>
+        <p class="tiny">Ghép các mảng song song theo cặp tương ứng:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">ten = ["An", "Bình", "Cường"]
+diem = [8.5, 9.0, 7.5]
+for t, d in zip(ten, diem):
+    print(f"{t}: {d} điểm")
+
+# Biến 2 list thành Dictionary trong 1 dòng:
+bang_diem = dict(zip(ten, diem))</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Thủ thuật đỉnh cao:</b> <code>zip(*matrix)</code> chính là phép <b>Chuyển vị ma trận (Transpose)</b> biến hàng thành cột trong 1 dòng! Chúng ta sẽ dùng chiêu này ở Phase 2.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 14: SORTED ĐA KHÓA ══════════════════════════════════════════ -->
+<div class="slide" data-title="Sắp xếp đa khóa với sorted">
+  <div class="wrap">
+    <h2><span class="k">13</span> sorted() vs sort() & Sắp xếp đa khóa</h2>
+    <p>Phân biệt: <code>list.sort()</code> thay đổi mảng gốc tại chỗ và trả về <code>None</code>; còn <code>sorted(list)</code> trả về mảng mới.</p>
+
+    <div class="card" style="margin-bottom:0.6rem">
+      <h4>Sắp xếp đa tiêu chí với Tuple: key = lambda x: (tiêu_chí_1, tiêu_chí_2)</h4>
+      <p class="tiny">Đề bài: <i>"Sắp xếp học sinh theo điểm giảm dần, nếu cùng điểm thì xếp theo tuổi tăng dần, nếu cùng tuổi thì xếp theo tên chữ cái."</i></p>
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">students = [
+    {"ten": "An", "diem": 8.5, "tuoi": 20},
+    {"ten": "Bình", "diem": 9.0, "tuoi": 19},
+    {"ten": "Cường", "diem": 8.5, "tuoi": 19}
+]
+
+# Dùng dấu âm (-) để đảo ngược chiều sắp xếp số:
+students.sort(key=lambda s: (-s["diem"], s["tuoi"], s["ten"]))
+# Kết quả: Bình (9.0) -> Cường (8.5, 19 tuổi) -> An (8.5, 20 tuổi)</pre>
+    </div>
+
+    <div class="diff-bad">
+      <div class="diff-head"><span>⚠️ BẪY TỬ THẦN: Dấu trừ (-) không dùng được cho chuỗi ký tự!</span></div>
+      <div class="diff-body">
+        <p class="tiny">Nếu muốn sắp xếp tên chuỗi giảm dần, không được viết <code>-s["ten"]</code> (sẽ báo <code>TypeError: bad operand type for unary -: 'str'</code>). Giải pháp: sắp xếp 2 lần với thuật toán Stable Sort của Python (Timsort) hoặc dùng thư viện.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 15: SHALLOW COPY VS DEEP COPY ═══════════════════════════════ -->
+<div class="slide" data-part="Phần 4 · Bộ nhớ & Tham chiếu" data-title="Sao chép nông vs Sao chép sâu">
+  <div class="wrap">
+    <h2><span class="k">14</span> Bẫy tham chiếu: Shallow Copy vs Deep Copy</h2>
+    <p>Trong Python, biến chỉ là chiếc thẻ bài (nhãn) trỏ tới vùng nhớ. Phép gán <code>b = a</code> KHÔNG tạo ra mảng mới!</p>
+
+    <div class="grid-2">
+      <div class="card bad">
+        <h4 class="rose">Bẫy Shallow Copy với mảng 2 chiều</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">a = [[1, 2], [3, 4]]
+b = a.copy() # hoặc a[:] - CHỈ COPY TẦNG 1!
+b[0][0] = 99
+print(a[0][0]) # IN RA 99! (Mảng a gốc bị hỏng!)</pre>
+      </div>
+
+      <div class="card good">
+        <h4 class="green">Giải pháp Deep Copy chuẩn xác</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">import copy
+a = [[1, 2], [3, 4]]
+b = copy.deepcopy(a) # Nhân bản toàn bộ mọi tầng
+# Hoặc dùng list comprehension:
+b = [row[:] for row in a]
+b[0][0] = 99
+print(a[0][0]) # IN RA 1 (a gốc vẫn an toàn!)</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Cách ghi nhớ nhanh:</b> Với mảng 1 chiều chứa số nguyên, <code>a.copy()</code> hay <code>a[:]</code> là đủ. Nhưng với ma trận 2D hoặc danh sách chứa dict/list lồng nhau, bắt buộc dùng <code>copy.deepcopy()</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 16: THỰC HÀNH 1.3 ═══════════════════════════════════════════ -->
+<div class="slide" data-title="Thực hành 1.3">
+  <div class="wrap">
+    <h2><span class="k">15</span> Thực hành 1.3 · Xếp hạng sinh viên đa tiêu chí</h2>
+    
+    <div class="ex">
+      <div class="ex-head"><span class="ex-tag">Thực hành 1.3</span><span class="ex-title">Sắp xếp bảng điểm sinh viên (Bài 1.13 trong đề luyện tập)</span><span class="chip py-blue">5 phút</span></div>
+      <div class="ex-body">
+        <p>Cho danh sách sinh viên. Xếp hạng theo tiêu chí: <b>Điểm giảm dần</b>, nếu bằng nhau xếp theo <b>Tuổi tăng dần</b>. Trả về danh sách chỉ chứa tên sinh viên đã xếp hạng.</p>
+
+        <div class="py-runner">
+          <div class="py-runner-head">
+            <span class="tiny">Chạy thử nghiệm thuật toán xếp hạng:</span>
+            <button class="btn cyan btn-run">Chạy code ▶</button>
+          </div>
+          <textarea class="py-editor">
+def xep_hang_hoc_sinh(ds):
+    # Sắp xếp tại chỗ theo (-diem, tuoi)
+    ds_sap_xep = sorted(ds, key=lambda x: (-x['diem'], x['tuoi']))
+    return [sv['ten'] for sv in ds_sap_xep]
+
+ds = [
+    {'ten': 'An', 'diem': 8.0, 'tuoi': 20},
+    {'ten': 'Binh', 'diem': 9.0, 'tuoi': 19},
+    {'ten': 'Cuong', 'diem': 8.0, 'tuoi': 19}
+]
+
+print("Thứ tự xếp hạng:", xep_hang_hoc_sinh(ds))
+# Kỳ vọng: ['Binh', 'Cuong', 'An']
+</textarea>
+          <div class="py-console-head">Console Output</div>
+          <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 17: QUIZ PHASE 1 ════════════════════════════════════════════ -->
+<div class="slide" data-part="Tổng kết & Đánh giá" data-title="Quiz phản xạ Phase 1">
+  <div class="wrap">
+    <h2><span class="k">16</span> Đấu trường Quiz: Kiểm tra phản xạ Phase 1</h2>
+    <p>Chọn câu trả lời đúng nhất. Hệ thống sẽ tự động chấm điểm trên thanh điều khiển HUD bên dưới.</p>
+
+    <div class="grid-2">
+      <div class="quiz">
+        <div class="quiz-q">1. Đoạn code sau in ra gì: <code>print((-13) % 5)</code>?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sai. -13 % 5 trong C++ ra -3, nhưng trong Python số dư luôn cùng dấu với số chia.">A. -3</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! -13 // 5 = -3. -13 - 5*(-3) = 2.">B. 2</button>
+          <button class="opt" data-k="C" data-why="Sai. 3 là sai phép tính.">C. 3</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">2. Cho <code>s = " a b "</code>. <code>len(s.split(" "))</code> và <code>len(s.split())</code> bằng bao nhiêu?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sai. s.split(' ') giữ lại các chuỗi rỗng giữa các dấu cách.">A. 2 và 2</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Đúng! split(' ') sinh ra ['', '', 'a', '', 'b', '', ''] (len=7), còn split() gom khoảng trắng còn ['a', 'b'] (len=2).">B. 7 và 2</button>
+          <button class="opt" data-k="C" data-why="Sai.">C. 4 và 2</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">3. Phép gán nào tạo ra bản sao độc lập của mảng 1 chiều <code>a = [1, 2, 3]</code>?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sai. b = a chỉ gán nhãn mới cho cùng 1 vùng nhớ.">A. b = a</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! a[:] hoặc a.copy() tạo mảng mới cho mảng 1 chiều.">B. b = a[:] hoặc b = a.copy()</button>
+          <button class="opt" data-k="C" data-why="Sai. id(b) == id(a) là so sánh boolean.">C. b = id(a)</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">4. Kết quả của <code>[x*2 for x in [1, 2, 3] if x % 2 != 0]</code> là gì?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sai.">A. [2, 4, 6]</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Đúng! Các số lẻ là 1 và 3, nhân 2 được [2, 6].">B. [2, 6]</button>
+          <button class="opt" data-k="C" data-why="Sai.">C. [4]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 18: TỔNG KẾT & BÀI TẬP VỀ NHÀ ═════════════════════════════════ -->
+<div class="slide" data-title="Tổng kết Phase 1">
+  <div class="wrap">
+    <h2><span class="k">17</span> Tổng kết Phase 1 & Nhiệm vụ thực hành</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h4 class="py-blue">Số học & Chân trị</h4>
+        <p class="tiny">Nhớ dùng <code>//</code> hoặc <code>int()</code> khi đề bảo lấy phần nguyên. Tận dụng <code>(pos + step) % N</code> để di chuyển xoay vòng.</p>
+      </div>
+      <div class="card">
+        <h4 class="py-gold">Chuỗi & Slicing</h4>
+        <p class="tiny">Dùng <code>s.split()</code> không đối số. Đảo ngược chuỗi bằng <code>s[::-1]</code>. Chuẩn hóa tên bằng <code>" ".join(w.capitalize() for w in s.split())</code>.</p>
+      </div>
+      <div class="card">
+        <h4 class="rose">Danh sách & Bộ nhớ</h4>
+        <p class="tiny">Sắp xếp đa khóa <code>sorted(arr, key=lambda x: (-x[0], x[1]))</code>. Luôn dùng <code>deepcopy</code> cho ma trận và cấu trúc lồng nhau.</p>
+      </div>
+    </div>
+
+    <div class="start" style="margin-top:0.8rem">
+      <h4>Nhiệm vụ ngay bây giờ:</h4>
+      <p class="tiny">Mở terminal và hoàn thành 15 bài đầu tiên trong <b>Nhóm 1 (Đọc hiểu code)</b>:</p>
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Terminal</span></div>
+<pre class="code" data-lang="bash">cd D:\02_Learning_Knowledge\Python_Master\python-master-bang-b
+py cham_diem.py 1</pre>
+      <p class="tiny" style="margin-top:0.5rem">Mục tiêu: Đạt 15/15 câu (1000/1000 điểm) trong vòng <b>20 phút</b>!</p>
+    </div>
+
+    <div class="row" style="justify-content:space-between; margin-top:0.8rem">
+      <a class="btn" href="index.html">⌂ Về Trang chủ</a>
+      <a class="btn cyan" href="deck2_structures.html">Tiến vào Phase 2: Ma trận & OOP →</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="assets/vendor/skulpt.min.js"></script>
+<script src="assets/vendor/skulpt-stdlib.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/python_lab.js"></script>
+</body>
+</html>

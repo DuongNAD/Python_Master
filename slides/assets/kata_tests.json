@@ -1,0 +1,5846 @@
+{
+  "1": {
+    "1.01": {
+      "fn": "dem_nguyen_am",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "Hello World"
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            "PYTHON"
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            "bcdfg"
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            "AeIoU"
+          ],
+          "expected": 5
+        }
+      ]
+    },
+    "1.02": {
+      "fn": "chuan_hoa_ten",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "  nGUYEN   anh   duong "
+          ],
+          "expected": "Nguyen Anh Duong"
+        },
+        {
+          "args": [
+            "tran VAN a"
+          ],
+          "expected": "Tran Van A"
+        },
+        {
+          "args": [
+            "   "
+          ],
+          "expected": ""
+        },
+        {
+          "args": [
+            "le"
+          ],
+          "expected": "Le"
+        }
+      ]
+    },
+    "1.03": {
+      "fn": "tong_chu_so",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            123
+          ],
+          "expected": 6
+        },
+        {
+          "args": [
+            0
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            -4567
+          ],
+          "expected": 22
+        },
+        {
+          "args": [
+            1000000
+          ],
+          "expected": 1
+        }
+      ]
+    },
+    "1.04": {
+      "fn": "max_thu_hai",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              3,
+              1,
+              4,
+              1,
+              5
+            ]
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            [
+              7,
+              7,
+              7
+            ]
+          ],
+          "expected": null
+        },
+        {
+          "args": [
+            [
+              2,
+              2,
+              1
+            ]
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            [
+              5
+            ]
+          ],
+          "expected": null
+        },
+        {
+          "args": [
+            [
+              -1,
+              -5,
+              -3
+            ]
+          ],
+          "expected": -3
+        }
+      ]
+    },
+    "1.05": {
+      "fn": "dem_tan_suat",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              "a",
+              "b",
+              "a"
+            ]
+          ],
+          "expected": {
+            "a": 2,
+            "b": 1
+          }
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            [
+              1,
+              1,
+              1,
+              2
+            ]
+          ],
+          "expected": {
+            "1": 3,
+            "2": 1
+          }
+        }
+      ]
+    },
+    "1.06": {
+      "fn": "dao_thu_tu_tu",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "hom nay troi dep"
+          ],
+          "expected": "dep troi nay hom"
+        },
+        {
+          "args": [
+            "  xin   chao  "
+          ],
+          "expected": "chao xin"
+        },
+        {
+          "args": [
+            "mot"
+          ],
+          "expected": "mot"
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": ""
+        }
+      ]
+    },
+    "1.07": {
+      "fn": "la_doi_xung",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "A man, a plan, a canal: Panama"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "race a car"
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            ".,"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "Ab_bA"
+          ],
+          "expected": true
+        }
+      ]
+    },
+    "1.08": {
+      "fn": "gop_dict_cong_don",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            {
+              "x": 1,
+              "y": 2
+            },
+            {
+              "y": 5,
+              "z": 3
+            }
+          ],
+          "expected": {
+            "x": 1,
+            "y": 7,
+            "z": 3
+          }
+        },
+        {
+          "args": [
+            {},
+            {
+              "a": 1
+            }
+          ],
+          "expected": {
+            "a": 1
+          }
+        },
+        {
+          "args": [
+            {
+              "a": 1
+            },
+            {}
+          ],
+          "expected": {
+            "a": 1
+          }
+        }
+      ]
+    },
+    "1.09": {
+      "fn": "loc_so_nguyen_to",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          ],
+          "expected": [
+            2,
+            3,
+            5,
+            7
+          ]
+        },
+        {
+          "args": [
+            [
+              0,
+              1,
+              -3
+            ]
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              97,
+              91,
+              89
+            ]
+          ],
+          "expected": [
+            97,
+            89
+          ]
+        }
+      ]
+    },
+    "1.10": {
+      "fn": "nen_chuoi",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "aaabbc"
+          ],
+          "expected": "a3b2c1"
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": ""
+        },
+        {
+          "args": [
+            "a"
+          ],
+          "expected": "a1"
+        },
+        {
+          "args": [
+            "abc"
+          ],
+          "expected": "a1b1c1"
+        },
+        {
+          "args": [
+            "aabbaa"
+          ],
+          "expected": "a2b2a2"
+        }
+      ]
+    },
+    "1.11": {
+      "fn": "xoay_phai",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            2
+          ],
+          "expected": [
+            4,
+            5,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            0
+          ],
+          "expected": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            3
+          ],
+          "expected": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            7
+          ],
+          "expected": [
+            3,
+            1,
+            2
+          ]
+        },
+        {
+          "args": [
+            [],
+            4
+          ],
+          "expected": []
+        }
+      ]
+    },
+    "1.12": {
+      "fn": "tim_cap_tong",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              2,
+              7,
+              11,
+              15
+            ],
+            9
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              3,
+              2,
+              4
+            ],
+            6
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            100
+          ],
+          "expected": null
+        },
+        {
+          "args": [
+            [
+              3,
+              3
+            ],
+            6
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              0,
+              1
+            ]
+          }
+        }
+      ]
+    },
+    "1.13": {
+      "fn": "xep_hang_hoc_sinh",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              {
+                "ten": "An",
+                "diem": 8.0,
+                "tuoi": 20
+              },
+              {
+                "ten": "Binh",
+                "diem": 9.0,
+                "tuoi": 22
+              },
+              {
+                "ten": "Cuong",
+                "diem": 8.0,
+                "tuoi": 19
+              }
+            ]
+          ],
+          "expected": [
+            "Binh",
+            "Cuong",
+            "An"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "ten": "B",
+                "diem": 5.0,
+                "tuoi": 20
+              },
+              {
+                "ten": "A",
+                "diem": 5.0,
+                "tuoi": 20
+              }
+            ]
+          ],
+          "expected": [
+            "A",
+            "B"
+          ]
+        }
+      ]
+    },
+    "1.14": {
+      "fn": "doi_co_so",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            255,
+            16
+          ],
+          "expected": "FF"
+        },
+        {
+          "args": [
+            0,
+            2
+          ],
+          "expected": "0"
+        },
+        {
+          "args": [
+            10,
+            2
+          ],
+          "expected": "1010"
+        },
+        {
+          "args": [
+            100,
+            8
+          ],
+          "expected": "144"
+        }
+      ]
+    },
+    "1.15": {
+      "fn": "ngoac_hop_le",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "{[()]}"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "([)]"
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "("
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            ")("
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            "a(b)c[d]"
+          ],
+          "expected": true
+        }
+      ]
+    }
+  },
+  "2": {
+    "2.01": {
+      "fn": "trung_binh",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ]
+          ],
+          "expected": 2.0
+        },
+        {
+          "args": [
+            [
+              10
+            ]
+          ],
+          "expected": 10.0
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              4,
+              4,
+              4,
+              4
+            ]
+          ],
+          "expected": 4.0
+        }
+      ]
+    },
+    "2.03": {
+      "fn": "xoa_so_chan",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          ],
+          "expected": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "args": [
+            [
+              2,
+              4,
+              6
+            ]
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              2,
+              2,
+              2,
+              1
+            ]
+          ],
+          "expected": [
+            1
+          ]
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        }
+      ]
+    },
+    "2.04": {
+      "fn": "co_gia_tri",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1000,
+              2000
+            ],
+            2000
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            [
+              1000,
+              2000
+            ],
+            3000
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            [
+              "xin chao",
+              "abc"
+            ],
+            "xin chao"
+          ],
+          "expected": true
+        }
+      ]
+    },
+    "2.05": {
+      "fn": "phan_tu_giua",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ]
+          ],
+          "expected": 2
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4
+            ]
+          ],
+          "expected": 2
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": null
+        },
+        {
+          "args": [
+            [
+              9
+            ]
+          ],
+          "expected": 9
+        }
+      ]
+    },
+    "2.06": {
+      "fn": "tao_bang",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            2
+          ],
+          "expected": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "args": [
+            1
+          ],
+          "expected": [
+            [
+              1
+            ]
+          ]
+        },
+        {
+          "args": [
+            3
+          ],
+          "expected": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "2.07": {
+      "fn": "xoa_gia_tri_rong",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            {
+              "a": 1,
+              "b": 0,
+              "c": "",
+              "d": "x"
+            }
+          ],
+          "expected": {
+            "a": 1,
+            "d": "x"
+          }
+        },
+        {
+          "args": [
+            {
+              "a": null,
+              "b": []
+            }
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            {}
+          ],
+          "expected": {}
+        }
+      ]
+    },
+    "2.08": {
+      "fn": "hoa_ky_tu_dau",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "python"
+          ],
+          "expected": "Python"
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": ""
+        },
+        {
+          "args": [
+            "a"
+          ],
+          "expected": "A"
+        },
+        {
+          "args": [
+            "xIN chao"
+          ],
+          "expected": "XIN chao"
+        }
+      ]
+    },
+    "2.09": {
+      "fn": "tim_max",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              -5,
+              -2,
+              -9
+            ]
+          ],
+          "expected": -2
+        },
+        {
+          "args": [
+            [
+              1,
+              5,
+              3
+            ]
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": null
+        },
+        {
+          "args": [
+            [
+              0
+            ]
+          ],
+          "expected": 0
+        }
+      ]
+    },
+    "2.10": {
+      "fn": "ba_so_nho_nhat",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              5,
+              1,
+              4,
+              2,
+              3
+            ]
+          ],
+          "expected": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "args": [
+            [
+              2,
+              1
+            ]
+          ],
+          "expected": [
+            1,
+            2
+          ]
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        }
+      ]
+    },
+    "2.13": {
+      "fn": "gan_bang",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            0.30000000000000004,
+            0.3
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            1.0,
+            1.5
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            2.0,
+            2.0
+          ],
+          "expected": true
+        }
+      ]
+    },
+    "2.14": {
+      "fn": "xoa_theo_chi_so",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              10,
+              20,
+              30
+            ],
+            1
+          ],
+          "expected": [
+            10,
+            30
+          ]
+        },
+        {
+          "args": [
+            [
+              10,
+              20,
+              30
+            ],
+            0
+          ],
+          "expected": [
+            20,
+            30
+          ]
+        },
+        {
+          "args": [
+            [
+              10,
+              20,
+              30
+            ],
+            9
+          ],
+          "expected": [
+            10,
+            20,
+            30
+          ]
+        },
+        {
+          "args": [
+            [
+              5
+            ],
+            0
+          ],
+          "expected": []
+        }
+      ]
+    },
+    "2.02": {
+      "fn": "kt_2_02",
+      "is_special": true,
+      "doc": "them_muc: default argument phai tao list moi moi lan goi.",
+      "cases": []
+    },
+    "2.11": {
+      "fn": "kt_2_11",
+      "is_special": true,
+      "doc": "tao_cac_ham_nhan: closure phai bat dung gia tri i.",
+      "cases": []
+    },
+    "2.12": {
+      "fn": "kt_2_12",
+      "is_special": true,
+      "doc": "fib: dung gia tri + memo khong ro ri giua cac lan goi.",
+      "cases": []
+    },
+    "2.15": {
+      "fn": "kt_2_15",
+      "is_special": true,
+      "doc": "dem_tu: phai cong don duoc vao bien toan cuc.",
+      "cases": []
+    }
+  },
+  "3": {
+    "3.01": {
+      "fn": "thong_ke_diem",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              8,
+              6,
+              9,
+              7
+            ]
+          ],
+          "expected": {
+            "min": 6,
+            "max": 9,
+            "trung_binh": 7.5,
+            "trung_vi": 7.5
+          }
+        },
+        {
+          "args": [
+            [
+              5,
+              1,
+              3
+            ]
+          ],
+          "expected": {
+            "min": 1,
+            "max": 5,
+            "trung_binh": 3.0,
+            "trung_vi": 3
+          }
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            [
+              10
+            ]
+          ],
+          "expected": {
+            "min": 10,
+            "max": 10,
+            "trung_binh": 10.0,
+            "trung_vi": 10
+          }
+        }
+      ]
+    },
+    "3.02": {
+      "fn": "gom_nhom_anagram",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              "eat",
+              "tea",
+              "tan",
+              "ate",
+              "nat"
+            ]
+          ],
+          "expected": [
+            [
+              "ate",
+              "eat",
+              "tea"
+            ],
+            [
+              "nat",
+              "tan"
+            ]
+          ]
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              "a"
+            ]
+          ],
+          "expected": [
+            [
+              "a"
+            ]
+          ]
+        }
+      ]
+    },
+    "3.03": {
+      "fn": "giao_khoang",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                0,
+                2
+              ],
+              [
+                5,
+                10
+              ]
+            ],
+            [
+              [
+                1,
+                5
+              ],
+              [
+                8,
+                12
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              2
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                3
+              ]
+            ],
+            [
+              [
+                5,
+                7
+              ]
+            ]
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [],
+            [
+              [
+                1,
+                2
+              ]
+            ]
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                10
+              ]
+            ],
+            [
+              [
+                2,
+                3
+              ],
+              [
+                4,
+                5
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        }
+      ]
+    },
+    "3.04": {
+      "fn": "kiem_tra_so_du",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            100,
+            [
+              50,
+              -200,
+              -30
+            ]
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              120,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            0,
+            [
+              -1
+            ]
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            10,
+            [
+              -10
+            ]
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "args": [
+            5,
+            []
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              5,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    "3.05": {
+      "fn": "top_k_pho_bien",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1,
+              1,
+              2,
+              2,
+              3
+            ],
+            2
+          ],
+          "expected": [
+            1,
+            2
+          ]
+        },
+        {
+          "args": [
+            [
+              4,
+              4,
+              4,
+              1,
+              1,
+              2
+            ],
+            2
+          ],
+          "expected": [
+            4,
+            1
+          ]
+        },
+        {
+          "args": [
+            [
+              3,
+              1,
+              2
+            ],
+            3
+          ],
+          "expected": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "args": [
+            [],
+            2
+          ],
+          "expected": []
+        }
+      ]
+    },
+    "3.06": {
+      "fn": "duong_di_ngan_nhat",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          "expected": 2
+        },
+        {
+          "args": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            [
+              [
+                0
+              ]
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "expected": 4
+        }
+      ]
+    },
+    "3.07": {
+      "fn": "so_dong_xu_it_nhat",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1,
+              5,
+              10
+            ],
+            12
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            [
+              2
+            ],
+            3
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            [
+              1
+            ],
+            0
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              1,
+              3,
+              4
+            ],
+            6
+          ],
+          "expected": 2
+        }
+      ]
+    },
+    "3.08": {
+      "fn": "day_con_tang_dai_nhat",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              10,
+              9,
+              2,
+              5,
+              3,
+              7,
+              101,
+              18
+            ]
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            [
+              7,
+              7,
+              7
+            ]
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4
+            ]
+          ],
+          "expected": 4
+        }
+      ]
+    },
+    "3.09": {
+      "fn": "gop_khoang",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                6
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                15,
+                18
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              15,
+              18
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                4
+              ],
+              [
+                4,
+                5
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              [
+                5,
+                6
+              ],
+              [
+                1,
+                2
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              2
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        }
+      ]
+    },
+    "3.10": {
+      "fn": "phan_tich_log",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              "ERROR|auth|fail",
+              "INFO|auth|ok",
+              "ERROR|auth|fail2",
+              "ERROR|db|x"
+            ]
+          ],
+          "expected": {
+            "auth": 2,
+            "db": 1
+          }
+        },
+        {
+          "args": [
+            [
+              "INFO|a|b"
+            ]
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            [
+              "hong dinh dang",
+              "ERROR|a|b"
+            ]
+          ],
+          "expected": {
+            "a": 1
+          }
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": {}
+        }
+      ]
+    },
+    "3.11": {
+      "fn": "xep_lich_toi_da",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                6,
+                8
+              ]
+            ]
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ]
+            ]
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                10
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                4,
+                5
+              ]
+            ]
+          ],
+          "expected": 2
+        }
+      ]
+    },
+    "3.12": {
+      "fn": "tinh_bieu_thuc",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "3+2*2"
+          ],
+          "expected": 7
+        },
+        {
+          "args": [
+            " 3/2 "
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            " 3+5 / 2 "
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            "10-2*3"
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            "100"
+          ],
+          "expected": 100
+        }
+      ]
+    },
+    "3.13": {
+      "fn": "k_phan_tu_lon_nhat",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              3,
+              1,
+              5,
+              12,
+              2,
+              11
+            ],
+            3
+          ],
+          "expected": [
+            12,
+            11,
+            5
+          ]
+        },
+        {
+          "args": [
+            [
+              1,
+              2
+            ],
+            5
+          ],
+          "expected": [
+            2,
+            1
+          ]
+        },
+        {
+          "args": [
+            [
+              5
+            ],
+            1
+          ],
+          "expected": [
+            5
+          ]
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            0
+          ],
+          "expected": []
+        }
+      ]
+    },
+    "3.14": {
+      "fn": "kt_3_14",
+      "is_special": true,
+      "doc": "Lop Kho.",
+      "cases": []
+    },
+    "3.15": {
+      "fn": "kt_3_15",
+      "is_special": true,
+      "doc": "Lop HangDoi (2 ngan xep).",
+      "cases": []
+    }
+  },
+  "4": {
+    "4.01": {
+      "fn": "solution_401",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                85,
+                92,
+                95,
+                90
+              ],
+              [
+                91,
+                76,
+                85,
+                50
+              ]
+            ]
+          ],
+          "expected": 91
+        },
+        {
+          "args": [
+            [
+              [
+                10,
+                10,
+                10
+              ],
+              [
+                20,
+                20,
+                20
+              ]
+            ]
+          ],
+          "expected": 20
+        },
+        {
+          "args": [
+            [
+              [
+                100,
+                0,
+                50,
+                50
+              ]
+            ]
+          ],
+          "expected": 50
+        },
+        {
+          "args": [
+            [
+              [
+                80,
+                81,
+                82,
+                83
+              ]
+            ]
+          ],
+          "expected": 81
+        },
+        {
+          "args": [
+            [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                2,
+                3,
+                4
+              ]
+            ]
+          ],
+          "expected": 2
+        },
+        {
+          "args": [
+            [
+              [
+                90,
+                90,
+                90,
+                90
+              ]
+            ]
+          ],
+          "expected": 90
+        }
+      ]
+    },
+    "4.02": {
+      "fn": "solution_402",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "AAABBCDDDD"
+          ],
+          "expected": "A3B2CD4"
+        },
+        {
+          "args": [
+            "A"
+          ],
+          "expected": "A"
+        },
+        {
+          "args": [
+            "ABCDE"
+          ],
+          "expected": "ABCDE"
+        },
+        {
+          "args": [
+            "AAAAA"
+          ],
+          "expected": "A5"
+        },
+        {
+          "args": [
+            "AABBBCCCCCD"
+          ],
+          "expected": "A2B3C5D"
+        }
+      ]
+    },
+    "4.03": {
+      "fn": "solution_403",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            1,
+            15,
+            3,
+            5
+          ],
+          "expected": 49
+        },
+        {
+          "args": [
+            5,
+            10,
+            5,
+            10
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            1,
+            1,
+            12,
+            31
+          ],
+          "expected": 364
+        },
+        {
+          "args": [
+            2,
+            28,
+            3,
+            1
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            6,
+            1,
+            7,
+            1
+          ],
+          "expected": 30
+        }
+      ]
+    },
+    "4.04": {
+      "fn": "solution_404",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              2,
+              2,
+              1,
+              2,
+              3,
+              2,
+              2
+            ]
+          ],
+          "expected": 2
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              1,
+              2
+            ]
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            [
+              5
+            ]
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            [
+              1,
+              1,
+              2,
+              2
+            ]
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            [
+              10,
+              10,
+              10,
+              20,
+              30
+            ]
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              1,
+              2,
+              1
+            ]
+          ],
+          "expected": 1
+        }
+      ]
+    },
+    "4.05": {
+      "fn": "solution_405",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              {
+                "name": "A",
+                "points": 10,
+                "diff": 5,
+                "cards": 2
+              },
+              {
+                "name": "B",
+                "points": 10,
+                "diff": 5,
+                "cards": 1
+              },
+              {
+                "name": "C",
+                "points": 12,
+                "diff": 2,
+                "cards": 4
+              }
+            ]
+          ],
+          "expected": [
+            "C",
+            "B",
+            "A"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "name": "Alpha",
+                "points": 5,
+                "diff": 0,
+                "cards": 0
+              }
+            ]
+          ],
+          "expected": [
+            "Alpha"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "name": "B",
+                "points": 5,
+                "diff": 2,
+                "cards": 1
+              },
+              {
+                "name": "A",
+                "points": 5,
+                "diff": 2,
+                "cards": 1
+              }
+            ]
+          ],
+          "expected": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "name": "X",
+                "points": 10,
+                "diff": 3,
+                "cards": 0
+              },
+              {
+                "name": "Y",
+                "points": 10,
+                "diff": 5,
+                "cards": 2
+              }
+            ]
+          ],
+          "expected": [
+            "Y",
+            "X"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "name": "D",
+                "points": 0,
+                "diff": -5,
+                "cards": 3
+              },
+              {
+                "name": "E",
+                "points": 0,
+                "diff": -2,
+                "cards": 1
+              }
+            ]
+          ],
+          "expected": [
+            "E",
+            "D"
+          ]
+        }
+      ]
+    },
+    "4.06": {
+      "fn": "solution_406",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              10,
+              20,
+              30,
+              40,
+              50,
+              60,
+              70
+            ],
+            3
+          ],
+          "expected": 180
+        },
+        {
+          "args": [
+            [
+              50,
+              40,
+              30,
+              20,
+              10
+            ],
+            2
+          ],
+          "expected": 90
+        },
+        {
+          "args": [
+            [
+              100
+            ],
+            1
+          ],
+          "expected": 100
+        },
+        {
+          "args": [
+            [
+              5,
+              5,
+              5,
+              5
+            ],
+            4
+          ],
+          "expected": 20
+        },
+        {
+          "args": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            2
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              10,
+              50,
+              10,
+              50,
+              10
+            ],
+            2
+          ],
+          "expected": 60
+        }
+      ]
+    },
+    "4.07": {
+      "fn": "solution_407",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              3,
+              2,
+              2,
+              1
+            ],
+            3
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            [
+              3,
+              5,
+              3,
+              4
+            ],
+            5
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            [
+              1,
+              2
+            ],
+            3
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            [
+              5
+            ],
+            10
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            [
+              2,
+              2,
+              2,
+              2
+            ],
+            4
+          ],
+          "expected": 2
+        },
+        {
+          "args": [
+            [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            2
+          ],
+          "expected": 3
+        }
+      ]
+    },
+    "4.08": {
+      "fn": "solution_408",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "FFRFF"
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            "L"
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            "FFBFF"
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            "FFFF"
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            "FRFRFRF"
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            "RFFFF"
+          ],
+          "expected": 4
+        }
+      ]
+    },
+    "4.09": {
+      "fn": "solution_409",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            1000,
+            320
+          ],
+          "expected": 6
+        },
+        {
+          "args": [
+            500,
+            500
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            100,
+            90
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            1000,
+            500
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            1000,
+            10
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            60,
+            10
+          ],
+          "expected": 1
+        }
+      ]
+    },
+    "4.10": {
+      "fn": "solution_410",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "79927398713"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "79927398710"
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            "0"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "5"
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            "49927398716"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "123456"
+          ],
+          "expected": false
+        }
+      ]
+    },
+    "4.11": {
+      "fn": "solution_411",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "python master bang b vo dich",
+            13
+          ],
+          "expected": [
+            "python master",
+            "bang b vo",
+            "dich"
+          ]
+        },
+        {
+          "args": [
+            "hello",
+            10
+          ],
+          "expected": [
+            "hello"
+          ]
+        },
+        {
+          "args": [
+            "a b c d e",
+            1
+          ],
+          "expected": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e"
+          ]
+        },
+        {
+          "args": [
+            "one two three",
+            20
+          ],
+          "expected": [
+            "one two three"
+          ]
+        },
+        {
+          "args": [
+            "alpha beta gamma",
+            10
+          ],
+          "expected": [
+            "alpha beta",
+            "gamma"
+          ]
+        }
+      ]
+    },
+    "4.12": {
+      "fn": "solution_412",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              7,
+              4,
+              1
+            ],
+            [
+              8,
+              5,
+              2
+            ],
+            [
+              9,
+              6,
+              3
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              2
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                3,
+                4
+              ],
+              [
+                5,
+                6,
+                7,
+                8
+              ],
+              [
+                9,
+                10,
+                11,
+                12
+              ],
+              [
+                13,
+                14,
+                15,
+                16
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              13,
+              9,
+              5,
+              1
+            ],
+            [
+              14,
+              10,
+              6,
+              2
+            ],
+            [
+              15,
+              11,
+              7,
+              3
+            ],
+            [
+              16,
+              12,
+              8,
+              4
+            ]
+          ]
+        }
+      ]
+    },
+    "4.13": {
+      "fn": "solution_413",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "lovepython"
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            "aabbcc"
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            "a"
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            "aabbc"
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            "google"
+          ],
+          "expected": 4
+        }
+      ]
+    },
+    "4.14": {
+      "fn": "solution_414",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "abc",
+            "ahbgdc"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "axc",
+            "ahbgdc"
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            "",
+            "abc"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "a",
+            ""
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            "abc",
+            "abc"
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "bca",
+            "abc"
+          ],
+          "expected": false
+        }
+      ]
+    },
+    "4.15": {
+      "fn": "solution_415",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ]
+          ],
+          "expected": 25
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            [
+              [
+                5
+              ]
+            ]
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                1,
+                1
+              ]
+            ]
+          ],
+          "expected": 8
+        }
+      ]
+    }
+  },
+  "5": {
+    "5.01": {
+      "fn": "solution_501",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              50000,
+              30000,
+              120000
+            ]
+          ],
+          "expected": 370
+        },
+        {
+          "args": [
+            [
+              50000
+            ]
+          ],
+          "expected": 100
+        },
+        {
+          "args": [
+            [
+              49999,
+              50001
+            ]
+          ],
+          "expected": 149
+        },
+        {
+          "args": [
+            [
+              1000,
+              2000,
+              3000
+            ]
+          ],
+          "expected": 6
+        },
+        {
+          "args": [
+            [
+              0,
+              50000,
+              100000
+            ]
+          ],
+          "expected": 300
+        },
+        {
+          "args": [
+            [
+              999
+            ]
+          ],
+          "expected": 0
+        }
+      ]
+    },
+    "5.02": {
+      "fn": "solution_502",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              10,
+              20,
+              100,
+              40,
+              50
+            ],
+            2
+          ],
+          "expected": 140
+        },
+        {
+          "args": [
+            [
+              10,
+              20,
+              30,
+              100
+            ],
+            2
+          ],
+          "expected": 130
+        },
+        {
+          "args": [
+            [
+              100,
+              20,
+              10
+            ],
+            1
+          ],
+          "expected": 100
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            5
+          ],
+          "expected": 15
+        },
+        {
+          "args": [
+            [
+              50,
+              40,
+              30,
+              20,
+              10
+            ],
+            3
+          ],
+          "expected": 120
+        },
+        {
+          "args": [
+            [
+              5,
+              5,
+              5,
+              5
+            ],
+            2
+          ],
+          "expected": 10
+        }
+      ]
+    },
+    "5.03": {
+      "fn": "solution_503",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            2,
+            3
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            1,
+            1
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            1,
+            2
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            1,
+            4
+          ],
+          "expected": 11
+        },
+        {
+          "args": [
+            3,
+            3
+          ],
+          "expected": 15
+        },
+        {
+          "args": [
+            5,
+            2
+          ],
+          "expected": 15
+        }
+      ]
+    },
+    "5.04": {
+      "fn": "solution_504",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              100,
+              200,
+              350
+            ],
+            2
+          ],
+          "expected": 325
+        },
+        {
+          "args": [
+            [
+              10,
+              20,
+              30
+            ],
+            3
+          ],
+          "expected": 20
+        },
+        {
+          "args": [
+            [
+              100
+            ],
+            1
+          ],
+          "expected": 100
+        },
+        {
+          "args": [
+            [
+              15,
+              25,
+              35
+            ],
+            2
+          ],
+          "expected": 37
+        },
+        {
+          "args": [
+            [
+              7,
+              8,
+              9
+            ],
+            4
+          ],
+          "expected": 6
+        },
+        {
+          "args": [
+            [
+              0,
+              0,
+              10
+            ],
+            3
+          ],
+          "expected": 3
+        }
+      ]
+    },
+    "5.05": {
+      "fn": "solution_505",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            1017,
+            55,
+            1
+          ],
+          "expected": 55
+        },
+        {
+          "args": [
+            1000,
+            100,
+            2
+          ],
+          "expected": 200
+        },
+        {
+          "args": [
+            2500,
+            75,
+            1
+          ],
+          "expected": 187
+        },
+        {
+          "args": [
+            5000,
+            99,
+            3
+          ],
+          "expected": 1485
+        },
+        {
+          "args": [
+            1234,
+            45,
+            2
+          ],
+          "expected": 111
+        },
+        {
+          "args": [
+            1000,
+            0,
+            5
+          ],
+          "expected": 0
+        }
+      ]
+    },
+    "5.06": {
+      "fn": "solution_506",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              10,
+              25,
+              30
+            ]
+          ],
+          "expected": [
+            0,
+            15,
+            20
+          ]
+        },
+        {
+          "args": [
+            [
+              5,
+              10,
+              15,
+              20
+            ]
+          ],
+          "expected": [
+            0,
+            5,
+            10,
+            15
+          ]
+        },
+        {
+          "args": [
+            [
+              100
+            ]
+          ],
+          "expected": [
+            0
+          ]
+        },
+        {
+          "args": [
+            [
+              20,
+              20,
+              20
+            ]
+          ],
+          "expected": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "args": [
+            [
+              7,
+              12,
+              19
+            ]
+          ],
+          "expected": [
+            0,
+            5,
+            12
+          ]
+        },
+        {
+          "args": [
+            [
+              50,
+              60,
+              40
+            ]
+          ],
+          "expected": [
+            0,
+            10,
+            -10
+          ]
+        }
+      ]
+    },
+    "5.07": {
+      "fn": "solution_507",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  "B",
+                  85
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "A",
+                  90
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "C",
+                  85
+                ]
+              }
+            ]
+          ],
+          "expected": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  "X",
+                  50
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "Y",
+                  50
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "Z",
+                  100
+                ]
+              }
+            ]
+          ],
+          "expected": [
+            "Z",
+            "X",
+            "Y"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  "Single",
+                  10
+                ]
+              }
+            ]
+          ],
+          "expected": [
+            "Single"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  "Bob",
+                  70
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "Alice",
+                  70
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "David",
+                  80
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "Charlie",
+                  80
+                ]
+              }
+            ]
+          ],
+          "expected": [
+            "Charlie",
+            "David",
+            "Alice",
+            "Bob"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  "M",
+                  10
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "N",
+                  20
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  "P",
+                  30
+                ]
+              }
+            ]
+          ],
+          "expected": [
+            "P",
+            "N",
+            "M"
+          ]
+        }
+      ]
+    },
+    "5.08": {
+      "fn": "solution_508",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              12,
+              18,
+              5,
+              22,
+              9
+            ]
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            [
+              -3,
+              -7,
+              -1
+            ]
+          ],
+          "expected": -7
+        },
+        {
+          "args": [
+            [
+              10,
+              20,
+              30
+            ]
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            [
+              0,
+              5,
+              10
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              -10,
+              0,
+              10
+            ]
+          ],
+          "expected": -10
+        },
+        {
+          "args": [
+            [
+              42
+            ]
+          ],
+          "expected": 42
+        }
+      ]
+    },
+    "5.09": {
+      "fn": "solution_509",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              7,
+              11,
+              15,
+              22
+            ],
+            5
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            [
+              10,
+              11,
+              12
+            ],
+            5
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            [
+              3,
+              7,
+              11
+            ],
+            2
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            [
+              1,
+              3,
+              5,
+              8
+            ],
+            4
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            [
+              9
+            ],
+            3
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            [
+              9
+            ],
+            4
+          ],
+          "expected": false
+        }
+      ]
+    },
+    "5.10": {
+      "fn": "solution_510",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            2
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ]
+            ],
+            4
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              [
+                10,
+                20
+              ],
+              [
+                30,
+                40
+              ]
+            ],
+            99
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              -1,
+              -1
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              [
+                5
+              ]
+            ],
+            5
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            7
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              2,
+              0
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            3
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              1,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    "5.11": {
+      "fn": "solution_511",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              10,
+              20,
+              30,
+              20,
+              30
+            ]
+          ],
+          "expected": 20
+        },
+        {
+          "args": [
+            [
+              5,
+              5,
+              5
+            ]
+          ],
+          "expected": null
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": null
+        },
+        {
+          "args": [
+            [
+              100
+            ]
+          ],
+          "expected": null
+        },
+        {
+          "args": [
+            [
+              1,
+              5,
+              2,
+              4,
+              3
+            ]
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            [
+              -5,
+              -1,
+              -10
+            ]
+          ],
+          "expected": -5
+        }
+      ]
+    },
+    "5.12": {
+      "fn": "solution_512",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                101,
+                102
+              ],
+              [
+                201
+              ],
+              [
+                301,
+                302,
+                303
+              ]
+            ]
+          ],
+          "expected": [
+            101,
+            102,
+            201,
+            301,
+            302,
+            303
+          ]
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              [
+                1
+              ]
+            ]
+          ],
+          "expected": [
+            1
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ],
+              []
+            ]
+          ],
+          "expected": [
+            1,
+            2
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                "a",
+                "b"
+              ],
+              [
+                "c"
+              ]
+            ]
+          ],
+          "expected": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                5,
+                4
+              ],
+              [
+                3,
+                2
+              ],
+              [
+                1
+              ]
+            ]
+          ],
+          "expected": [
+            5,
+            4,
+            3,
+            2,
+            1
+          ]
+        }
+      ]
+    },
+    "5.13": {
+      "fn": "solution_513",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "VIP2026",
+            7
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "MEMBER88",
+            8
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            "GUEST123",
+            8
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            "VIP12",
+            6
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            "",
+            0
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            "MEMBERPRO",
+            9
+          ],
+          "expected": true
+        }
+      ]
+    },
+    "5.14": {
+      "fn": "solution_514",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            {
+              "ao_thun": 150000,
+              "quan_jean": 350000,
+              "non": 150000
+            },
+            350000
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            {
+              "ao_thun": 150000,
+              "quan_jean": 350000,
+              "non": 150000
+            },
+            200000
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            {},
+            100
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            {
+              "item": 0
+            },
+            0
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            {
+              "a": 10,
+              "b": 20,
+              "c": 30
+            },
+            10
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            {
+              "a": 10,
+              "b": 20,
+              "c": 30
+            },
+            30
+          ],
+          "expected": true
+        }
+      ]
+    },
+    "5.15": {
+      "fn": "solution_515",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              100,
+              250,
+              400
+            ],
+            500
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            [
+              100,
+              -50,
+              200
+            ],
+            500
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            [],
+            500
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            [
+              600,
+              100
+            ],
+            500
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            [
+              500
+            ],
+            500
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            [
+              50,
+              100,
+              501
+            ],
+            500
+          ],
+          "expected": false
+        }
+      ]
+    }
+  },
+  "6": {
+    "6.01": {
+      "fn": "solution_601",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              2,
+              3,
+              1,
+              2,
+              4,
+              3
+            ],
+            7
+          ],
+          "expected": 2
+        },
+        {
+          "args": [
+            [
+              1,
+              4,
+              4
+            ],
+            4
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            11
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            15
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            [
+              5
+            ],
+            5
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            [
+              5
+            ],
+            6
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [],
+            10
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            11
+          ],
+          "expected": 3
+        }
+      ]
+    },
+    "6.02": {
+      "fn": "solution_602",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                6
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                15,
+                18
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              15,
+              18
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                4
+              ],
+              [
+                4,
+                5
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                10
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                4,
+                8
+              ],
+              [
+                9,
+                12
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              12
+            ]
+          ]
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              [
+                5,
+                8
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              5,
+              8
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                7,
+                9
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                3,
+                5
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              5
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                4
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                3,
+                5
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              5
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                2,
+                2
+              ],
+              [
+                2,
+                2
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    "6.03": {
+      "fn": "solution_603",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                2,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                1
+              ]
+            ]
+          ],
+          "expected": 4
+        },
+        {
+          "args": [
+            [
+              [
+                2,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1
+              ]
+            ]
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            [
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              [
+                1
+              ]
+            ]
+          ],
+          "expected": -1
+        },
+        {
+          "args": [
+            [
+              [
+                2
+              ]
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              [
+                2,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          "expected": 1
+        },
+        {
+          "args": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                2,
+                1
+              ]
+            ]
+          ],
+          "expected": 2
+        }
+      ]
+    },
+    "6.04": {
+      "fn": "solution_604",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              2,
+              3,
+              4,
+              5
+            ],
+            [
+              3,
+              4,
+              5,
+              6
+            ],
+            5
+          ],
+          "expected": 7
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              10,
+              15,
+              40
+            ],
+            6
+          ],
+          "expected": 65
+        },
+        {
+          "args": [
+            [
+              10,
+              20,
+              30
+            ],
+            [
+              60,
+              100,
+              120
+            ],
+            50
+          ],
+          "expected": 220
+        },
+        {
+          "args": [
+            [
+              5
+            ],
+            [
+              10
+            ],
+            3
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [],
+            [],
+            10
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              3,
+              2,
+              1
+            ],
+            [
+              10,
+              20,
+              30
+            ],
+            0
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              4,
+              5,
+              1
+            ],
+            [
+              1,
+              2,
+              3
+            ],
+            4
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            [
+              1,
+              1,
+              1
+            ],
+            [
+              10,
+              20,
+              30
+            ],
+            2
+          ],
+          "expected": 50
+        }
+      ]
+    },
+    "6.05": {
+      "fn": "solution_605",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                1,
+                3,
+                1
+              ],
+              [
+                1,
+                5,
+                1
+              ],
+              [
+                4,
+                2,
+                1
+              ]
+            ]
+          ],
+          "expected": 7
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ]
+            ]
+          ],
+          "expected": 12
+        },
+        {
+          "args": [
+            [
+              [
+                5
+              ]
+            ]
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                10,
+                1
+              ],
+              [
+                1,
+                10,
+                1
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ]
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                5
+              ],
+              [
+                3,
+                2,
+                1
+              ]
+            ]
+          ],
+          "expected": 6
+        }
+      ]
+    },
+    "6.06": {
+      "fn": "solution_606",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "3[a]2[bc]"
+          ],
+          "expected": "aaabcbc"
+        },
+        {
+          "args": [
+            "3[a2[c]]"
+          ],
+          "expected": "accaccacc"
+        },
+        {
+          "args": [
+            "2[abc]3[cd]ef"
+          ],
+          "expected": "abcabccdcdcdef"
+        },
+        {
+          "args": [
+            "abc"
+          ],
+          "expected": "abc"
+        },
+        {
+          "args": [
+            "10[a]"
+          ],
+          "expected": "aaaaaaaaaa"
+        },
+        {
+          "args": [
+            "2[2[b]]"
+          ],
+          "expected": "bbbb"
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": ""
+        },
+        {
+          "args": [
+            "2[a]3[b2[c]]"
+          ],
+          "expected": "aabccbccbcc"
+        }
+      ]
+    },
+    "6.07": {
+      "fn": "solution_607",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            "apple:5, banana:10, apple:3"
+          ],
+          "expected": {
+            "apple": 8,
+            "banana": 10
+          }
+        },
+        {
+          "args": [
+            " milk : 2 , tea:5 , milk : 3 "
+          ],
+          "expected": {
+            "milk": 5,
+            "tea": 5
+          }
+        },
+        {
+          "args": [
+            "item1:10, item2:invalid, :5, item3:-2, item4:0, item1:5"
+          ],
+          "expected": {
+            "item1": 15
+          }
+        },
+        {
+          "args": [
+            "a:1,,b:2, c:d , , : "
+          ],
+          "expected": {
+            "a": 1,
+            "b": 2
+          }
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            "bad_format_without_colon, : , 123:abc"
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            "item@bad:5, good_item:10"
+          ],
+          "expected": {
+            "good_item": 10
+          }
+        },
+        {
+          "args": [
+            "book_1:50, book_2:30, book_1:20"
+          ],
+          "expected": {
+            "book_1": 70,
+            "book_2": 30
+          }
+        }
+      ]
+    },
+    "6.08": {
+      "fn": "solution_608",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                3
+              ],
+              [
+                4,
+                5,
+                6
+              ],
+              [
+                7,
+                8,
+                9
+              ]
+            ]
+          ],
+          "expected": [
+            7,
+            4,
+            1,
+            2,
+            3,
+            6,
+            9,
+            8,
+            5
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ],
+              [
+                5,
+                6
+              ]
+            ]
+          ],
+          "expected": [
+            5,
+            3,
+            1,
+            2,
+            4,
+            6
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2,
+                3,
+                4
+              ]
+            ]
+          ],
+          "expected": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ]
+          ],
+          "expected": [
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                42
+              ]
+            ]
+          ],
+          "expected": [
+            42
+          ]
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ],
+          "expected": [
+            3,
+            1,
+            2,
+            4
+          ]
+        }
+      ]
+    },
+    "6.09": {
+      "fn": "solution_609",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              {
+                "id": "A",
+                "doanh_thu": 100,
+                "danh_gia": 4.5,
+                "luot_xem": 10
+              },
+              {
+                "id": "B",
+                "doanh_thu": 100,
+                "danh_gia": 4.8,
+                "luot_xem": 5
+              }
+            ],
+            1
+          ],
+          "expected": [
+            "B"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "id": "A",
+                "doanh_thu": 100,
+                "danh_gia": 4.5,
+                "luot_xem": 10
+              },
+              {
+                "id": "B",
+                "doanh_thu": 100,
+                "danh_gia": 4.5,
+                "luot_xem": 20
+              }
+            ],
+            2
+          ],
+          "expected": [
+            "B",
+            "A"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "id": "Z",
+                "doanh_thu": 50,
+                "danh_gia": 4.0,
+                "luot_xem": 100
+              },
+              {
+                "id": "A",
+                "doanh_thu": 50,
+                "danh_gia": 4.0,
+                "luot_xem": 100
+              }
+            ],
+            2
+          ],
+          "expected": [
+            "A",
+            "Z"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "id": "X",
+                "doanh_thu": 200,
+                "danh_gia": 5.0,
+                "luot_xem": 1
+              }
+            ],
+            0
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [],
+            5
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              {
+                "id": "P1",
+                "doanh_thu": 10,
+                "danh_gia": 3.0,
+                "luot_xem": 5
+              },
+              {
+                "id": "P2",
+                "doanh_thu": 20,
+                "danh_gia": 4.0,
+                "luot_xem": 10
+              },
+              {
+                "id": "P3",
+                "doanh_thu": 15,
+                "danh_gia": 4.5,
+                "luot_xem": 8
+              }
+            ],
+            5
+          ],
+          "expected": [
+            "P2",
+            "P3",
+            "P1"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "id": "M1",
+                "doanh_thu": 50,
+                "danh_gia": 4.0,
+                "luot_xem": 30
+              }
+            ],
+            1
+          ],
+          "expected": [
+            "M1"
+          ]
+        }
+      ]
+    },
+    "6.10": {
+      "fn": "solution_610",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  1,
+                  0,
+                  5
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  2,
+                  1,
+                  3
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  3,
+                  2,
+                  4
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  4,
+                  6,
+                  2
+                ]
+              }
+            ],
+            2
+          ],
+          "expected": {
+            "tong_thoi_gian": 8,
+            "cho_trung_binh": 0.5,
+            "phuc_vu_boi_quay": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  1,
+                  0,
+                  10
+                ]
+              }
+            ],
+            1
+          ],
+          "expected": {
+            "tong_thoi_gian": 10,
+            "cho_trung_binh": 0.0,
+            "phuc_vu_boi_quay": [
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  1,
+                  0,
+                  2
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  2,
+                  0,
+                  3
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  3,
+                  0,
+                  1
+                ]
+              }
+            ],
+            3
+          ],
+          "expected": {
+            "tong_thoi_gian": 3,
+            "cho_trung_binh": 0.0,
+            "phuc_vu_boi_quay": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            [],
+            2
+          ],
+          "expected": {
+            "tong_thoi_gian": 0,
+            "cho_trung_binh": 0.0,
+            "phuc_vu_boi_quay": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  1,
+                  0,
+                  4
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  2,
+                  1,
+                  4
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  3,
+                  2,
+                  4
+                ]
+              }
+            ],
+            1
+          ],
+          "expected": {
+            "tong_thoi_gian": 12,
+            "cho_trung_binh": 3.0,
+            "phuc_vu_boi_quay": [
+              3
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  1,
+                  5,
+                  2
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  2,
+                  10,
+                  3
+                ]
+              }
+            ],
+            2
+          ],
+          "expected": {
+            "tong_thoi_gian": 13,
+            "cho_trung_binh": 0.0,
+            "phuc_vu_boi_quay": [
+              2,
+              0
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              {
+                "__type__": "tuple",
+                "val": [
+                  1,
+                  0,
+                  5
+                ]
+              },
+              {
+                "__type__": "tuple",
+                "val": [
+                  2,
+                  0,
+                  5
+                ]
+              }
+            ],
+            2
+          ],
+          "expected": {
+            "tong_thoi_gian": 5,
+            "cho_trung_binh": 0.0,
+            "phuc_vu_boi_quay": [
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    },
+    "6.11": {
+      "fn": "solution_611",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            5
+          ],
+          "expected": 15
+        },
+        {
+          "args": [
+            [
+              3,
+              2,
+              2,
+              4,
+              1,
+              4
+            ],
+            3
+          ],
+          "expected": 6
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              1,
+              1
+            ],
+            4
+          ],
+          "expected": 3
+        },
+        {
+          "args": [
+            [
+              10
+            ],
+            1
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            [
+              5,
+              5,
+              5,
+              5
+            ],
+            2
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            [
+              5,
+              5,
+              5,
+              5
+            ],
+            4
+          ],
+          "expected": 5
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4
+            ],
+            1
+          ],
+          "expected": 10
+        }
+      ]
+    },
+    "6.12": {
+      "fn": "solution_612",
+      "is_special": false,
+      "cases": [
+        {
+          "args": [
+            5,
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              2,
+              3,
+              2
+            ]
+          }
+        },
+        {
+          "args": [
+            5,
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              1,
+              5,
+              5
+            ]
+          }
+        },
+        {
+          "args": [
+            4,
+            []
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              4,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            6,
+            [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              3,
+              3,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            1,
+            []
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "args": [
+            0,
+            []
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "args": [
+            4,
+            [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ]
+          ],
+          "expected": {
+            "__type__": "tuple",
+            "val": [
+              2,
+              2,
+              2
+            ]
+          }
+        }
+      ]
+    },
+    "6.13": {
+      "fn": "kt_6_13",
+      "is_special": true,
+      "doc": "Kiem tra lop KhoHang.",
+      "cases": []
+    },
+    "6.14": {
+      "fn": "kt_6_14",
+      "is_special": true,
+      "doc": "Kiem tra lop TaiKhoan.",
+      "cases": []
+    },
+    "6.15": {
+      "fn": "kt_6_15",
+      "is_special": true,
+      "doc": "Kiem tra lop LRUCache.",
+      "cases": []
+    }
+  }
+}

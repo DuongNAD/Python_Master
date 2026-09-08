@@ -1,0 +1,489 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 4 · 11 Thuật Toán Kinh Điển · Python Master</title>
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body data-deck="deck4">
+<div class="deck">
+
+<!-- ══ SLIDE 1: HERO COVER ═══════════════════════════════════════════════ -->
+<div class="slide" data-part="Mở đầu" data-title="Phase 4 — 11 Thuật toán kinh điển">
+  <div class="wrap hero">
+    <div class="orb">⚔️</div>
+    <h1 style="background: linear-gradient(105deg, var(--py-blue), var(--violet) 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Phase 4 · 11 Thuật Toán Kinh Điển (≤15 Dòng)</h1>
+    <p class="lead" style="max-width:700px">Trang bị tư duy thuật toán tối thượng để giải quyết 95% các bài toán Design trong cả hai vòng thi COS Pro Level 2 (280đ) và Level 1 (420đ). Mỗi thuật toán đều cô đọng ≤15 dòng code chuẩn mực.</p>
+    <div class="row" style="justify-content:center; gap:0.6rem">
+      <span class="chip violet">~75 phút</span>
+      <span class="chip py-blue">11 Mẫu thuật toán chuẩn</span>
+      <span class="chip green">Tích hợp 3 Visualizers thuật toán</span>
+      <span class="chip rose">O(1) bộ nhớ phụ</span>
+    </div>
+    <p class="kbd-hint">Dùng phím <kbd>→</kbd> hoặc <kbd>Space</kbd> để đi tiếp · <kbd>O</kbd> mục lục · <kbd>/</kbd> tìm kiếm · <kbd>?</kbd> phím tắt</p>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2: BẢN ĐỒ ĐỘ PHỨC TẠP THEO N ════════════════════════════════ -->
+<div class="slide" data-title="Bản đồ độ phức tạp & Ràng buộc N">
+  <div class="wrap">
+    <h2><span class="k">01</span> Bản đồ ước lượng thuật toán theo kích thước N</h2>
+    <p>Trong 1 giây, Python thực hiện được khoảng <b>10⁷ đến 5×10⁷ phép tính</b>. Khi đọc đề, hãy nhìn kích thước <b>N</b> đầu tiên:</p>
+
+    <div style="overflow-x:auto">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Kích thước N</th>
+            <th>Độ phức tạp mục tiêu</th>
+            <th>Thuật toán tương ứng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>N ≤ 20</b></td>
+            <td>O(2ᴺ) hoặc O(N!)</td>
+            <td>Quay lui (Backtracking), sinh mọi hoán vị/tổ hợp với <code>itertools</code></td>
+          </tr>
+          <tr>
+            <td><b>N ≤ 100</b></td>
+            <td>O(N³) hoặc O(N²)</td>
+            <td>Duyệt 2-3 vòng lặp lồng nhau, kiểm tra ma trận cơ bản</td>
+          </tr>
+          <tr>
+            <td><b>N ≤ 5,000</b></td>
+            <td>O(N²)</td>
+            <td>Quy hoạch động 2D, hai vòng for, thuật toán kiểm tra cặp</td>
+          </tr>
+          <tr>
+            <td><b>N ≤ 100,000</b></td>
+            <td><b class="cyan">O(N log N) hoặc O(N)</b></td>
+            <td><b>Hai con trỏ, Cửa sổ trượt, Prefix Sum, Sort, Heap, BFS/DFS, Đếm Dict</b></td>
+          </tr>
+          <tr>
+            <td><b>N ≥ 10⁹</b></td>
+            <td><b class="amber">O(log N) hoặc O(1)</b></td>
+            <td><b>Tìm kiếm nhị phân (Binary Search the Answer), Công thức toán học</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3: THUẬT TOÁN 01: TWO POINTERS ══════════════════════════════ -->
+<div class="slide" data-part="Phần 1 · Kỹ Thuật Con Trỏ & Cửa Sổ" data-title="Thuật toán 01: Hai con trỏ (Two Pointers)">
+  <div class="wrap">
+    <h2><span class="k">02</span> Thuật toán 01: Hai con trỏ (Two Pointers)</h2>
+    <p><b>Khi nào dùng:</b> Mảng đã sắp xếp tăng dần, cần tìm 2 vị trí có tổng đúng bằng <code>target</code> trong thời gian <b>O(N)</b>, bộ nhớ <b>O(1)</b>.</p>
+
+    <div id="twoptr-vis-box" class="vis-container"></div>
+
+    <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 01 (MAU_CODE.md) — Chuẩn ≤ 15 dòng</span></div>
+<pre class="code" data-lang="python">def two_sum_sorted(arr, target):
+    l, r = 0, len(arr) - 1
+    while l < r:
+        s = arr[l] + arr[r]
+        if s == target:
+            return l, r
+        elif s < target:
+            l += 1
+        else:
+            r -= 1
+    return -1, -1</pre>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4: THUẬT TOÁN 02: SLIDING WINDOW ═════════════════════════════ -->
+<div class="slide" data-title="Thuật toán 02: Cửa sổ trượt (Sliding Window)">
+  <div class="wrap">
+    <h2><span class="k">03</span> Thuật toán 02: Cửa sổ trượt độ dài cố định K</h2>
+    <p><b>Khi nào dùng:</b> Tìm tổng hoặc trung bình lớn nhất của dãy con liên tiếp gồm đúng K phần tử. Tránh tính lại <code>sum()</code> tốn O(K) mỗi bước!</p>
+
+    <div id="sliding-vis-box" class="vis-container"></div>
+
+    <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 02 (MAU_CODE.md) — Chuẩn ≤ 15 dòng</span></div>
+<pre class="code" data-lang="python">def max_sum_subarray(arr, k):
+    if len(arr) < k: return 0
+    cur = max_s = sum(arr[:k])
+    for i in range(k, len(arr)):
+        cur += arr[i] - arr[i - k]  # Thêm phần tử mới vào, trừ phần tử cũ đi
+        max_s = max(max_s, cur)
+    return max_s</pre>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5: THỰC HÀNH 4.1 ════════════════════════════════════════════ -->
+<div class="slide" data-title="Thực hành 4.1: Sliding Window biến thiên">
+  <div class="wrap">
+    <h2><span class="k">04</span> Thực hành 4.1 · Chuỗi con không lặp dài nhất</h2>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-tag">Thực hành 4.1</span><span class="ex-title">Cửa sổ trượt biến thiên (Mẫu 03)</span><span class="chip py-blue">6 phút</span></div>
+      <div class="ex-body">
+        <p>Tìm độ dài của chuỗi con dài nhất chứa các ký tự hoàn toàn phân biệt (không lặp lại). Ví dụ: <code>"abcabcbb" -> 3 ("abc")</code>.</p>
+
+        <div class="py-runner">
+          <div class="py-runner-head">
+            <span class="tiny">Chạy thử nghiệm thuật toán Sliding Window:</span>
+            <button class="btn cyan btn-run">Chạy code ▶</button>
+          </div>
+          <textarea class="py-editor">
+def length_of_longest_substring(s):
+    seen = {}
+    l = 0
+    ans = 0
+    for r, c in enumerate(s):
+        if c in seen and seen[c] >= l:
+            l = seen[c] + 1
+        seen[c] = r
+        ans = max(ans, r - l + 1)
+    return ans
+
+print("Test 1 ('abcabcbb'):", length_of_longest_substring("abcabcbb")) # 3
+print("Test 2 ('bbbbb'):   ", length_of_longest_substring("bbbbb"))    # 1
+print("Test 3 ('pwwkew'):  ", length_of_longest_substring("pwwkew"))   # 3
+</textarea>
+          <div class="py-console-head">Console Output</div>
+          <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6: THUẬT TOÁN 03: PREFIX SUM ════════════════════════════════ -->
+<div class="slide" data-part="Phần 2 · Mảng Tiền Tố & Chặt Nhị Phân" data-title="Thuật toán 03: Mảng tiền tố (Prefix Sum)">
+  <div class="wrap">
+    <h2><span class="k">05</span> Thuật toán 03: Mảng tiền tố (Prefix Sum 1D & 2D)</h2>
+    <p><b>Khi nào dùng:</b> Cần trả lời Q truy vấn tính tổng đoạn con từ chỉ số <code>L</code> đến <code>R</code>. Nếu tính thủ công mất <code>O(Q × N)</code>, mảng tiền tố giảm xuống <b>O(1)</b> mỗi truy vấn!</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Công thức 1D Prefix Sum</h4>
+        <p class="tiny">Mảng <code>pref</code> có độ dài <code>N + 1</code> với <code>pref[0] = 0</code>:</p>
+        <p class="tiny"><code>pref[i] = pref[i-1] + arr[i-1]</code></p>
+        <p class="tiny"><b>Tổng đoạn [L .. R]:</b> <code>pref[R + 1] - pref[L]</code></p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">arr = [2, 4, 1, 7, 5]
+pref = [0]
+for x in arr:
+    pref.append(pref[-1] + x)
+# pref = [0, 2, 6, 7, 14, 19]
+# Tổng đoạn [1..3] (4+1+7):
+s = pref[4] - pref[1] # 14 - 2 = 12</pre>
+      </div>
+
+      <div class="card">
+        <h4>Prefix Sum 2D trên Ma trận</h4>
+        <p class="tiny">Tính tổng hình chữ nhật con từ <code>(r1, c1)</code> đến <code>(r2, c2)</code>:</p>
+        <p class="tiny"><code>Tổng = pref[r2+1][c2+1] - pref[r1][c2+1] - pref[r2+1][c1] + pref[r1][c1]</code></p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 05 (MAU_CODE.md)</span></div>
+<pre class="code" data-lang="python"># Tiền xử lý O(N*M)
+# Mỗi truy vấn O(1) tức thì!</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7: THUẬT TOÁN 05: BINARY SEARCH ═════════════════════════════ -->
+<div class="slide" data-title="Thuật toán 05: Chặt nhị phân & BS the Answer">
+  <div class="wrap">
+    <h2><span class="k">06</span> Thuật toán 05: Tìm kiếm nhị phân & Chặt kết quả</h2>
+    <p>Tìm kiếm nhị phân chia đôi không gian tìm kiếm mỗi bước, đạt tốc độ cực hạn <b>O(log N)</b>.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Binary Search cơ bản</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 06 (MAU_CODE.md)</span></div>
+<pre class="code" data-lang="python">def binary_search(arr, target):
+    l, r = 0, len(arr) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1</pre>
+      </div>
+
+      <div class="card">
+        <h4>Chặt nhị phân kết quả (Binary Search the Answer)</h4>
+        <p class="tiny">Khi bài toán hỏi: <i>"Tìm giá trị K NHỎ NHẤT / LỚN NHẤT thỏa mãn điều kiện"</i> và hàm điều kiện có tính đơn điệu (Monotonicity):</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 07 (MAU_CODE.md)</span></div>
+<pre class="code" data-lang="python">def bs_answer(low, high):
+    ans = high
+    while low <= high:
+        mid = (low + high) // 2
+        if check(mid): # thỏa mãn
+            ans = mid
+            high = mid - 1 # thử tìm giá trị nhỏ hơn
+        else:
+            low = mid + 1
+    return ans</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 8: THUẬT TOÁN 06: MERGE INTERVALS ════════════════════════════ -->
+<div class="slide" data-part="Phần 3 · Cấu Trúc Ngăn Xếp & Khoảng" data-title="Thuật toán 06: Hợp nhất các khoảng (Merge Intervals)">
+  <div class="wrap">
+    <h2><span class="k">07</span> Thuật toán 06: Hợp nhất các khoảng (Merge Intervals)</h2>
+    <p><b>Khi nào dùng:</b> Xếp lịch phòng họp, tính tổng thời gian làm việc, tìm khoảng thời gian bị trùng lắp.</p>
+
+    <div class="card">
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 08 (MAU_CODE.md) — Chuẩn ≤ 15 dòng</span></div>
+<pre class="code" data-lang="python">def merge_intervals(intervals):
+    if not intervals: return []
+    # BƯỚC 1: Bắt buộc sắp xếp theo thời điểm bắt đầu
+    intervals.sort(key=lambda x: x[0])
+    merged = [intervals[0]]
+    
+    # BƯỚC 2: Duyệt và gộp khoảng nếu trùng nhau
+    for cur in intervals[1:]:
+        prev = merged[-1]
+        if cur[0] <= prev[1]: # Có giao nhau
+            prev[1] = max(prev[1], cur[1])
+        else:
+            merged.append(cur)
+    return merged</pre>
+    </div>
+
+    <div class="note"><b>Thử nghiệm nhanh:</b> Với <code>[[1, 3], [2, 6], [8, 10], [15, 18]]</code>, khoảng <code>[1, 3]</code> và <code>[2, 6]</code> giao nhau thành <code>[1, 6]</code>. Kết quả: <code>[[1, 6], [8, 10], [15, 18]]</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 9: THUẬT TOÁN 07: STACK ══════════════════════════════════════ -->
+<div class="slide" data-title="Thuật toán 07: Ngăn xếp (Stack)">
+  <div class="wrap">
+    <h2><span class="k">08</span> Thuật toán 07: Ngăn xếp (Stack LIFO) & Dấu ngoặc hợp lệ</h2>
+    <p>Ngăn xếp vào sau ra trước (LIFO). Ứng dụng: Kiểm tra biểu thức dấu ngoặc, tính toán hậu tố Ba Lan (RPN), và Monotonic Stack.</p>
+
+    <div id="stack-vis-box" class="vis-container"></div>
+
+    <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 09 (MAU_CODE.md) — Chuẩn ≤ 15 dòng</span></div>
+<pre class="code" data-lang="python">def ngoac_hop_le(s):
+    pairs = {')': '(', ']': '[', '}': '{'}
+    stack = []
+    for c in s:
+        if c in pairs.values():
+            stack.append(c)
+        elif c in pairs:
+            if not stack or stack.pop() != pairs[c]:
+                return False
+    return len(stack) == 0</pre>
+  </div>
+</div>
+
+<!-- ══ SLIDE 10: THUẬT TOÁN 08 & 09: BFS & DFS ════════════════════════════ -->
+<div class="slide" data-part="Phần 4 · Duyệt Đồ Thị & Lưới Ma Trận" data-title="Thuật toán 08 & 09: BFS & DFS">
+  <div class="wrap">
+    <h2><span class="k">09</span> Thuật toán 08 & 09: BFS & DFS trên lưới Ma trận</h2>
+    <p>Đề thi COS Pro Level 1 cực kỳ hay ra bài toán tìm đường đi ngắn nhất hoặc đếm số vùng liên thông (số hòn đảo) trên bản đồ 2D.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>BFS Tìm đường đi ngắn nhất (Dùng deque)</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 11 (MAU_CODE.md)</span></div>
+<pre class="code" data-lang="python">from collections import deque
+
+def bfs_matrix(grid, start, target):
+    R, C = len(grid), len(grid[0])
+    q = deque([(start[0], start[1], 0)])
+    visited = {start}
+    while q:
+        r, c, dist = q.popleft()
+        if (r, c) == target: return dist
+        for dr, dc in [(-1,0), (1,0), (0,-1), (0,1)]:
+            nr, nc = r + dr, c + dc
+            if 0<=nr<R and 0<=nc<C and grid[nr][nc]==0:
+                if (nr, nc) not in visited:
+                    visited.add((nr, nc))
+                    q.append((nr, nc, dist + 1))
+    return -1</pre>
+      </div>
+
+      <div class="card">
+        <h4>DFS Đếm số hòn đảo (Đệ quy loang)</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 12 (MAU_CODE.md)</span></div>
+<pre class="code" data-lang="python">def num_islands(grid):
+    if not grid: return 0
+    R, C = len(grid), len(grid[0])
+    ans = 0
+    def dfs(r, c):
+        grid[r][c] = "0" # Đánh dấu đã chìm
+        for dr, dc in [(-1,0), (1,0), (0,-1), (0,1)]:
+            nr, nc = r + dr, c + dc
+            if 0<=nr<R and 0<=nc<C and grid[nr][nc]=="1":
+                dfs(nr, nc)
+    for r in range(R):
+        for c in range(C):
+            if grid[r][c] == "1":
+                ans += 1; dfs(r, c)
+    return ans</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 11: THUẬT TOÁN 10: QUY HOẠCH ĐỘNG (DP) ═══════════════════════ -->
+<div class="slide" data-title="Thuật toán 10: Quy hoạch động (DP)">
+  <div class="wrap">
+    <h2><span class="k">10</span> Thuật toán 10: Quy hoạch động (Dynamic Programming)</h2>
+    <p>Giải bài toán lớn bằng cách chia thành các bài toán con gối nhau và lưu kết quả lại trong mảng memoization.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>DP 1D: Leo cầu thang (Climbing Stairs)</h4>
+        <p class="tiny">Mỗi bước có thể đi 1 hoặc 2 bậc. Số cách leo n bậc:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 13 (MAU_CODE.md)</span></div>
+<pre class="code" data-lang="python">def climb_stairs(n):
+    if n <= 2: return n
+    dp = [0] * (n + 1)
+    dp[1], dp[2] = 1, 2
+    for i in range(3, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    return dp[n]</pre>
+      </div>
+
+      <div class="card">
+        <h4>DP 2D: Đường đi có tổng lớn nhất trên lưới</h4>
+        <p class="tiny">Chỉ được đi xuống dưới hoặc sang phải:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 14 (MAU_CODE.md)</span></div>
+<pre class="code" data-lang="python">def min_path_sum(grid):
+    R, C = len(grid), len(grid[0])
+    dp = [[0]*C for _ in range(R)]
+    dp[0][0] = grid[0][0]
+    for c in range(1, C): dp[0][c] = dp[0][c-1] + grid[0][c]
+    for r in range(1, R): dp[r][0] = dp[r-1][0] + grid[r][0]
+    for r in range(1, R):
+        for c in range(1, C):
+            dp[r][c] = min(dp[r-1][c], dp[r][c-1]) + grid[r][c]
+    return dp[R-1][C-1]</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 12: THUẬT TOÁN 11: SÀNG ERATOSTHENES ═════════════════════════ -->
+<div class="slide" data-title="Thuật toán 11: Sàng nguyên tố Eratosthenes">
+  <div class="wrap">
+    <h2><span class="k">11</span> Thuật toán 11: Sàng số nguyên tố Eratosthenes</h2>
+    <p>Tìm toàn bộ số nguyên tố từ 2 đến N trong thời gian cực nhanh <b>O(N log log N)</b>.</p>
+
+    <div class="card">
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Mẫu 15 (MAU_CODE.md) — Chuẩn ≤ 15 dòng</span></div>
+<pre class="code" data-lang="python">def sieve(n):
+    if n < 2: return []
+    is_prime = [True] * (n + 1)
+    is_prime[0] = is_prime[1] = False
+    for i in range(2, int(n**0.5) + 1):
+        if is_prime[i]:
+            # Đánh dấu các bội số của i bắt đầu từ i*i
+            for j in range(i * i, n + 1, i):
+                is_prime[j] = False
+    return [i for i, prime in enumerate(is_prime) if prime]</pre>
+    </div>
+
+    <div class="note"><b>Tối ưu điểm thưởng:</b> Điểm mấu chốt để đạt chuẩn O(N log log N) là vòng lặp trong bắt đầu từ <code>i * i</code> thay vì <code>2 * i</code>, vì các bội số nhỏ hơn đã bị các ước số trước đó đánh dấu!</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 13: QUIZ THUẬT TOÁN PRO ═════════════════════════════════════ -->
+<div class="slide" data-part="Tổng kết & Đánh giá" data-title="Quiz phản xạ Thuật toán Pro">
+  <div class="wrap">
+    <h2><span class="k">12</span> Đấu trường Quiz: Nhận diện Thuật toán tối ưu</h2>
+
+    <div class="grid-2">
+      <div class="quiz">
+        <div class="quiz-q">1. Mảng gồm 100,000 số ĐÃ SẮP XẾP. Cần tìm 2 số có tổng bằng Target. Dùng gì tối ưu nhất?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Duyệt 2 vòng lặp mất O(N^2) = 10^10 phép tính, bị TLE chắc chắn.">A. Duyệt 2 vòng for lồng nhau</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Two Pointers chạy O(N), bộ nhớ O(1) đạt điểm tuyệt đối.">B. Hai con trỏ (Two Pointers)</button>
+          <button class="opt" data-k="C" data-why="BFS dùng cho đồ thị / ma trận không áp dụng bài này.">C. BFS tìm kiếm</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">2. Để tìm đường đi ngắn nhất từ ô A đến ô B trong mê cung không trọng số, thuật toán nào luôn tìm ra đáp án tối ưu đầu tiên?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="DFS đi theo nhánh sâu, đường tìm thấy đầu tiên chưa chắc là đường ngắn nhất.">A. DFS (Depth-First Search)</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Đúng! BFS duyệt theo từng lớp khoảng cách lan tỏa nên đường đầu tiên chạm đích luôn ngắn nhất.">B. BFS (Breadth-First Search)</button>
+          <button class="opt" data-k="C" data-why="Thuật toán tham lam không đảm bảo đường ngắn nhất trong mê cung có chướng ngại vật.">C. Greedy (Tham lam)</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">3. Trong thuật toán Hợp nhất khoảng (Merge Intervals), bước tiền xử lý bắt buộc đầu tiên là gì?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sắp xếp theo end không đảm bảo các khoảng gối nhau liên tục.">A. Sắp xếp các khoảng theo điểm kết thúc</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Bắt buộc sắp xếp theo điểm bắt đầu x[0] để các khoảng liên quan nằm cạnh nhau.">B. Sắp xếp các khoảng theo điểm bắt đầu x[0]</button>
+          <button class="opt" data-k="C" data-why="Tìm max không giải quyết được việc gộp khoảng.">C. Tìm khoảng dài nhất</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">4. Cần tính tổng đoạn con [L..R] liên tục cho 1,000,000 truy vấn trên mảng 100,000 phần tử cố định. Dùng gì?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="sum(arr[L:R+1]) mỗi truy vấn mất O(N), 1 triệu truy vấn mất hàng nghìn giây -> TLE.">A. Dùng sum(arr[L:R+1])</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Đúng! Mảng tiền tố (Prefix Sum) tiền xử lý O(N), sau đó mỗi truy vấn O(1) tức thì!"><B>B. Mảng tiền tố (Prefix Sum)</button>
+          <button class="opt" data-k="C" data-why="Sai.">C. Two Pointers</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 14: TỔNG KẾT PHASE 4 ═════════════════════════════════════════ -->
+<div class="slide" data-title="Tổng kết Phase 4">
+  <div class="wrap">
+    <h2><span class="k">13</span> Tổng kết Phase 4 & Mục tiêu Chung kết</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h4 class="py-blue">Con trỏ & Cửa sổ</h4>
+        <p class="tiny">Two Pointers trên mảng đã sắp xếp. Sliding Window tính tổng / đếm chuỗi con không trùng trong O(N).</p>
+      </div>
+      <div class="card">
+        <h4 class="violet">Prefix Sum & Binary Search</h4>
+        <p class="tiny">Truy vấn tổng O(1). Chặt nhị phân kết quả (BS the Answer) khi bài toán tìm Max/Min đơn điệu.</p>
+      </div>
+      <div class="card">
+        <h4 class="green">BFS & Stack & DP</h4>
+        <p class="tiny">BFS đường đi ngắn nhất với <code>deque</code>. Stack cho dấu ngoặc. DP cho bài toán tối ưu con.</p>
+      </div>
+    </div>
+
+    <div class="start" style="margin-top:0.8rem">
+      <h4>Thử thách đỉnh cao:</h4>
+      <p class="tiny">Làm 15 bài trong <b>Nhóm 6 (Design Chung kết Level 1)</b> — đây là nhóm bài khó nhất giúp bạn đạt 1000/1000 điểm:</p>
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Terminal</span></div>
+<pre class="code" data-lang="bash">cd D:\02_Learning_Knowledge\Python_Master\python-master-bang-b
+py cham_diem.py 6</pre>
+    </div>
+
+    <div class="row" style="justify-content:space-between; margin-top:0.8rem">
+      <a class="btn" href="deck3_traps_stdlib.html">← Về Phase 3</a>
+      <a class="btn cyan" href="deck5_exam_strategy.html">Tiến vào Phase 5: Chiến thuật phòng thi & Đề mẫu 27/08 →</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="assets/vendor/skulpt.min.js"></script>
+<script src="assets/vendor/skulpt-stdlib.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/python_lab.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.initTwoPointersVisualizer) window.initTwoPointersVisualizer('twoptr-vis-box');
+    if (window.initSlidingWindowVisualizer) window.initSlidingWindowVisualizer('sliding-vis-box');
+    if (window.initStackVisualizer) window.initStackVisualizer('stack-vis-box');
+  });
+</script>
+</body>
+</html>

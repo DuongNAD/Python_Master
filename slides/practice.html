@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phòng Luyện Tập Tương Tác & Thử Thách Code · Python Master</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  html, body { height: auto; min-height: 100%; overflow: visible; }
+  body { overflow-x: hidden; background: var(--bg); color: var(--text); }
+  .practice-page {
+    max-width: 1280px; margin: 0 auto;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2rem) 5rem;
+    display: grid; gap: 1.8rem;
+  }
+  .prac-header {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 1.2rem;
+  }
+  .prac-header-left { display: grid; gap: 0.35rem; }
+  .prac-header-left h1 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); background: linear-gradient(105deg, var(--py-blue), var(--py-gold) 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .prac-nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .prac-nav-links a {
+    text-decoration: none; font-size: 0.84rem; font-weight: 600;
+    padding: 0.4rem 0.9rem; border-radius: 99px;
+    background: var(--surface); border: 1px solid var(--line); color: var(--text-2);
+    transition: 0.15s;
+  }
+  .prac-nav-links a:hover { color: var(--py-blue); border-color: var(--py-blue); background: var(--surface-2); }
+
+  /* Tab Bar */
+  .prac-tabs {
+    display: flex; gap: 0.45rem; overflow-x: auto; padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .prac-tab-btn {
+    font: inherit; font-size: 0.88rem; font-weight: 700;
+    padding: 0.65rem 1.2rem; border-radius: var(--r-sm) var(--r-sm) 0 0;
+    background: var(--surface); border: 1px solid var(--line-soft); border-bottom: 0;
+    color: var(--text-2); cursor: pointer; transition: 0.14s; white-space: nowrap;
+    display: flex; align-items: center; gap: 0.45rem;
+  }
+  .prac-tab-btn:hover { color: var(--text); background: var(--surface-2); }
+  .prac-tab-btn.active {
+    color: var(--bg); background: var(--py-blue); border-color: var(--py-blue);
+  }
+
+  /* Pane */
+  .prac-pane { display: none; }
+  .prac-pane.active { display: grid; gap: 1.5rem; animation: fadeIn 0.2s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  /* Challenge Layout */
+  .ch-layout {
+    display: grid; grid-template-columns: minmax(280px, 340px) 1fr;
+    gap: 1.5rem; align-items: start;
+  }
+  @media (max-width: 900px) {
+    .ch-layout { grid-template-columns: 1fr; }
+  }
+  .ch-sidebar {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--r); padding: 1.1rem; display: grid; gap: 0.85rem;
+  }
+  .ch-sidebar-list { display: grid; gap: 0.35rem; max-height: 680px; overflow-y: auto; }
+  .ch-item-btn {
+    font: inherit; text-align: left; width: 100%;
+    padding: 0.6rem 0.75rem; border-radius: var(--r-sm);
+    background: transparent; border: 1px solid transparent;
+    color: var(--text-2); cursor: pointer; display: flex; align-items: center; gap: 0.7rem;
+    transition: 0.12s;
+  }
+  .ch-item-btn:hover { background: var(--surface-2); color: var(--text); }
+  .ch-item-btn.active {
+    background: rgba(56, 189, 248, 0.14); border-color: var(--py-blue); color: #ffffff;
+  }
+  .ch-item-btn.done .ch-dot {
+    background: var(--green); color: var(--bg); font-weight: 800;
+  }
+  .ch-dot {
+    width: 2rem; height: 2rem; border-radius: 50%;
+    background: var(--surface-2); border: 1px solid var(--line);
+    font-size: 0.72rem; font-family: var(--mono);
+    display: grid; place-items: center; flex-shrink: 0; color: var(--text-3);
+  }
+  .ch-item-info { display: grid; gap: 0.15rem; overflow: hidden; }
+  .ch-item-t { font-size: 0.85rem; font-weight: 600; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+  .ch-item-sub { font-size: 0.72rem; color: var(--text-3); }
+
+  .ch-main { display: grid; gap: 1.1rem; }
+  .ch-header-card {
+    background: linear-gradient(180deg, rgba(56,189,248,.08), rgba(56,189,248,.02));
+    border: 1px solid rgba(56,189,248,.3); border-radius: var(--r); padding: 1.2rem 1.4rem;
+    display: grid; gap: 0.6rem;
+  }
+</style>
+</head>
+<body>
+<div class="practice-page">
+
+  <!-- HEADER -->
+  <header class="prac-header">
+    <div class="prac-header-left">
+      <h1>Phòng Luyện Tập Tương Tác & Thử Thách Code</h1>
+      <p class="tiny">90 bài tập chia 6 nhóm · Tuyển tập 50 bẫy COS Pro · Trực quan hóa thuật toán · Thi thử mô phỏng</p>
+    </div>
+    <div class="prac-nav-links">
+      <a href="index.html">⌂ Trang chủ Hub</a>
+      <a href="deck1_foundation.html">Phase 1: Chuỗi</a>
+      <a href="deck2_structures.html">Phase 2: Ma trận</a>
+      <a href="deck3_traps_stdlib.html">Phase 3: 50 Bẫy</a>
+      <a href="deck4_algorithms.html">Phase 4: Thuật toán</a>
+      <a href="deck5_exam_strategy.html">Phase 5: Phòng thi</a>
+    </div>
+  </header>
+
+  <!-- TAB NAVIGATION -->
+  <nav class="prac-tabs">
+    <button class="prac-tab-btn active" data-target="pane-kata">⚔️ Đấu Trường 90 Kata</button>
+    <button class="prac-tab-btn" data-target="pane-traps">⚡ Tuyển Tập 50 Bẫy Tử Thần</button>
+    <button class="prac-tab-btn" data-target="pane-algo">🔮 Trực Quan Hóa Thuật Toán</button>
+    <button class="prac-tab-btn" data-target="pane-exam">⏱️ Thi Thử Mô Phỏng (1000đ)</button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       TAB 1: KATA ARENA (90 BÀI TẬP)
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section class="prac-pane active" id="pane-kata">
+    <div class="ch-layout">
+      <!-- SIDEBAR -->
+      <aside class="ch-sidebar">
+        <div>
+          <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-3)">Chọn nhóm bài tập:</label>
+          <select id="kata-group-select" style="width:100%; margin-top:0.4rem; padding:0.5rem; background:#070b14; color:var(--text); border:1px solid var(--line); border-radius:var(--r-sm); font-family:var(--sans); font-size:0.86rem; outline:none">
+            <option value="1">Nhóm 1 · Đọc hiểu & Điền chỗ trống (440đ)</option>
+            <option value="2">Nhóm 2 · Debugging sửa 1 dòng (280đ)</option>
+            <option value="3">Nhóm 3 · Design Level 2 (280đ)</option>
+            <option value="4">Nhóm 4 · Điền khuyết format solution()</option>
+            <option value="5">Nhóm 5 · Debug format solution()</option>
+            <option value="6">Nhóm 6 · Design Chung kết Level 1 (420đ)</option>
+          </select>
+        </div>
+        <div class="ch-sidebar-list" id="kata-list">
+          <!-- Dynamic Katas List -->
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="ch-main">
+        <div class="ch-header-card">
+          <div class="row" style="justify-content:space-between; flex-wrap:wrap">
+            <h2 id="kata-title" style="font-size:1.35rem">Bài 1.01 · dem_nguyen_am</h2>
+            <span class="chip py-blue" id="kata-status-badge">Trạng thái: ĐANG LÀM</span>
+          </div>
+          <div id="kata-doc">
+            <!-- Problem Description -->
+          </div>
+        </div>
+
+        <div class="py-runner" style="margin:0">
+          <div class="py-runner-head">
+            <span class="tiny"><b>Trình soạn thảo mã nguồn</b> (Sửa code tại đây hoặc điền vào chỗ trống):</span>
+            <div class="row" style="gap:0.4rem">
+              <button class="btn" id="btn-reset-starter" style="font-size:0.8rem">↺ Đặt lại đề bài</button>
+              <button class="btn" id="btn-reveal-solution" style="font-size:0.8rem">💡 Xem gợi ý / Đáp án</button>
+              <button class="btn cyan" id="btn-run-tests" style="font-size:0.85rem">Chạy kiểm tra ▶</button>
+            </div>
+          </div>
+          <textarea id="kata-code-editor" class="py-editor" style="min-height:220px"></textarea>
+          <div class="py-console-head">Kết quả kiểm thử (Test Cases Verification)</div>
+          <div class="py-out" id="kata-test-results">
+            Nhấn "Chạy kiểm tra" để chấm điểm bài làm của bạn...
+          </div>
+        </div>
+
+        <!-- REVEAL SOLUTION BOX -->
+        <div id="kata-solution-box" class="card good" style="display:none">
+          <h4 class="green">Lời giải tham chiếu chuẩn xác</h4>
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+          <pre class="code" id="kata-solution-code" data-lang="python"></pre>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       TAB 2: 50 BẪY TỬ THẦN (TRAP SPOTTER CHALLENGE)
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section class="prac-pane" id="pane-traps">
+    <div class="card" style="display:grid; gap:1.2rem">
+      <div class="row" style="justify-content:space-between; flex-wrap:wrap">
+        <div>
+          <span class="eyebrow">Đấu trường phát hiện lỗi sai</span>
+          <h2 id="trap-title" style="font-size:1.4rem">Bẫy 01: 'Chỉ lấy phần nguyên' — int() vs round()</h2>
+        </div>
+        <div class="row" style="gap:0.5rem">
+          <button class="btn" id="btn-trap-prev">← Bẫy trước</button>
+          <button class="btn cyan" id="btn-trap-next">Bẫy tiếp theo →</button>
+          <button class="btn" id="btn-trap-spot" style="border-color:var(--amber); color:var(--amber)">🎯 Thử thách Spot Bug</button>
+        </div>
+      </div>
+
+      <div style="max-width:450px">
+        <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--text-3)">Chuyển nhanh tới bẫy:</label>
+        <select id="trap-select" style="width:100%; margin-top:0.35rem; padding:0.5rem; background:#070b14; color:var(--text); border:1px solid var(--line); border-radius:var(--r-sm); outline:none">
+        </select>
+      </div>
+
+      <!-- SPOT THE BUG QUIZ -->
+      <div id="trap-quiz-box" class="card bad" style="display:none">
+        <h4 class="rose">🎯 Thử thách phòng thi: Phát hiện lỗi trong 30 giây!</h4>
+        <p class="tiny">Hãy nhìn vào đoạn code SAI bên dưới và tự trả lời: Dòng nào có lỗi logic và hậu quả thực tế của nó là gì trước khi đọc lời giải.</p>
+      </div>
+
+      <!-- SIDE BY SIDE DIFF -->
+      <div class="diff-grid">
+        <div class="diff-bad">
+          <div class="diff-head"><span>✗ Đoạn code SAI</span><span class="chip rose">Dính bẫy</span></div>
+          <div class="diff-body">
+            <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+            <pre class="code" id="trap-bad-code" data-lang="python"></pre>
+            <div class="note" style="margin-top:0.6rem">
+              <b>Kết quả sai thực tế:</b> <span id="trap-err-desc"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="diff-good">
+          <div class="diff-head"><span>✓ Đoạn code ĐÚNG</span><span class="chip green">Chuẩn 100%</span></div>
+          <div class="diff-body">
+            <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+            <pre class="code" id="trap-good-code" data-lang="python"></pre>
+            <div class="note" style="margin-top:0.6rem; border-color:var(--green)">
+              <b>Bí quyết nhớ lâu:</b> <span id="trap-note-desc"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       TAB 3: ALGO VISUALIZER LAB
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section class="prac-pane" id="pane-algo">
+    <div style="display:grid; gap:1.8rem">
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <span class="eyebrow">Visualizer 1</span>
+            <h3>Hai Con Trỏ (Two Pointers) Tìm Cặp Tổng Target</h3>
+          </div>
+          <span class="chip py-blue">Độ phức tạp: O(N)</span>
+        </div>
+        <p class="tiny" style="margin:0.5rem 0">Di chuyển con trỏ L từ trái sang phải, R từ phải sang trái để tìm kiếm cặp số có tổng đúng bằng 31.</p>
+        <div id="lab-twoptr-box" class="vis-container"></div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <span class="eyebrow">Visualizer 2</span>
+            <h3>Cửa Sổ Trượt (Sliding Window K=3)</h3>
+          </div>
+          <span class="chip py-gold">Độ phức tạp: O(N)</span>
+        </div>
+        <p class="tiny" style="margin:0.5rem 0">Tính tổng lớn nhất của 3 phần tử liên tiếp với công thức cập nhật O(1): <code>cur += arr[i] - arr[i-k]</code>.</p>
+        <div id="lab-sliding-box" class="vis-container"></div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <span class="eyebrow">Visualizer 3</span>
+            <h3>Ma Trận Xoắn Ốc (Spiral Matrix 4×4)</h3>
+          </div>
+          <span class="chip violet">Độ phức tạp: O(N²)</span>
+        </div>
+        <p class="tiny" style="margin:0.5rem 0">Kỹ thuật 4 con trỏ biên <code>top, bottom, left, right</code> điền tuần tự các số từ 1 đến 16 vào ma trận.</p>
+        <div id="lab-spiral-box" class="vis-container"></div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <span class="eyebrow">Visualizer 4</span>
+            <h3>Ngăn Xếp (Stack) Kiểm Tra Dấu Ngoặc Hợp Lệ</h3>
+          </div>
+          <span class="chip green">Độ phức tạp: O(N)</span>
+        </div>
+        <p class="tiny" style="margin:0.5rem 0">Mô phỏng cơ chế Push khi gặp ngoặc mở và Pop khi gặp ngoặc đóng để kiểm tra tính toàn vẹn của biểu thức.</p>
+        <div id="lab-stack-box" class="vis-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       TAB 4: MOCK EXAM SIMULATOR
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section class="prac-pane" id="pane-exam">
+    <div class="card" style="display:grid; gap:1.2rem">
+      <div class="row" style="justify-content:space-between; flex-wrap:wrap; border-bottom:1px solid var(--line-soft); padding-bottom:1rem">
+        <div>
+          <span class="eyebrow">Đồng hồ thi thực chiến</span>
+          <h2>Đề Thi Thử Mô Phỏng COS Pro Thang 1000đ</h2>
+        </div>
+        <div class="row" style="gap:1rem; align-items:center">
+          <div style="display:grid; text-align:right">
+            <span class="tiny" style="text-transform:uppercase; letter-spacing:0.06em; color:var(--text-3)">Thời gian còn lại</span>
+            <span id="exam-timer-display" style="font-size:1.8rem; font-weight:800; font-family:var(--mono); color:var(--cyan)">50:00</span>
+          </div>
+          <button class="btn cyan" id="btn-timer-toggle">Bắt đầu làm bài ▶</button>
+          <button class="btn" id="btn-timer-reset">↺ Đặt lại 50:00</button>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE EXAM RUNNER -->
+      <div class="card" style="background:rgba(0,0,0,0.25); border:1px solid var(--line); border-radius:var(--r); padding:1rem; display:grid; gap:0.8rem">
+        <div class="row" style="justify-content:space-between; flex-wrap:wrap; gap:0.5rem">
+          <div>
+            <h4 style="color:var(--text); margin-bottom:0.2rem">Ch?m ?i?m thi th? m? ph?ng tr?c ti?p</h4>
+            <span class="tiny" style="color:var(--text-3)">Ch?y to?n b? 10 c?u c?a ?? thi m? ph?ng v? nh?n ngay k?t qu? thang ?i?m 1000:</span>
+          </div>
+          <div class="row" style="gap:0.6rem; align-items:center">
+            <select id="mock-exam-select" style="padding:0.45rem 0.8rem; background:#070b14; color:var(--text); border:1px solid var(--line); border-radius:var(--r-sm); font-size:0.85rem; outline:none">
+              <option value="de_mau_2708">?? m?u ch?nh th?c 27/08 (50p - 1000?)</option>
+              <option value="de_1_vong_loai">?? 1 ? V?ng lo?i Level 2 (50p - 1000?)</option>
+              <option value="de_2_vong_loai">?? 2 ? V?ng lo?i Level 2 (50p - 1000?)</option>
+              <option value="de_3_vong_loai">?? 3 ? V?ng lo?i Level 2 (50p - 1000?)</option>
+              <option value="de_4_chung_ket">?? 4 ? Chung k?t Level 1 (90p - 1000?)</option>
+            </select>
+            <button class="btn cyan" id="btn-run-mock-exam" style="font-size:0.85rem">Ch?m thi ngay ?</button>
+          </div>
+        </div>
+        <div id="mock-exam-result"></div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h4>1. Đề mẫu chính thức 27/08</h4>
+          <p class="tiny">10 câu chuẩn quy chuẩn ban tổ chức công bố. Đầy đủ 5 phần cố định.</p>
+          <div class="code-head" style="margin-top:0.6rem"><div class="dots"><i></i><i></i><i></i></div><span>Lệnh Terminal</span></div>
+<pre class="code" data-lang="bash">py de_mo_phong/de_mau_2708.py</pre>
+        </div>
+
+        <div class="card">
+          <h4>2. Đề thi thử Vòng loại số 1</h4>
+          <p class="tiny">10 câu / 50 phút. Chấm điểm tự động thang 1000. Ngưỡng đạt: ≥600đ.</p>
+          <div class="code-head" style="margin-top:0.6rem"><div class="dots"><i></i><i></i><i></i></div><span>Lệnh Terminal</span></div>
+<pre class="code" data-lang="bash">py de_mo_phong/de_1_vong_loai.py</pre>
+        </div>
+
+        <div class="card">
+          <h4>3. Đề thi thử Chung kết số 4</h4>
+          <p class="tiny">10 câu / 90 phút. Chuẩn COS Pro Level 1 với các bài Design OOP và thuật toán.</p>
+          <div class="code-head" style="margin-top:0.6rem"><div class="dots"><i></i><i></i><i></i></div><span>Lệnh Terminal</span></div>
+<pre class="code" data-lang="bash">py de_mo_phong/de_4_chung_ket.py</pre>
+        </div>
+      </div>
+
+      <div class="start">
+        <h4>Chiến lược phòng thi ghi nhớ:</h4>
+        <p class="tiny">12 phút đầu ăn trọn 440đ Đọc hiểu -> 15 phút kế ăn trọn 280đ Debugging (tổng 720đ đạt chứng chỉ) -> Dành 15 phút còn lại để giải các câu Design!</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="assets/vendor/skulpt.min.js"></script>
+<script src="assets/vendor/skulpt-stdlib.js"></script>
+<script src="assets/kata_tests_data.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/python_lab.js"></script>
+<script src="assets/practice_lab.js"></script>
+</body>
+</html>

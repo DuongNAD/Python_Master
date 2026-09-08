@@ -1,0 +1,514 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 3 · Thư viện Chuẩn & 50 Bẫy Tử Thần · Python Master</title>
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body data-deck="deck3">
+<div class="deck">
+
+<!-- ══ SLIDE 1: HERO COVER ═══════════════════════════════════════════════ -->
+<div class="slide" data-part="Mở đầu" data-title="Phase 3 — Thư viện chuẩn & 50 Bẫy Tử Thần">
+  <div class="wrap hero">
+    <div class="orb">⚡</div>
+    <h1 style="background: linear-gradient(105deg, var(--rose), var(--py-gold) 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Phase 3 · Thư Viện Chuẩn & 50 Bẫy Tử Thần</h1>
+    <p class="lead" style="max-width:680px">Tận dụng vũ khí tối thượng từ thư viện chuẩn Python và giải phẫu 50 cái bẫy kinh điển giúp bạn ăn trọn 280đ / 240đ phần Debugging chỉ trong 15 phút.</p>
+    <div class="row" style="justify-content:center; gap:0.6rem">
+      <span class="chip rose">~65 phút</span>
+      <span class="chip py-blue">collections & heapq & itertools</span>
+      <span class="chip py-gold">Bóc tách 50 bẫy COS Pro</span>
+      <span class="chip green">Mẹo tìm bug trong 30 giây</span>
+    </div>
+    <p class="kbd-hint">Dùng phím <kbd>→</kbd> hoặc <kbd>Space</kbd> để đi tiếp · <kbd>O</kbd> mục lục · <kbd>/</kbd> tìm kiếm · <kbd>?</kbd> phím tắt</p>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2: BẢN ĐỒ PHASE 3 ═══════════════════════════════════════════ -->
+<div class="slide" data-title="Bản đồ học tập Phase 3">
+  <div class="wrap">
+    <h2><span class="k">01</span> Bản đồ học tập Phase 3</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>1. Thư viện chuẩn đỉnh cao</h3>
+        <p><code>Counter</code> đếm siêu tốc, <code>deque</code> hàng đợi hai đầu O(1), <code>heapq</code> cấu trúc Min/Max-Heap, <code>itertools</code> sinh tổ hợp, và <code>bisect</code> tìm kiếm nhị phân.</p>
+      </div>
+      <div class="card">
+        <h3>2. Bẫy logic & Sửa đổi mảng khi đang lặp</h3>
+        <p>Vì sao <code>arr.remove(x)</code> trong vòng lặp bỏ sót phần tử? Bẫy gán biến <code>res = arr.sort()</code> ra <code>None</code>.</p>
+      </div>
+      <div class="card">
+        <h3>3. Bẫy kiểu dữ liệu & Sai số</h3>
+        <p>Bẫy so sánh <code>is</code> vs <code>==</code> với số > 256, sai số dấu phẩy động float, và hành vi kỳ lạ của <code>all([]) == True</code>.</p>
+      </div>
+      <div class="card">
+        <h3>4. Chiến thuật Debugging 30 giây</h3>
+        <p>Quy trình 4 bước đọc hiểu đề - truy vết mã lỗi - sửa đúng 1 dòng - kiểm tra biên trong phòng thi thực chiến.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3: COLLECTIONS.COUNTER ══════════════════════════════════════ -->
+<div class="slide" data-part="Phần 1 · Thư Viện Chuẩn Thiết Yếu" data-title="collections.Counter">
+  <div class="wrap">
+    <h2><span class="k">02</span> collections.Counter: Đếm siêu tốc & Top K</h2>
+    <p><code>Counter</code> là lớp con của <code>dict</code> được tối ưu chuyên biệt cho việc thống kê tần suất xuất hiện.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Đếm và tìm K phần tử xuất hiện nhiều nhất</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">from collections import Counter
+
+s = "abracadabra"
+cnt = Counter(s)
+# Counter({'a': 5, 'b': 2, 'r': 2, 'c': 1, 'd': 1})
+
+# Lấy top 2 phần tử xuất hiện nhiều nhất:
+print(cnt.most_common(2))
+# [('a', 5), ('b', 2)]</pre>
+      </div>
+
+      <div class="card">
+        <h4>Phép toán số học trên Counter</h4>
+        <p class="tiny">Có thể cộng, trừ trực tiếp hai bộ đếm:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">c1 = Counter(a=3, b=1)
+c2 = Counter(a=1, b=2, c=1)
+
+# Cộng dồn:
+tong = c1 + c2 # Counter({'a': 4, 'b': 3, 'c': 1})
+
+# Kiểm tra chuỗi đảo chữ (Anagram) trong 1 dòng:
+def la_anagram(s1, s2):
+    return Counter(s1) == Counter(s2)</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Tốc độ phòng thi:</b> Thay vì viết vòng lặp 5 dòng với <code>d.get()</code>, <code>Counter(arr)</code> hoàn thành trong 1 dòng và chạy bằng mã C nguyên bản, nhanh gấp 3 lần.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4: COLLECTIONS.DEQUE ════════════════════════════════════════ -->
+<div class="slide" data-title="collections.deque và defaultdict">
+  <div class="wrap">
+    <h2><span class="k">03</span> collections.deque & defaultdict</h2>
+    
+    <div class="diff-bad">
+      <div class="diff-head"><span>⚠️ BẪY THỜI GIAN CHẠY (TLE): list.pop(0) mất O(N) thời gian!</span></div>
+      <div class="diff-body">
+        <p class="tiny">Khi dùng danh sách thông thường làm hàng đợi (Queue), <code>arr.pop(0)</code> buộc mọi phần tử phía sau phải dịch chuyển sang trái 1 ô. Nếu N = 100,000, thuật toán sẽ bị quá thời gian (TLE) ngay lập tức!</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:0.6rem">
+      <div class="card good">
+        <h4>deque: Hàng đợi hai đầu O(1)</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">from collections import deque
+
+q = deque([1, 2, 3])
+q.append(4)       # Thêm vào đuôi: O(1)
+q.appendleft(0)   # Thêm vào đầu: O(1)
+first = q.popleft() # Lấy khỏi đầu: O(1)
+last = q.pop()      # Lấy khỏi đuôi: O(1)</pre>
+      </div>
+
+      <div class="card good">
+        <h4>defaultdict: Tự động khởi tạo</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">from collections import defaultdict
+
+# Không bao giờ bị KeyError:
+adj = defaultdict(list) # Đồ thị kề
+adj["Hà Nội"].append("Hải Phòng")
+
+cnt = defaultdict(int)  # Mặc định là 0
+cnt["view"] += 1</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5: HEAPQ (MIN & MAX HEAP) ═══════════════════════════════════ -->
+<div class="slide" data-title="heapq: Min-Heap & Max-Heap">
+  <div class="wrap">
+    <h2><span class="k">04</span> heapq: Hàng đợi ưu tiên (Min-Heap & Max-Heap)</h2>
+    <p>Module <code>heapq</code> trong Python mặc định cài đặt <b>Min-Heap</b>: Phần tử nhỏ nhất luôn nằm ở vị trí <code>h[0]</code> trong thời gian <b>O(1)</b>.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Min-Heap cơ bản</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">import heapq
+
+h = [5, 1, 8, 3, 2]
+heapq.heapify(h)    # Biến list thành heap: O(N)
+heapq.heappush(h, 0) # Thêm phần tử: O(log N)
+min_val = heapq.heappop(h) # Lấy phần tử nhỏ nhất: O(log N)
+# min_val = 0, đỉnh mới h[0] = 1</pre>
+      </div>
+
+      <div class="card">
+        <h4>Mô phỏng Max-Heap bằng số âm</h4>
+        <p class="tiny">Python không có sẵn Max-Heap, ta đổi dấu âm khi đẩy vào và lấy ra:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">max_h = []
+for x in [5, 1, 8, 3]:
+    heapq.heappush(max_h, -x) # Đảo dấu
+
+# Lấy phần tử LỚN NHẤT:
+max_val = -heapq.heappop(max_h) # 8</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Thủ thuật Top-K:</b> <code>heapq.nlargest(k, arr)</code> và <code>heapq.nsmallest(k, arr)</code> giúp lấy K phần tử cực trị nhanh hơn sắp xếp toàn bộ danh sách khi K << N.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6: ITERTOOLS & BISECT ═══════════════════════════════════════ -->
+<div class="slide" data-title="itertools và bisect">
+  <div class="wrap">
+    <h2><span class="k">05</span> itertools & bisect: Sinh tổ hợp & Chặt nhị phân</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>itertools: permutations & combinations</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">import itertools
+
+# Tổ hợp chập 2 (không phân biệt thứ tự):
+list(itertools.combinations([1, 2, 3], 2))
+# [(1, 2), (1, 3), (2, 3)]
+
+# Hoán vị chập 2 (có phân biệt thứ tự):
+list(itertools.permutations([1, 2], 2))
+# [(1, 2), (2, 1)]
+
+# Tích Descartes (ghép mọi cặp):
+list(itertools.product(["A", "B"], [1, 2]))
+# [('A', 1), ('A', 2), ('B', 1), ('B', 2)]</pre>
+      </div>
+
+      <div class="card">
+        <h4>bisect: Tìm kiếm nhị phân có sẵn O(log N)</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">import bisect
+
+# BẮT BUỘC MẢNG PHẢI SẮP XẾP TRƯỚC:
+arr = [10, 20, 30, 40, 50]
+
+# bisect_left: vị trí đầu tiên >= x
+idx = bisect.bisect_left(arr, 30) # 2
+
+# bisect_right: vị trí đầu tiên > x
+idx = bisect.bisect_right(arr, 30) # 3
+
+# insort: chèn vào mảng mà vẫn giữ thứ tự
+bisect.insort(arr, 25) # [10, 20, 25, 30, 40, 50]</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7: BẢN ĐỒ 50 BẪY TỬ THẦN ═══════════════════════════════════ -->
+<div class="slide" data-part="Phần 2 · 50 Bẫy Tử Thần COS Pro" data-title="Bản đồ 50 Bẫy COS Pro">
+  <div class="wrap">
+    <h2><span class="k">06</span> Bản đồ 50 Bẫy Tử Thần trong Đề thi COS Pro</h2>
+    <p>Phần Debugging chiếm <b>280 điểm</b> (Vòng loại) và <b>240 điểm</b> (Chung kết). Toàn bộ các câu sai đều nằm trong 50 bẫy này.</p>
+
+    <div class="grid-3">
+      <div class="card bad">
+        <h4 class="rose">Nhóm 1: Thao tác Mảng khi lặp</h4>
+        <p class="tiny">Xóa phần tử bằng <code>remove()</code> trong vòng lặp làm chỉ số nhảy cóc, bỏ sót 50% phần tử!</p>
+      </div>
+      <div class="card bad">
+        <h4 class="rose">Nhóm 2: In-place method ra None</h4>
+        <p class="tiny">Viết <code>res = a.sort()</code> hoặc <code>res = a.reverse()</code> khiến <code>res</code> nhận giá trị <code>None</code>.</p>
+      </div>
+      <div class="card bad">
+        <h4 class="rose">Nhóm 3: So sánh 'is' vs '=='</h4>
+        <p class="tiny">Dùng <code>is</code> so sánh hai số nguyên > 256 dẫn đến sai lệch logic do cơ chế cache của CPython.</p>
+      </div>
+      <div class="card bad">
+        <h4 class="rose">Nhóm 4: Bẫy float sai số</h4>
+        <p class="tiny">So sánh <code>0.1 + 0.2 == 0.3</code> trả về <code>False</code> do biểu diễn nhị phân không chính xác tuyệt đối.</p>
+      </div>
+      <div class="card bad">
+        <h4 class="rose">Nhóm 5: Bẫy all() rỗng</h4>
+        <p class="tiny"><code>all([])</code> trả về <code>True</code>! Khi mảng rỗng không có phần tử nào, kiểm tra tính chất bị sai kết quả.</p>
+      </div>
+      <div class="card bad">
+        <h4 class="rose">Nhóm 6: Scope biến for rò rỉ</h4>
+        <p class="tiny">Biến đếm trong vòng lặp <code>for i in ...</code> vẫn tồn tại và giữ giá trị cuối cùng sau khi lặp xong.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 8: BẪY XÓA PHẦN TỬ KHI LẶP ═══════════════════════════════════ -->
+<div class="slide" data-title="Bẫy xóa phần tử khi đang lặp">
+  <div class="wrap">
+    <h2><span class="k">07</span> Bẫy 04: Xóa phần tử khi đang duyệt danh sách</h2>
+    <p>Một trong những câu bẫy kinh điển nhất trong phần Debugging.</p>
+
+    <div class="diff-grid">
+      <div class="diff-bad">
+        <div class="diff-head"><span>✗ Code SAI: Sửa danh sách đang duyệt</span><span class="chip rose">Bỏ sót phần tử</span></div>
+        <div class="diff-body">
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">nums = [1, 2, 2, 3, 4]
+for x in nums:
+    if x == 2:
+        nums.remove(x)
+print(nums)
+# KẾT QUẢ SAI: [1, 2, 3, 4] (Số 2 thứ hai KHÔNG BỊ XÓA!)</pre>
+        </div>
+      </div>
+
+      <div class="diff-good">
+        <div class="diff-head"><span>✓ Code ĐÚNG: Lọc bằng Comprehension hoặc duyệt bản sao</span><span class="chip green">Chuẩn</span></div>
+        <div class="diff-body">
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python"># Cách 1: List comprehension tạo mảng mới (Khuyên dùng)
+nums = [x for x in nums if x != 2]
+
+# Cách 2: Duyệt trên bản sao nums[:]
+for x in nums[:]:
+    if x == 2:
+        nums.remove(x)</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="note"><b>Giải thích cơ chế ngầm:</b> Khi xóa phần tử tại vị trí 1, phần tử thứ hai bị trượt về vị trí 1. Nhưng con trỏ vòng lặp của Python tiếp tục bước sang vị trí 2, dẫn đến việc bỏ qua hoàn toàn phần tử vừa trượt tới!</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 9: BẪY SORT() TRẢ VỀ NONE ═══════════════════════════════════ -->
+<div class="slide" data-title="Bẫy sort() vs sorted()">
+  <div class="wrap">
+    <h2><span class="k">08</span> Bẫy 05: list.sort() trả về None</h2>
+    <p>Phương thức <code>.sort()</code> và <code>.reverse()</code> của list thay đổi mảng tại chỗ và trả về <code>None</code> để nhắc nhở lập trình viên.</p>
+
+    <div class="diff-grid">
+      <div class="diff-bad">
+        <div class="diff-head"><span>✗ Code SAI: Gán biến bằng a.sort()</span><span class="chip rose">Nhận None</span></div>
+        <div class="diff-body">
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">arr = [3, 1, 2]
+sorted_arr = arr.sort()
+print(sorted_arr) # None!
+# sorted_arr[0] -> TypeError: 'NoneType' object is not subscriptable</pre>
+        </div>
+      </div>
+
+      <div class="diff-good">
+        <div class="diff-head"><span>✓ Code ĐÚNG: Dùng sorted() hoặc gọi riêng</span><span class="chip green">Chuẩn</span></div>
+        <div class="diff-body">
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python"># Cách 1: Dùng sorted() trả về mảng mới
+sorted_arr = sorted(arr)
+
+# Cách 2: Gọi sort() riêng rồi dùng mảng gốc
+arr.sort()
+# arr bây giờ đã là [1, 2, 3]</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="note"><b>Quy tắc 3 giây phát hiện:</b> Trong bài Debugging, hễ thấy dòng nào có dạng <code>x = y.sort()</code> hoặc <code>x = y.reverse()</code> hoặc <code>x = y.append(...)</code> thì 100% dòng đó chính là dòng bị lỗi!</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 10: BẪY IS VS == VÀ CACHE INT ═══════════════════════════════ -->
+<div class="slide" data-title="Bẫy so sánh is vs ==">
+  <div class="wrap">
+    <h2><span class="k">09</span> Bẫy 10: Dùng 'is' thay vì '==' để so sánh số</h2>
+    <p>CPython chỉ cache sẵn các số nguyên nhỏ từ <b>-5 đến 256</b> trong bộ nhớ để tái sử dụng.</p>
+
+    <div class="grid-2">
+      <div class="card bad">
+        <h4 class="rose">Hành vi kỳ lạ của toán tử 'is'</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">x = 100
+y = 100
+print(x is y) # True (do nằm trong [-5 .. 256])
+
+a = 1000
+b = 1000
+print(a is b) # FALSE! (2 đối tượng khác nhau trong RAM!)</pre>
+      </div>
+
+      <div class="card good">
+        <h4 class="green">Phân biệt rạch ròi</h4>
+        <ul style="padding-left:1.2rem; display:grid; gap:0.4rem; font-size:0.9rem">
+          <li><code>==</code> so sánh <b>GIÁ TRỊ NỘI DUNG</b>: <code>1000 == 1000</code> luôn là <code>True</code>.</li>
+          <li><code>is</code> so sánh <b>ĐỊA CHỈ VÙNG NHỚ</b> (identity): <code>id(a) == id(b)</code>.</li>
+          <li><b>Chỉ dùng <code>is</code> cho các hằng số:</b> <code>x is None</code>, <code>x is True</code>, <code>x is False</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 11: MẸO DEBUG 30 GIÂY ═══════════════════════════════════════ -->
+<div class="slide" data-part="Phần 3 · Kỹ Năng Debug Phòng Thi" data-title="Mẹo Debug trong 30 giây">
+  <div class="wrap">
+    <h2><span class="k">10</span> Quy trình 4 bước phát hiện Bug trong 30 giây</h2>
+    <p>Trong đề thi COS Pro, câu Debugging <b>chỉ sai đúng 1 hoặc 2 dòng</b>. Hãy quét mắt theo thứ tự 4 điểm nóng:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>1. Quét biến Return & Khởi tạo (5s)</h4>
+        <p class="tiny">Khởi tạo <code>max_val = 0</code> có bị dính bẫy số âm không? Có return nhầm <code>round()</code> thay vì <code>int()</code> không?</p>
+      </div>
+      <div class="card">
+        <h4>2. Quét biểu thức so sánh (5s)</h4>
+        <p class="tiny">Dấu <code>></code> có phải thành <code>>=</code> không? Dấu <code><</code> hay <code><=</code>? Có bị so sánh nhầm <code>is</code> thay vì <code>==</code>?</p>
+      </div>
+      <div class="card">
+        <h4>3. Quét phương thức in-place (10s)</h4>
+        <p class="tiny">Có dòng nào gán kết quả của <code>.sort()</code>, <code>.reverse()</code>, <code>.append()</code> vào biến không?</p>
+      </div>
+      <div class="card">
+        <h4>4. Quét bước nhảy vòng lặp & Index (10s)</h4>
+        <p class="tiny"><code>range(len(arr))</code> có bị lỗi Off-by-one <code>arr[i+1]</code> tràn chỉ số không? Mảng 2 chiều có bị gán <code>matrix[c][r]</code> ngược không?</p>
+      </div>
+    </div>
+
+    <div class="note"><b>Thực chiến:</b> Tìm được dòng nghi vấn, đối chiếu ngay với đề bài và sửa dòng đó. Chạy lại test mẫu, nếu đúng là nộp bài ngay, không đọc lan man toàn bộ mã!</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 12: THỰC HÀNH 3.1 ═══════════════════════════════════════════ -->
+<div class="slide" data-title="Thực hành 3.1: Debugging Arena">
+  <div class="wrap">
+    <h2><span class="k">11</span> Thực hành 3.1 · Đấu trường Debugging 1 dòng</h2>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-tag">Thực hành 3.1</span><span class="ex-title">Sửa lỗi hàm đếm số lần xuất hiện nhiều nhất (Bài 2.05)</span><span class="chip py-gold">4 phút</span></div>
+      <div class="ex-body">
+        <p>Hàm <code>max_frequency</code> dưới đây có đúng 1 lỗi khiến nó không trả về đúng phần tử xuất hiện nhiều nhất. Hãy tìm và sửa lại:</p>
+
+        <div class="py-runner">
+          <div class="py-runner-head">
+            <span class="tiny">Sửa trực tiếp và kiểm tra test cases:</span>
+            <button class="btn cyan btn-run">Chạy code ▶</button>
+          </div>
+          <textarea class="py-editor">
+def max_frequency(arr):
+    if not arr:
+        return None
+    counts = {}
+    for x in arr:
+        counts[x] = counts.get(x, 0) + 1
+    
+    # DÒNG DƯỚI ĐÂY BỊ LỖI: Sắp xếp theo Key thay vì theo Value (tần suất)
+    # Lỗi cũ: best = max(counts.items(), key=lambda x: x[0])[0]
+    best = max(counts.items(), key=lambda x: x[1])[0]
+    return best
+
+# Test thử:
+test_arr = [1, 3, 2, 3, 4, 3, 2]
+print("Phần tử xuất hiện nhiều nhất:", max_frequency(test_arr))
+# Kỳ vọng: 3 (xuất hiện 3 lần)
+</textarea>
+          <div class="py-console-head">Console Output</div>
+          <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 13: QUIZ BẪY TỬ THẦN ════════════════════════════════════════ -->
+<div class="slide" data-part="Tổng kết & Đánh giá" data-title="Quiz phản xạ 50 Bẫy">
+  <div class="wrap">
+    <h2><span class="k">12</span> Đấu trường Quiz: Kiểm tra phản xạ 50 Bẫy</h2>
+
+    <div class="grid-2">
+      <div class="quiz">
+        <div class="quiz-q">1. Kết quả của biểu thức <code>all([])</code> và <code>any([])</code> là gì?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sai. all([]) trong Python là True theo nguyên lý Vacuous Truth (chân lý rỗng).">A. False và False</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! all([]) trả về True vì không có phần tử nào là Falsy; any([]) trả về False.">B. True và False</button>
+          <button class="opt" data-k="C" data-why="Sai.">C. True và True</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">2. Cho <code>a = [3, 2, 1]</code>. Giá trị của <code>b = a.sort()</code> là gì?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sai. a.sort() sắp xếp tại chỗ và trả về None.">A. [1, 2, 3]</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Đúng! Phương thức sort() của list luôn trả về None.">B. None</button>
+          <button class="opt" data-k="C" data-why="Sai.">C. [3, 2, 1]</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">3. Khi duyệt danh sách <code>for x in lst:</code>, nếu ta gọi <code>lst.remove(x)</code> thì điều gì xảy ra?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Python không ném lỗi ConcurrentModificationException như Java.">A. Báo lỗi Runtime Error</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Chỉ số bị trượt khiến vòng lặp nhảy cóc qua phần tử kế tiếp.">B. Bỏ sót phần tử do chỉ số trượt</button>
+          <button class="opt" data-k="C" data-why="Sai. Không xóa sạch được.">C. Xóa sạch mọi phần tử</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">4. Để lấy 3 phần tử lớn nhất của mảng 1 triệu phần tử nhanh nhất, ta dùng gì?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="sorted(arr) mất O(N log N) để sắp xếp toàn bộ 1 triệu số.">A. sorted(arr)[-3:]</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Đúng! heapq.nlargest(3, arr) chỉ duy trì min-heap kích thước 3, độ phức tạp O(N log 3) cực nhanh.">B. heapq.nlargest(3, arr)</button>
+          <button class="opt" data-k="C" data-why="Sai.">C. arr.sort()</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 14: TỔNG KẾT PHASE 3 ═════════════════════════════════════════ -->
+<div class="slide" data-title="Tổng kết Phase 3">
+  <div class="wrap">
+    <h2><span class="k">13</span> Tổng kết Phase 3 & Kế hoạch luyện bẫy</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h4 class="py-blue">Vũ khí thư viện chuẩn</h4>
+        <p class="tiny">Dùng <code>Counter</code> đếm nhanh, <code>deque</code> chống TLE cho queue, <code>heapq</code> xử lý bài toán Top-K và Min/Max.</p>
+      </div>
+      <div class="card">
+        <h4 class="rose">Tránh 50 Bẫy tử thần</h4>
+        <p class="tiny">Không sửa mảng khi đang lặp. Không gán biến bằng hàm in-place. Dùng <code>==</code> thay vì <code>is</code>.</p>
+      </div>
+      <div class="card">
+        <h4 class="green">Phản xạ Debugging 30s</h4>
+        <p class="tiny">Quét biến return -> so sánh logic -> in-place method -> tràn index. Sửa đúng 1 dòng là ghi trọn 280 điểm.</p>
+      </div>
+    </div>
+
+    <div class="start" style="margin-top:0.8rem">
+      <h4>Nhiệm vụ phòng thi:</h4>
+      <p class="tiny">Mở file <code>BAY_PYTHON.md</code> đọc lại 50 bẫy. Sau đó hoàn thành trọn vẹn <b>Nhóm 2</b> và <b>Nhóm 5</b>:</p>
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Terminal</span></div>
+<pre class="code" data-lang="bash">cd D:\02_Learning_Knowledge\Python_Master\python-master-bang-b
+py cham_diem.py 2
+py cham_diem.py 5</pre>
+    </div>
+
+    <div class="row" style="justify-content:space-between; margin-top:0.8rem">
+      <a class="btn" href="deck2_structures.html">← Về Phase 2</a>
+      <a class="btn cyan" href="deck4_algorithms.html">Tiến vào Phase 4: 11 Thuật toán kinh điển (≤15 dòng) →</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="assets/vendor/skulpt.min.js"></script>
+<script src="assets/vendor/skulpt-stdlib.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/python_lab.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 5 · Chiến Thuật Phòng Thi & Đề Mẫu · Python Master</title>
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body data-deck="deck5">
+<div class="deck">
+
+<!-- ══ SLIDE 1: HERO COVER ═══════════════════════════════════════════════ -->
+<div class="slide" data-part="Mở đầu" data-title="Phase 5 — Chiến thuật phòng thi & Đề mẫu">
+  <div class="wrap hero">
+    <div class="orb">🏆</div>
+    <h1 style="background: linear-gradient(105deg, var(--green), var(--py-gold) 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Phase 5 · Chiến Thuật Phòng Thi & Đề Mẫu 27/08</h1>
+    <p class="lead" style="max-width:700px">Kiểm soát thời gian, bảo toàn tâm lý, áp dụng triệt để checklist 30 giây chống bẫy và quy tắc bỏ câu để chắc chắn đạt chứng chỉ COS Pro ≥600/1000 và bứt phá vào Chung kết.</p>
+    <div class="row" style="justify-content:center; gap:0.6rem">
+      <span class="chip green">~45 phút</span>
+      <span class="chip py-blue">Chiến thuật 50p & 90p</span>
+      <span class="chip rose">Quy tắc Hard Stop</span>
+      <span class="chip py-gold">Checklist 30 giây chống bẫy</span>
+    </div>
+    <p class="kbd-hint">Dùng phím <kbd>→</kbd> hoặc <kbd>Space</kbd> để đi tiếp · <kbd>O</kbd> mục lục · <kbd>/</kbd> tìm kiếm · <kbd>?</kbd> phím tắt</p>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2: CƠ CẤU ĐIỂM SỐ & THỨ TỰ LÀM BÀI ═════════════════════════ -->
+<div class="slide" data-title="Cơ cấu điểm & Thứ tự tối ưu">
+  <div class="wrap">
+    <h2><span class="k">01</span> Cơ cấu điểm số & Thứ tự làm bài tối ưu</h2>
+    <p>Chiến lược cốt lõi: <b>Đọc hiểu là mỏ điểm lớn nhất và dễ nhất -> Ăn trọn 440đ đầu tiên!</b></p>
+
+    <div class="grid-2">
+      <div class="card" style="border-color:var(--cyan)">
+        <div class="row" style="justify-content:space-between"><span class="chip cyan">Vòng Loại (Level 2)</span><span class="tiny">50 phút / 10 câu</span></div>
+        <div style="margin:0.8rem 0; display:grid; gap:0.4rem; font-size:0.9rem">
+          <div class="row" style="justify-content:space-between"><span>1. Đọc hiểu code:</span><b class="cyan">440 điểm</b></div>
+          <div class="row" style="justify-content:space-between"><span>2. Debugging (sửa 1 dòng):</span><b class="amber">280 điểm</b></div>
+          <div class="row" style="justify-content:space-between"><span>3. Design (viết mới):</span><b>280 điểm</b></div>
+        </div>
+        <p class="tiny green"><b>Chiến lược:</b> Đọc hiểu (15p) -> Debugging (15p) = <b>720 điểm (ĐỖ CHỨNG CHỈ NGAY)</b> -> Dồn 15p cho Design!</p>
+      </div>
+
+      <div class="card" style="border-color:var(--violet)">
+        <div class="row" style="justify-content:space-between"><span class="chip violet">Chung Kết (Level 1)</span><span class="tiny">90 phút / 10 câu</span></div>
+        <div style="margin:0.8rem 0; display:grid; gap:0.4rem; font-size:0.9rem">
+          <div class="row" style="justify-content:space-between"><span>1. Design (Thuật toán/OOP):</span><b class="rose">420 điểm</b></div>
+          <div class="row" style="justify-content:space-between"><span>2. Đọc hiểu code:</span><b class="cyan">340 điểm</b></div>
+          <div class="row" style="justify-content:space-between"><span>3. Debugging nâng cao:</span><b class="amber">240 điểm</b></div>
+        </div>
+        <p class="tiny green"><b>Chiến lược:</b> Giải quyết Đọc hiểu + Debug trong 40p đầu -> <b>580 điểm an toàn</b>, sau đó dồn 45p bứt phá 420đ Design!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3: PHÂN BỔ THỜI GIAN 50 PHÚT ═════════════════════════════════ -->
+<div class="slide" data-part="Phần 1 · Kiểm Soát Thời Gian" data-title="Phân bổ thời gian 50 phút">
+  <div class="wrap">
+    <h2><span class="k">02</span> Lộ trình 50 phút Vòng Loại theo từng phút</h2>
+
+    <div style="overflow-x:auto">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Mốc thời gian</th>
+            <th>Tác vụ trọng tâm</th>
+            <th>Lũy kế điểm số</th>
+            <th>Hành động bắt buộc</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Phút 00 – 02</b></td>
+            <td>Lướt quét toàn bộ 10 câu</td>
+            <td>0đ</td>
+            <td>Phân loại ngay câu Đọc hiểu, Debug, Design. Không đọc chi tiết logic.</td>
+          </tr>
+          <tr>
+            <td><b>Phút 02 – 15</b></td>
+            <td><b>Giai đoạn 1: Đọc hiểu code</b></td>
+            <td><b class="cyan">440đ</b></td>
+            <td>Tối đa <b>2.5 - 3 phút/câu</b>. Đọc biến return trước để hiểu ý đồ hàm.</td>
+          </tr>
+          <tr>
+            <td><b>Phút 15 – 30</b></td>
+            <td><b>Giai đoạn 2: Debugging</b></td>
+            <td><b class="amber">+280đ (720đ)</b></td>
+            <td>Tối đa <b>4 - 5 phút/câu</b>. Đối chiếu 50 bẫy. Đạt mốc này là CHẮC CHẮN ĐẬU.</td>
+          </tr>
+          <tr>
+            <td><b>Phút 30 – 45</b></td>
+            <td><b>Giai đoạn 3: Design</b></td>
+            <td><b class="green">+280đ (1000đ)</b></td>
+            <td>Khoảng <b>7 - 8 phút/câu</b>. Áp dụng các mẫu code đã học, viết đúng trước tối ưu sau.</td>
+          </tr>
+          <tr>
+            <td><b>Phút 45 – 50</b></td>
+            <td>Rà soát tổng lực & Nộp bài</td>
+            <td>Bảo toàn 1000đ</td>
+            <td>Chạy lại test mẫu, xóa lệnh <code>print</code> debug thừa, kiểm tra kiểu dữ liệu return.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4: QUY TẮC BỎ CÂU (HARD STOP) ════════════════════════════════ -->
+<div class="slide" data-title="Quy tắc bỏ câu (Hard Stop)">
+  <div class="wrap">
+    <h2><span class="k">03</span> Quy tắc bỏ câu bảo toàn tâm lý (Hard Stop Rules)</h2>
+    <p>Rất nhiều thí sinh trượt chứng chỉ không phải vì thiếu kiến thức mà vì "ôm" một câu khó quá lâu.</p>
+
+    <div class="grid-2">
+      <div class="card bad">
+        <h4 class="rose">Quy định dừng cứng (Hard Stop)</h4>
+        <ul style="padding-left:1.2rem; display:grid; gap:0.4rem; font-size:0.9rem">
+          <li><b>Vòng loại (50 phút):</b> Quá <b>5 phút</b> ở câu Đọc hiểu/Debug hoặc quá <b>7 phút</b> ở câu Design mà chưa ra hướng giải -> <b>DỪNG LẠI NGAY LẬP TỨC VÀ BỎ QUA!</b></li>
+          <li><b>Chung kết (90 phút):</b> Quá <b>8 phút</b> ở câu Debug hoặc quá <b>12 phút</b> ở câu Design bế tắc -> <b>GHI CHÚ VÀ CHUYỂN CÂU.</b></li>
+        </ul>
+      </div>
+
+      <div class="card good">
+        <h4 class="green">Quy trình bỏ câu chuẩn xác</h4>
+        <ol style="padding-left:1.2rem; display:grid; gap:0.4rem; font-size:0.88rem">
+          <li><b>Đảm bảo code không lỗi cú pháp:</b> Giữ code có thể chạy được (không để dang dở <code>SyntaxError</code>).</li>
+          <li><b>Ghi nhanh 1 dòng nháp:</b> Viết mã câu và ý tưởng nghi vấn (VD: <i>Câu 6: nghi ngờ bẫy index mảng</i>).</li>
+          <li><b>Chuyển hẳn tâm trí:</b> Không nghĩ về câu vừa bỏ.</li>
+          <li><b>Quay lại khi đã xong hết:</b> Chỉ quay lại khi đã cầm chắc điểm qua môn (≥600đ). Lúc này tâm lý cực kỳ thoải mái!</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5: 5 PHẦN CỐ ĐỊNH CỦA ĐỀ THI ═════════════════════════════════ -->
+<div class="slide" data-part="Phần 2 · Giải Mã Đề Mẫu Chính Thức" data-title="Cấu trúc chuẩn đề thi COS Pro">
+  <div class="wrap">
+    <h2><span class="k">04</span> 5 phần cố định của đề thi & Tên hàm 'solution'</h2>
+    <p>Mọi câu hỏi trong đề thi COS Pro chuẩn đều tuân theo đúng <b>5 phần cấu trúc cố định</b>:</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4>1. Mô tả đề bài</h4>
+        <p class="tiny">Bối cảnh nghiệp vụ thực tế (bán hàng, tính cước phí xe buýt, xếp thứ tự thi đấu).</p>
+      </div>
+      <div class="card">
+        <h4>2. Giải thích tham số</h4>
+        <p class="tiny">Miền giá trị và ràng buộc kích thước N. Đọc kỹ để biết có số âm hay chuỗi rỗng không.</p>
+      </div>
+      <div class="card">
+        <h4>3. Giải thích giá trị return</h4>
+        <p class="tiny"><b>NƠI CHỨA 80% CÁC BẪY:</b> "Chỉ lấy phần nguyên", "trả về danh sách rỗng nếu không tìm thấy".</p>
+      </div>
+      <div class="card">
+        <h4>4. Bảng ví dụ</h4>
+        <p class="tiny">Các cặp Input -> Output mẫu để ta đối chiếu trực tiếp khi chạy thử.</p>
+      </div>
+      <div class="card">
+        <h4>5. Giải thích ví dụ</h4>
+        <p class="tiny">Diễn giải từng bước tính toán tại sao Input ra được Output như vậy.</p>
+      </div>
+      <div class="card good">
+        <h4 class="green">Tên hàm luôn là 'solution'</h4>
+        <p class="tiny">Tuyệt đối không đặt tên tiếng Việt. Luôn định nghĩa <code>def solution(arg1, arg2, ...):</code> theo đúng đề.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6: MỔ XẺ ĐỀ MẪU 27/08 ═══════════════════════════════════════ -->
+<div class="slide" data-title="Mổ xẻ Đề mẫu chính thức 27/08">
+  <div class="wrap">
+    <h2><span class="k">05</span> Mổ xẻ Đề mẫu chính thức 27/08 (Điểm chuẩn)</h2>
+    <p>Đề mẫu chính thức 27/08 gồm 10 câu tiêu chuẩn. Dưới đây là phân tích chi tiết các câu then chốt:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Câu 1: Điền khuyết tính tiền cước</h4>
+        <p class="tiny"><b>Dạng bài:</b> Đọc hiểu (100đ). Cần điền điều kiện tính giảm giá theo bậc thang.</p>
+        <p class="tiny green"><b>Bẫy:</b> Cần chú ý dấu <code>>=</code> thay vì <code>></code> khi đề bảo "từ 10 món trở lên".</p>
+      </div>
+
+      <div class="card">
+        <h4>Câu 3: Debugging điểm trung bình</h4>
+        <p class="tiny"><b>Dạng bài:</b> Debug (100đ). Đề bài: "Nếu điểm trung bình là số lẻ, chỉ lấy phần nguyên".</p>
+        <p class="tiny rose"><b>Bẫy:</b> Code đề cho <code>return round(s / n)</code>. Sửa thành <code>return s // n</code>!</p>
+      </div>
+
+      <div class="card">
+        <h4>Câu 5: Design đếm số ký tự hoa/thường</h4>
+        <p class="tiny"><b>Dạng bài:</b> Design (100đ). Viết hàm đếm ký tự hoa và thường trong chuỗi.</p>
+        <p class="tiny cyan"><b>Giải pháp:</b> Dùng <code>c.isupper()</code> và <code>c.islower()</code>.</p>
+      </div>
+
+      <div class="card">
+        <h4>Câu 9: Design Mảng 2D xoay vòng</h4>
+        <p class="tiny"><b>Dạng bài:</b> Design Level 2 (100đ). Xoay các phần tử biên của ma trận.</p>
+        <p class="tiny amber"><b>Giải pháp:</b> Lưu góc đầu tiên vào biến tạm rồi dịch chuyển tuần tự 4 cạnh.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7: CHECKLIST ĐỌC ĐỀ 30 GIÂY ═════════════════════════════════ -->
+<div class="slide" data-part="Phần 3 · Checklist Thực Chiến" data-title="Checklist đọc đề 30 giây">
+  <div class="wrap">
+    <h2><span class="k">06</span> Checklist đọc đề 30 giây — Chống dính bẫy</h2>
+    <p>Trước khi gõ bất kỳ dòng code nào, hãy quét đề bài trong đúng 30 giây theo 5 tiêu chí sau:</p>
+
+    <div class="card">
+      <ul style="padding-left:1.2rem; display:grid; gap:0.6rem; font-size:0.92rem">
+        <li><b>1. Kiểu dữ liệu Return (Return Type):</b> Yêu cầu <code>int</code>, <code>float</code>, <code>str</code> hay <code>list</code>? Có câu "chỉ lấy phần nguyên" không (dùng <code>int()</code> / <code>//</code>)? Khi không thấy kết quả trả về <code>[]</code> hay <code>None</code> hay <code>-1</code>?</li>
+        <li><b>2. Ràng buộc kích thước N (Constraints):</b> N ≤ 100 (O(N²)), N ≤ 10⁵ (O(N) hoặc O(N log N)), N ≥ 10⁹ (O(log N))?</li>
+        <li><b>3. Tính chất dữ liệu đầu vào:</b> Có <b>số âm</b> không (khởi tạo max bằng <code>-inf</code> hoặc <code>arr[0]</code>, cấm gán bằng 0)? Có giá trị trùng nhau không? Mảng đã được sắp xếp sẵn chưa?</li>
+        <li><b>4. Sửa mảng gốc hay tạo mảng mới:</b> Đề yêu cầu in-place hay trả về bản sao? Nếu trả về bản sao, tuyệt đối không dùng <code>.sort()</code> trên mảng đầu vào.</li>
+        <li><b>5. Từ khóa nhạy cảm:</b> "Từ X trở lên" (<code>>=</code>) vs "Nhiều hơn X" (<code>></code>). "Phần tử phân biệt" (bắt buộc dùng <code>set()</code>).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 8: CHECKLIST 7 PHÚT CUỐI GIỜ ════════════════════════════════ -->
+<div class="slide" data-title="Checklist 7 phút cuối giờ">
+  <div class="wrap">
+    <h2><span class="k">07</span> Checklist 7 phút cuối giờ — Bảo toàn điểm số</h2>
+    <p>Khi đồng hồ điểm còn 7 phút, ngừng viết tính năng mới và thực hiện đúng 4 bước kiểm tra:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>1. Xóa sạch mọi lệnh print debug</h4>
+        <p class="tiny">Lệnh <code>print()</code> debug trong vòng lặp lớn có thể làm chương trình chạy chậm gấp 10 lần và dính lỗi Time Limit Exceeded (TLE)! Hãy xóa hoặc comment lại toàn bộ <code>print()</code>.</p>
+      </div>
+
+      <div class="card">
+        <h4>2. Chạy lại toàn bộ Test mẫu</h4>
+        <p class="tiny">Bấm chạy thử lại tất cả 10 câu để đảm bảo không câu nào bị lỗi cú pháp vô tình (ví dụ: gõ nhầm một ký tự lạ khi đang cuộn chuột).</p>
+      </div>
+
+      <div class="card">
+        <h4>3. Kiểm tra các Test biên (Edge Cases)</h4>
+        <p class="tiny">Tự nhẩm nhanh trong đầu: Nếu danh sách truyền vào là rỗng <code>[]</code>, số âm <code>-5</code>, hoặc mảng chỉ có 1 phần tử thì code của bạn có bị sập vì <code>IndexError</code> hay <code>ZeroDivisionError</code> không?</p>
+      </div>
+
+      <div class="card good">
+        <h4>4. Xác nhận đã lưu & Nộp bài</h4>
+        <p class="tiny">Bấm nút Lưu / Nộp bài của hệ thống thi và quan sát thông báo xác nhận thành công trước khi hết giờ.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 9: QUIZ TÌNH HUỐNG PHÒNG THI ════════════════════════════════ -->
+<div class="slide" data-part="Tổng kết & Đánh giá" data-title="Quiz tình huống phòng thi">
+  <div class="wrap">
+    <h2><span class="k">08</span> Đấu trường Quiz: Xử lý tình huống phòng thi</h2>
+
+    <div class="grid-2">
+      <div class="quiz">
+        <div class="quiz-q">1. Ở phút thứ 10 của kỳ thi Vòng loại (50p), bạn gặp 1 câu Đọc hiểu khó và đã nghĩ 4 phút chưa ra. Bạn nên làm gì?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Ngồi ôm tiếp sẽ làm cháy giáo án các câu dễ phía sau, dẫn đến trượt vì thiếu thời gian.">A. Ngồi nghĩ tiếp cho bằng ra</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Áp dụng quy tắc Hard Stop: quá 5 phút lập tức bỏ qua làm câu khác, cuối giờ quay lại.">B. Bỏ qua ngay lập tức, chuyển sang câu kế tiếp</button>
+          <button class="opt" data-k="C" data-why="Nộp bài sớm khi chưa làm hết các câu khác là tự bỏ cuộc.">C. Nộp bài sớm</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">2. Trong câu Design, đề bài yêu cầu tìm giá trị lớn nhất trong mảng có thể chứa cả số âm. Cách khởi tạo nào chuẩn nhất?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Nếu mảng toàn số âm [-5, -2, -9], max_val = 0 sẽ cho kết quả sai là 0!">A. max_val = 0</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Khởi tạo bằng arr[0] hoặc float('-inf') đảm bảo luôn đúng với mọi miền giá trị.">B. max_val = arr[0] hoặc float('-inf')</button>
+          <button class="opt" data-k="C" data-why="max_val = -1 vẫn dính lỗi nếu mảng là [-5, -10].">C. max_val = -1</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">3. Đề bài: 'Trả về giá trị lớn thứ hai trong mảng'. Khi mảng là [5, 5, 5], hàm nên trả về gì?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="5 chỉ là giá trị duy nhất, không có giá trị lớn thứ hai.">A. 5</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Đúng! Khi số phần tử phân biệt len(set(arr)) < 2 thì không tồn tại max thứ hai, trả về None theo quy ước đề.">B. None</button>
+          <button class="opt" data-k="C" data-why="Sai.">C. 0</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">4. Để đạt chứng chỉ COS Pro Level 2, điểm tối thiểu bạn cần đạt được là bao nhiêu?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="500 là chưa đủ điểm đạt chứng chỉ.">A. 500 / 1000</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Đạt >= 600/1000 điểm là bạn đã nhận được chứng chỉ COS Pro chính thức!"><B>B. 600 / 1000</button>
+          <button class="opt" data-k="C" data-why="800 là điểm xuất sắc để vào vòng chung kết nhưng ngưỡng đỗ là 600.">C. 800 / 1000</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 10: TỔNG KẾT & BƯỚC TIẾP THEO ════════════════════════════════ -->
+<div class="slide" data-title="Tổng kết & Sẵn sàng chiến đấu">
+  <div class="wrap">
+    <h2><span class="k">09</span> Bạn đã sẵn sàng trở thành Python Master!</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h4 class="py-blue">Nền tảng & Cú pháp</h4>
+        <p class="tiny">Phản xạ gõ code chuẩn xác, làm chủ chuỗi, mảng và chân trị trong 90 giây/bài.</p>
+      </div>
+      <div class="card">
+        <h4 class="rose">Bẫy & Debugging</h4>
+        <p class="tiny">Phát hiện và tiêu diệt mọi bẫy COS Pro trong 30 giây, bỏ túi trọn vẹn 280đ / 240đ.</p>
+      </div>
+      <div class="card">
+        <h4 class="green">Chiến thuật phòng thi</h4>
+        <p class="tiny">Kỷ luật thời gian, bảo toàn tâm lý, áp dụng triệt để checklist chống bẫy để đạt kết quả cao nhất.</p>
+      </div>
+    </div>
+
+    <div class="start" style="margin-top:0.8rem; text-align:center">
+      <h3>Bước tiếp theo: Tiến vào Phòng Luyện Tập Trực Tuyến</h3>
+      <p class="tiny" style="max-width:600px; margin:0 auto">Trực tiếp thực hành giải 90 bài tập, thi thử có đồng hồ bấm giờ và tương tác với các công cụ trực quan hóa thuật toán:</p>
+      <div style="margin-top:0.8rem">
+        <a class="btn cyan" href="practice.html" style="font-size:1.05rem; padding:0.6rem 1.4rem">★ Vào Phòng Luyện Tập & Thử Thách Trực Tuyến →</a>
+      </div>
+    </div>
+
+    <div class="row" style="justify-content:space-between; margin-top:0.8rem">
+      <a class="btn" href="deck4_algorithms.html">← Về Phase 4</a>
+      <a class="btn" href="index.html">⌂ Về Trang chủ</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="assets/vendor/skulpt.min.js"></script>
+<script src="assets/vendor/skulpt-stdlib.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/python_lab.js"></script>
+</body>
+</html>

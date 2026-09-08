@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2 · Ma trận 2D, Cấu trúc dữ liệu & OOP · Python Master</title>
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body data-deck="deck2">
+<div class="deck">
+
+<!-- ══ SLIDE 1: HERO COVER ═══════════════════════════════════════════════ -->
+<div class="slide" data-part="Mở đầu" data-title="Phase 2 — Ma trận, Cấu trúc dữ liệu & OOP">
+  <div class="wrap hero">
+    <div class="orb">🎲</div>
+    <h1 style="background: linear-gradient(105deg, var(--py-gold), var(--rose) 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Phase 2 · Ma Trận 2D, Dict, Set & OOP</h1>
+    <p class="lead" style="max-width:680px">Làm chủ các cấu trúc dữ liệu đa chiều, kỹ thuật bảng băm Hash Table, và tư duy Hướng đối tượng chuẩn quy cách đề thi COS Pro Level 1 (Chung kết).</p>
+    <div class="row" style="justify-content:center; gap:0.6rem">
+      <span class="chip py-gold">~60 phút</span>
+      <span class="chip violet">Cấu trúc dữ liệu</span>
+      <span class="chip rose">Chinh phục Chung kết 420đ Design</span>
+      <span class="chip green">Tích hợp Visualizer Ma trận xoắn ốc</span>
+    </div>
+    <p class="kbd-hint">Dùng phím <kbd>→</kbd> hoặc <kbd>Space</kbd> để đi tiếp · <kbd>O</kbd> mục lục · <kbd>/</kbd> tìm kiếm · <kbd>?</kbd> phím tắt</p>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2: BẢN ĐỒ PHASE 2 ═══════════════════════════════════════════ -->
+<div class="slide" data-title="Bản đồ học tập Phase 2">
+  <div class="wrap">
+    <h2><span class="k">01</span> Bản đồ học tập Phase 2</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>1. Ma trận 2D & Xử lý không gian</h3>
+        <p>Bẫy nhân bản dòng ma trận, duyệt đường chéo, chuyển vị <code>zip(*m)</code>, xoay 90 độ, và duyệt xoắn ốc (Spiral Matrix).</p>
+      </div>
+      <div class="card">
+        <h3>2. Từ điển (Dict) & Tập hợp (Set)</h3>
+        <p>Tra cứu O(1), xử lý an toàn với <code>get()</code> và <code>setdefault()</code>, các phép toán tập hợp Venn, và đếm tần suất.</p>
+      </div>
+      <div class="card">
+        <h3>3. Hàm & Phạm vi biến (Scope)</h3>
+        <p>Bẫy chết người <b>Mutable Default Argument</b> <code>def f(a=[])</code>, đệ quy an toàn, và điều khiển luồng với <code>for...else</code>.</p>
+      </div>
+      <div class="card">
+        <h3>4. Lập trình Hướng đối tượng (OOP)</h3>
+        <p>Quy chuẩn Class trong COS Pro Level 1: <code>__init__</code>, <code>__str__</code>, và nạp chồng toán tử <code>__lt__</code> để tự so sánh.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3: BẪY KHỞI TẠO MA TRẬN ═════════════════════════════════════ -->
+<div class="slide" data-part="Phần 1 · Mảng 2 Chiều & Ma Trận" data-title="Bẫy khởi tạo ma trận 2D">
+  <div class="wrap">
+    <h2><span class="k">02</span> Bẫy tử thần: [[0] * m] * n khi tạo Ma trận</h2>
+    <p>Đây là lỗi sai phổ biến nhất trong đề thi khi thí sinh cần tạo bảng kích thước N hàng × M cột.</p>
+
+    <div class="diff-grid">
+      <div class="diff-bad">
+        <div class="diff-head"><span>✗ Code SAI: [[0] * m] * n</span><span class="chip rose">Nhân bản con trỏ</span></div>
+        <div class="diff-body">
+          <p class="tiny">Phép nhân <code>* n</code> chỉ nhân bản N lần cùng 1 địa chỉ danh sách con:</p>
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">matrix = [[0] * 3] * 3
+matrix[0][0] = 99
+# KẾT QUẢ TAI HỌA: CẢ 3 HÀNG ĐỀU BỊ ĐỔI THÀNH 99!
+# [[99, 0, 0], [99, 0, 0], [99, 0, 0]]</pre>
+        </div>
+      </div>
+
+      <div class="diff-good">
+        <div class="diff-head"><span>✓ Code ĐÚNG: List Comprehension</span><span class="chip green">Tạo mảng con mới</span></div>
+        <div class="diff-body">
+          <p class="tiny">Mỗi vòng lặp tạo ra một danh sách hàng hoàn toàn độc lập trong RAM:</p>
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">matrix = [[0] * 3 for _ in range(3)]
+matrix[0][0] = 99
+# CHUẨN XÁC: Chỉ đúng ô (0, 0) bị thay đổi:
+# [[99, 0, 0], [0, 0, 0], [0, 0, 0]]</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="note"><b>Quy tắc bất di bất dịch:</b> KHÔNG BAO GIỜ dùng toán tử <code>*</code> ngoài cùng để tạo danh sách lồng nhau! Luôn dùng <code>[[0] * m for _ in range(n)]</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4: DUYỆT ĐƯỜNG CHÉO MA TRẬN ═════════════════════════════════ -->
+<div class="slide" data-title="Duyệt hàng, cột và đường chéo">
+  <div class="wrap">
+    <h2><span class="k">03</span> Kỹ thuật duyệt Ma trận: Hàng, Cột & Đường chéo</h2>
+    <p>Với ma trận vuông cấp <code>N × N</code>, tọa độ ô là <code>(r, c)</code> với <code>0 ≤ r, c < N</code>:</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4>1. Duyệt theo cột</h4>
+        <p class="tiny">Cột cố định ở vòng ngoài, hàng chạy ở vòng trong:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">for c in range(m):
+    col_sum = sum(matrix[r][c] for r in range(n))</pre>
+      </div>
+
+      <div class="card">
+        <h4>2. Đường chéo chính</h4>
+        <p class="tiny">Chỉ số hàng bằng chỉ số cột: <code>r == c</code>:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">main_diag = [matrix[i][i] for i in range(n)]</pre>
+      </div>
+
+      <div class="card">
+        <h4>3. Đường chéo phụ</h4>
+        <p class="tiny">Tổng chỉ số bằng <code>N - 1</code>: <code>r + c == N - 1</code>:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">anti_diag = [matrix[i][n - 1 - i] for i in range(n)]</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Ứng dụng cờ vua / Đặt hậu:</b> Hai ô <code>(r1, c1)</code> và <code>(r2, c2)</code> cùng đường chéo khi và chỉ khi <code>abs(r1 - r2) == abs(c1 - c2)</code> hoặc <code>r1 + c1 == r2 + c2</code> và <code>r1 - c1 == r2 - c2</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5: TRANSPOSE & XOAY 90 ĐỘ ═══════════════════════════════════ -->
+<div class="slide" data-title="Chuyển vị & Xoay ma trận 90 độ">
+  <div class="wrap">
+    <h2><span class="k">04</span> Chuyển vị ma trận (Transpose) & Xoay 90 độ</h2>
+    <p>Chuyển vị là biến hàng thành cột: <code>matrix[r][c]</code> đổi thành <code>matrix[c][r]</code>.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Chuyển vị 1 dòng với zip(*matrix)</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">matrix = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+# zip(*matrix) gom các phần tử cùng cột lại:
+transpose = [list(col) for col in zip(*matrix)]
+# [[1, 4], [2, 5], [3, 6]]</pre>
+      </div>
+
+      <div class="card">
+        <h4>Xoay ma trận 90 độ theo chiều kim đồng hồ</h4>
+        <p class="tiny">Công thức: Đảo ngược thứ tự các hàng (lật trên xuống dưới), sau đó Chuyển vị!</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def xoay_90(m):
+    # Lật ngược các hàng rồi chuyển vị:
+    return [list(col) for col in zip(*m[::-1])]
+
+# Xoay ngược chiều kim đồng hồ:
+def xoay_nguoc_90(m):
+    return [list(col) for col in zip(*m)][::-1]</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Thủ thuật:</b> Chỉ cần nhớ 1 công thức <code>[list(col) for col in zip(*m[::-1])]</code> là bạn giải quyết mọi bài xoay hình ảnh hoặc xoay bảng cờ 90° trong 10 giây!</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6: MA TRẬN XOẮN ỐC (SPIRAL MATRIX) ═════════════════════════ -->
+<div class="slide" data-title="Ma trận xoắn ốc (Spiral Matrix)">
+  <div class="wrap">
+    <h2><span class="k">05</span> Ma trận xoắn ốc: Kỹ thuật 4 con trỏ biên</h2>
+    <p>Bài toán kinh điển đề thi COS Pro Chung kết: Điền số từ 1 đến N² vào ma trận theo hình xoắn ốc theo chiều kim đồng hồ.</p>
+
+    <div id="spiral-vis-box" class="vis-container"></div>
+
+    <div class="note"><b>Nguyên lý 4 con trỏ biên:</b> Duyệt qua phải (hàng <code>top</code>), tăng <code>top++</code>. Duyệt xuống dưới (cột <code>right</code>), giảm <code>right--</code>. Duyệt sang trái (hàng <code>bottom</code>), giảm <code>bottom--</code>. Duyệt lên trên (cột <code>left</code>), tăng <code>left++</code>. Lặp lại khi <code>top <= bottom</code> và <code>left <= right</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7: THỰC HÀNH 2.1 ════════════════════════════════════════════ -->
+<div class="slide" data-title="Thực hành 2.1">
+  <div class="wrap">
+    <h2><span class="k">06</span> Thực hành 2.1 · Tạo ma trận xoắn ốc N×N</h2>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-tag">Thực hành 2.1</span><span class="ex-title">Viết hàm tạo Spiral Matrix chuẩn xác</span><span class="chip py-gold">6 phút</span></div>
+      <div class="ex-body">
+        <p>Cho số nguyên dương <code>n</code>. Hãy tạo và trả về ma trận xoắn ốc kích thước <code>n × n</code> chứa các số từ <code>1</code> đến <code>n²</code>.</p>
+
+        <div class="py-runner">
+          <div class="py-runner-head">
+            <span class="tiny">Chạy thử code giải ma trận xoắn ốc:</span>
+            <button class="btn cyan btn-run">Chạy code ▶</button>
+          </div>
+          <textarea class="py-editor">
+def tao_ma_tran_xoan_oc(n):
+    res = [[0] * n for _ in range(n)]
+    top, bottom, left, right = 0, n - 1, 0, n - 1
+    num = 1
+    
+    while top <= bottom and left <= right:
+        for c in range(left, right + 1):
+            res[top][c] = num; num += 1
+        top += 1
+        
+        for r in range(top, bottom + 1):
+            res[r][right] = num; num += 1
+        right -= 1
+        
+        if top <= bottom:
+            for c in range(right, left - 1, -1):
+                res[bottom][c] = num; num += 1
+            bottom -= 1
+            
+        if left <= right:
+            for r in range(bottom, top - 1, -1):
+                res[r][left] = num; num += 1
+            left += 1
+            
+    return res
+
+grid = tao_ma_tran_xoan_oc(3)
+for row in grid:
+    print(row)
+# Kỳ vọng:
+# [1, 2, 3]
+# [8, 9, 4]
+# [7, 6, 5]
+</textarea>
+          <div class="py-console-head">Console Output</div>
+          <div class="py-out">Nhấn 'Chạy code ▶' để xem ma trận được sinh ra...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 8: TỪ ĐIỂN (DICT) & HASH TABLE ═══════════════════════════════ -->
+<div class="slide" data-part="Phần 2 · Dict & Set" data-title="Từ điển (Dict) & get/setdefault">
+  <div class="wrap">
+    <h2><span class="k">07</span> Từ điển (Dict): Tra cứu O(1) & get vs setdefault</h2>
+    <p>Dictionary trong Python là bảng băm (Hash Table) với tốc độ thêm, xóa, kiểm tra <code>k in d</code> chỉ mất <b>O(1)</b> thời gian.</p>
+
+    <div class="grid-2">
+      <div class="card bad">
+        <h4 class="rose">✗ Lỗi KeyError khi truy cập trực tiếp</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">counts = {}
+# counts["apple"] += 1 
+# SẬP CHƯƠNG TRÌNH: KeyError: 'apple'</pre>
+      </div>
+
+      <div class="card good">
+        <h4 class="green">✓ Xử lý an toàn: get() & setdefault()</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">counts = {}
+# get(key, default): nếu chưa có thì trả về 0
+counts["apple"] = counts.get("apple", 0) + 1
+
+# setdefault(key, default): tự tạo list rỗng nếu chưa có
+nhom = {}
+nhom.setdefault("lop_A", []).append("Nam")</pre>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:0.6rem">
+      <h4>Sắp xếp Dictionary theo Giá trị (Value)</h4>
+      <p class="tiny">Muốn tìm top phần tử xuất hiện nhiều nhất không cần import thư viện ngoài:</p>
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">freq = {"a": 5, "b": 12, "c": 2}
+# Sắp xếp giảm dần theo số lần xuất hiện:
+sorted_freq = sorted(freq.items(), key=lambda item: item[1], reverse=True)
+# [('b', 12), ('a', 5), ('c', 2)]</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 9: TẬP HỢP (SET) ═════════════════════════════════════════════ -->
+<div class="slide" data-title="Tập hợp (Set) & Phép toán Venn">
+  <div class="wrap">
+    <h2><span class="k">08</span> Tập hợp (Set) & Tối ưu tìm kiếm O(1)</h2>
+    <p>Set chỉ lưu các phần tử <b>duy nhất</b> (không trùng lặp) và phần tử phải là <b>Hashable</b> (bất biến: int, str, tuple; cấm list, dict).</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Các phép toán tập hợp cực nhanh</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+
+A | B   # Hợp (Union): {1, 2, 3, 4, 5, 6}
+A & B   # Giao (Intersection): {3, 4}
+A - B   # Hiệu (Difference - có trong A mà ko có B): {1, 2}
+A ^ B   # Hiệu đối xứng (có trong 1 trong 2): {1, 2, 5, 6}</pre>
+      </div>
+
+      <div class="card">
+        <h4>Tối ưu hóa từ O(N) sang O(1)</h4>
+        <p class="tiny">Kiểm tra <code>x in list</code> mất O(N), nhưng <code>x in set</code> chỉ mất O(1):</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python"># Nếu danh sách cấm có 100,000 từ:
+tu_cam_set = set(danh_sach_cam) # Tiền xử lý O(N)
+for tu in van_ban:
+    if tu in tu_cam_set: # O(1) mỗi lần kiểm tra!
+        print("Phát hiện từ cấm!")</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Bẫy khởi tạo Set rỗng:</b> Viết <code>s = {}</code> là tạo <b>Dictionary</b> rỗng! Muốn tạo Set rỗng bắt buộc phải viết <code>s = set()</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 10: TUPLE & UNPACKING ═══════════════════════════════════════ -->
+<div class="slide" data-part="Phần 3 · Cú pháp nâng cao" data-title="Tuple & Kỹ thuật Unpacking">
+  <div class="wrap">
+    <h2><span class="k">09</span> Tuple, Unpacking với dấu * & Tráo đổi biến</h2>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4>1. Tuple làm Key cho Dict</h4>
+        <p class="tiny">List không thể làm key của Dict, nhưng Tuple thì được:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python"># Tọa độ ô cờ (r, c)
+board = {}
+board[(0, 1)] = "QUÂN HẬU"
+# Tuple 1 phần tử phải có dấu phẩy:
+t = (5,) # Không có phẩy là int</pre>
+      </div>
+
+      <div class="card">
+        <h4>2. Kỹ thuật Unpacking dấu sao *</h4>
+        <p class="tiny">Tách lấy phần tử đầu, giữa và cuối:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">first, *mid, last = [1, 2, 3, 4, 5]
+# first = 1
+# mid = [2, 3, 4]
+# last = 5</pre>
+      </div>
+
+      <div class="card">
+        <h4>3. Tráo đổi biến song song</h4>
+        <p class="tiny">Không cần biến tạm <code>temp</code>:</p>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">a, b = b, a
+
+# Tính dãy Fibonacci trong 1 dòng:
+a, b = b, a + b</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 11: FOR...ELSE ══════════════════════════════════════════════ -->
+<div class="slide" data-title="Vòng lặp for...else">
+  <div class="wrap">
+    <h2><span class="k">10</span> Điều khiển luồng: Vòng lặp for...else kỳ diệu</h2>
+    <p>Trong Python, vòng lặp <code>for</code> và <code>while</code> có thể đi kèm một khối <code>else</code>. Khối <code>else</code> chỉ chạy khi vòng lặp <b>hoàn thành tự nhiên mà KHÔNG bị lệnh break ngắt!</b></p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Cách truyền thống (Dùng cờ hiệu flag)</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">found = False
+for x in arr:
+    if x == target:
+        found = True
+        break
+if not found:
+    print("Không tìm thấy")</pre>
+      </div>
+
+      <div class="card good">
+        <h4>Cách Pythonic với for...else</h4>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">for x in arr:
+    if x == target:
+        print("Tìm thấy!")
+        break
+else:
+    # Chỉ chạy khi vòng lặp duyệt hết mà không break
+    print("Không tìm thấy")</pre>
+      </div>
+    </div>
+
+    <div class="note"><b>Ứng dụng kiểm tra số nguyên tố:</b> Duyệt <code>for i in range(2, int(n**0.5) + 1): if n % i == 0: return False</code> rồi đặt <code>return True</code> ở khối <code>else</code>!</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 12: BẪY MUTABLE DEFAULT ARGUMENT ════════════════════════════ -->
+<div class="slide" data-part="Phần 4 · Hàm & OOP" data-title="Bẫy Mutable Default Argument">
+  <div class="wrap">
+    <h2><span class="k">11</span> Bẫy tử thần: Tham số mặc định là Mutable (def f(arr=[]))</h2>
+    <p>Trong Python, giá trị mặc định của hàm được khởi tạo <b>đúng 1 lần duy nhất khi hàm được định nghĩa</b>, chứ không phải mỗi lần hàm được gọi!</p>
+
+    <div class="diff-grid">
+      <div class="diff-bad">
+        <div class="diff-head"><span>✗ Code SAI: def f(x, arr=[])</span><span class="chip rose">Dữ liệu bị lưu tích lũy</span></div>
+        <div class="diff-body">
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def them(x, arr=[]):
+    arr.append(x)
+    return arr
+
+print(them(1)) # [1]
+print(them(2)) # [1, 2] (BỊ DÍNH LẠI DỮ LIỆU CŨ!)</pre>
+        </div>
+      </div>
+
+      <div class="diff-good">
+        <div class="diff-head"><span>✓ Code ĐÚNG: Gán mặc định None</span><span class="chip green">Tạo mới mỗi lần gọi</span></div>
+        <div class="diff-body">
+          <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def them(x, arr=None):
+    if arr is None:
+        arr = [] # Tạo mảng mới tinh trong hàm
+    arr.append(x)
+    return arr
+
+print(them(1)) # [1]
+print(them(2)) # [2] (Độc lập 100%)</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="note"><b>Quy tắc vàng:</b> Tuyệt đối không bao giờ dùng <code>list</code>, <code>dict</code>, hoặc <code>set</code> làm tham số mặc định của hàm. Luôn đặt <code>= None</code> và kiểm tra <code>if param is None: param = []</code>.</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 13: OOP CHO COS PRO LEVEL 1 ═════════════════════════════════ -->
+<div class="slide" data-title="OOP cho COS Pro Level 1">
+  <div class="wrap">
+    <h2><span class="k">12</span> OOP cho COS Pro Level 1 (Chung kết)</h2>
+    <p>Đề thi Chung kết Level 1 thường yêu cầu bạn hoàn thiện hoặc viết một <code>class</code> để mô phỏng nghiệp vụ (quản lý kho, giỏ hàng, thẻ ngân hàng, game thẻ bài).</p>
+
+    <div class="card">
+      <h4>Bộ khung Class tiêu chuẩn trong đề thi</h4>
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">class SinhVien:
+    def __init__(self, mssv, ten, diem):
+        self.mssv = mssv
+        self.ten = ten
+        self.diem = diem
+        
+    def __str__(self):
+        # Trả về chuỗi khi gọi print(obj)
+        return f"{self.mssv} - {self.ten}: {self.diem}đ"
+        
+    def __lt__(self, other):
+        # Less Than: Cho phép dùng obj1 < obj2 hoặc arr.sort() tự động!
+        # Xếp theo điểm giảm dần, nếu bằng điểm xếp theo tên:
+        if self.diem != other.diem:
+            return self.diem > other.diem
+        return self.ten < other.ten</pre>
+    </div>
+
+    <div class="note"><b>Thủ thuật:</b> Cài đặt phương thức <code>__lt__(self, other)</code> giúp danh sách các đối tượng tự động được sắp xếp chuẩn xác khi bạn gọi <code>students.sort()</code> mà không cần viết hàm <code>key=lambda</code> phức tạp!</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 14: THỰC HÀNH 2.2 (OOP) ═════════════════════════════════════ -->
+<div class="slide" data-title="Thực hành 2.2: OOP Giỏ Hàng">
+  <div class="wrap">
+    <h2><span class="k">13</span> Thực hành 2.2 · Xây dựng Class Giỏ Hàng Mua Sắm</h2>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-tag">Thực hành 2.2</span><span class="ex-title">Mô phỏng tính tiền Giỏ hàng (Level 1 Design)</span><span class="chip py-gold">6 phút</span></div>
+      <div class="ex-body">
+        <p>Viết class <code>Cart</code> quản lý sản phẩm với các phương thức: <code>add_item(name, price, qty)</code>, <code>remove_item(name)</code>, và <code>get_total(discount_pct)</code>.</p>
+
+        <div class="py-runner">
+          <div class="py-runner-head">
+            <span class="tiny">Chạy thử nghiệm Class Cart:</span>
+            <button class="btn cyan btn-run">Chạy code ▶</button>
+          </div>
+          <textarea class="py-editor">
+class Cart:
+    def __init__(self):
+        self.items = {} # {name: [price, qty]}
+        
+    def add_item(self, name, price, qty=1):
+        if name in self.items:
+            self.items[name][1] += qty
+        else:
+            self.items[name] = [price, qty]
+            
+    def remove_item(self, name):
+        if name in self.items:
+            del self.items[name]
+            
+    def get_total(self, discount_pct=0):
+        raw_total = sum(price * qty for price, qty in self.items.values())
+        final_total = raw_total * (100 - discount_pct) // 100
+        return final_total
+
+# Test thử:
+my_cart = Cart()
+my_cart.add_item("Bàn phím cơ", 1200000, 1)
+my_cart.add_item("Chuột không dây", 400000, 2)
+print("Tổng tiền ban đầu:", my_cart.get_total()) # 2,000,000
+print("Sau giảm giá 10%:", my_cart.get_total(10)) # 1,800,000
+</textarea>
+          <div class="py-console-head">Console Output</div>
+          <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 15: QUIZ PHASE 2 ════════════════════════════════════════════ -->
+<div class="slide" data-part="Tổng kết & Đánh giá" data-title="Quiz phản xạ Phase 2">
+  <div class="wrap">
+    <h2><span class="k">14</span> Đấu trường Quiz: Kiểm tra phản xạ Phase 2</h2>
+
+    <div class="grid-2">
+      <div class="quiz">
+        <div class="quiz-q">1. Để tạo ma trận 3 hàng 4 cột toàn số 0 độc lập, cách nào đúng?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sai. Nhân bản dòng bằng * 3 làm tất cả các hàng cùng trỏ vào 1 địa chỉ.">A. [[0]*4]*3</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! List comprehension tạo 3 hàng mới tinh hoàn toàn độc lập.">B. [[0]*4 for _ in range(3)]</button>
+          <button class="opt" data-k="C" data-why="Sai. [0]*12 là mảng 1 chiều 12 phần tử.">C. [0]*12</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">2. Đối tượng nào sau đây KHÔNG THỂ dùng làm Key của Dictionary?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Tuple là bất biến (immutable) nên hashable, làm key tốt.">A. Tuple (1, "hello")</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Đúng! List là đối tượng có thể thay đổi (mutable), không hashable nên không thể làm key.">B. List [1, 2]</button>
+          <button class="opt" data-k="C" data-why="Chuỗi là bất biến nên dùng làm key bình thường.">C. Chuỗi 'username'</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">3. Đoạn code sau in ra gì: <code>def f(x, l=[]): l.append(x); return l; f(1); print(f(2))</code>?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="Sai. Vì mutable default argument được lưu qua các lần gọi.">A. [2]</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Lần 1 thêm 1 thành [1], lần 2 thêm 2 vào cùng mảng đó thành [1, 2].">B. [1, 2]</button>
+          <button class="opt" data-k="C" data-why="Sai.">C. [[1], [2]]</button>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <div class="quiz-q">4. Phép toán nào lấy các phần tử chỉ thuộc tập A mà không thuộc tập B?</div>
+        <div class="quiz-opts">
+          <button class="opt" data-k="A" data-why="A & B là phép Giao (các phần tử có trong CẢ HAI tập).">A. A & B</button>
+          <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Toán tử dấu trừ (-) là phép Hiệu tập hợp (Difference).">B. A - B</button>
+          <button class="opt" data-k="C" data-why="A ^ B là hiệu đối xứng (có trong A hoặc B nhưng không nằm trong cả hai).">C. A ^ B</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 16: TỔNG KẾT PHASE 2 ═════════════════════════════════════════ -->
+<div class="slide" data-title="Tổng kết Phase 2">
+  <div class="wrap">
+    <h2><span class="k">15</span> Tổng kết Phase 2 & Nhiệm vụ luyện đề</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h4 class="py-gold">Ma trận 2D an toàn</h4>
+        <p class="tiny">Luôn dùng <code>[[0]*m for _ in range(n)]</code>. Chuyển vị ma trận bằng <code>[list(c) for c in zip(*m)]</code>. Nhớ công thức xoay 90°.</p>
+      </div>
+      <div class="card">
+        <h4 class="py-blue">Dict & Set O(1)</h4>
+        <p class="tiny">Dùng <code>d.get(k, 0)</code> tránh KeyError. Dùng <code>set</code> để tìm kiếm và lọc trùng lặp tức thì với tốc độ O(1).</p>
+      </div>
+      <div class="card">
+        <h4 class="rose">OOP & Hàm sạch</h4>
+        <p class="tiny">Tuyệt đối không dùng <code>arr=[]</code> làm default param. Nắm vững khung <code>class</code> với <code>__init__</code> và <code>__lt__</code>.</p>
+      </div>
+    </div>
+
+    <div class="start" style="margin-top:0.8rem">
+      <h4>Nhiệm vụ tiếp theo:</h4>
+      <p class="tiny">Làm các bài tập về Mảng 2D và Xử lý cấu trúc dữ liệu trong <b>Nhóm 2 (Debugging)</b> và <b>Nhóm 3 (Design Level 2)</b>:</p>
+      <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Terminal</span></div>
+<pre class="code" data-lang="bash">cd D:\02_Learning_Knowledge\Python_Master\python-master-bang-b
+py cham_diem.py 2
+py cham_diem.py 3</pre>
+    </div>
+
+    <div class="row" style="justify-content:space-between; margin-top:0.8rem">
+      <a class="btn" href="deck1_foundation.html">← Về Phase 1</a>
+      <a class="btn cyan" href="deck3_traps_stdlib.html">Tiến vào Phase 3: 50 Bẫy Tử Thần & Thư viện chuẩn →</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="assets/vendor/skulpt.min.js"></script>
+<script src="assets/vendor/skulpt-stdlib.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/python_lab.js"></script>
+<script>
+  // Initialize visualizers if on slide 6
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.initSpiralMatrixVisualizer) {
+      window.initSpiralMatrixVisualizer('spiral-vis-box');
+    }
+  });
+</script>
+</body>
+</html>
