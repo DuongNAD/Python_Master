@@ -147,8 +147,8 @@ def xoay_phai(arr, k):
     """
     if not arr:
         return []
-    k = ___1___
-    return ___2___ if k else list(arr)
+    k = k % len(arr)
+    return arr[-k:] + arr[:-k] if k else list(arr)
 
 
 # ---------------------------------------------------------------- Bai 1.12

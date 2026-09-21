@@ -13,24 +13,27 @@ Muc tieu thoi gian: 2-3 phut/bai.
 
 
 # ---------------------------------------------------------------- Bai 2.01
+import collections
 def trung_binh(arr):
     """Trung binh cong cac phan tu. Mang rong -> tra ve 0."""
     if not arr:
         return 0
     tong = 0
-    for i in range(1, len(arr)):
+    for i in range(0, len(arr)):
         tong += arr[i]
     return tong / len(arr)
 
 
 # ---------------------------------------------------------------- Bai 2.02
-def them_muc(muc, danh_sach=[]):
+def them_muc(muc, danh_sach=None):
     """
     Them muc vao danh sach roi tra ve danh sach do.
     Neu KHONG truyen danh_sach, moi lan goi phai tao mot list MOI.
       them_muc(1) -> [1]
       them_muc(2) -> [2]     (khong phai [1, 2])
     """
+    if danh_sach is None:
+        danh_sach=[]
     danh_sach.append(muc)
     return danh_sach
 
@@ -38,7 +41,7 @@ def them_muc(muc, danh_sach=[]):
 # ---------------------------------------------------------------- Bai 2.03
 def xoa_so_chan(arr):
     """Xoa moi so chan khoi arr (sua TAI CHO) va tra ve chinh arr."""
-    for x in arr:
+    for x in list(arr):
         if x % 2 == 0:
             arr.remove(x)
     return arr
