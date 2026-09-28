@@ -441,6 +441,23 @@
     if (slides[cur].querySelector('#stack-vis-box') && window.initStackVisualizer) {
       window.initStackVisualizer('stack-vis-box');
     }
+    // Nhóm 1 Visualizers
+    if (slides[cur].querySelector('#vowel-vis-box') && window.initVowelVisualizer) window.initVowelVisualizer('vowel-vis-box');
+    if (slides[cur].querySelector('#normalize-vis-box') && window.initNormalizeNameVisualizer) window.initNormalizeNameVisualizer('normalize-vis-box');
+    if (slides[cur].querySelector('#sumdigits-vis-box') && window.initSumDigitsVisualizer) window.initSumDigitsVisualizer('sumdigits-vis-box');
+    if (slides[cur].querySelector('#secondmax-vis-box') && window.initSecondMaxVisualizer) window.initSecondMaxVisualizer('secondmax-vis-box');
+    if (slides[cur].querySelector('#frequency-vis-box') && window.initFrequencyVisualizer) window.initFrequencyVisualizer('frequency-vis-box');
+    if (slides[cur].querySelector('#reversewords-vis-box') && window.initReverseWordsVisualizer) window.initReverseWordsVisualizer('reversewords-vis-box');
+    if (slides[cur].querySelector('#palindrome-vis-box') && window.initPalindromeVisualizer) window.initPalindromeVisualizer('palindrome-vis-box');
+    if (slides[cur].querySelector('#mergedict-vis-box') && window.initMergeDictVisualizer) window.initMergeDictVisualizer('mergedict-vis-box');
+    if (slides[cur].querySelector('#prime-vis-box') && window.initPrimeFilterVisualizer) window.initPrimeFilterVisualizer('prime-vis-box');
+    if (slides[cur].querySelector('#rle-vis-box') && window.initRleVisualizer) window.initRleVisualizer('rle-vis-box');
+    if (slides[cur].querySelector('#rotateright-vis-box') && window.initRotateRightVisualizer) window.initRotateRightVisualizer('rotateright-vis-box');
+    if (slides[cur].querySelector('#twosum-vis-box') && window.initTwoSumHashVisualizer) window.initTwoSumHashVisualizer('twosum-vis-box');
+    if (slides[cur].querySelector('#studentsort-vis-box') && window.initStudentSortVisualizer) window.initStudentSortVisualizer('studentsort-vis-box');
+    if (slides[cur].querySelector('#baseconv-vis-box') && window.initBaseConversionVisualizer) window.initBaseConversionVisualizer('baseconv-vis-box');
+    if (slides[cur].querySelector('#parentheses-vis-box') && window.initParenthesesStackVisualizer) window.initParenthesesStackVisualizer('parentheses-vis-box');
+    document.dispatchEvent(new CustomEvent('deck:slidechange', { detail: { currentSlide: slides[cur], index: cur } }));
     try { localStorage.setItem(key, String(cur)); } catch (e) { /* riêng tư */ }
     if (push !== false) history.replaceState(null, "", "#" + (cur + 1));
   }

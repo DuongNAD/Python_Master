@@ -51,7 +51,7 @@ def xoa_so_chan(arr):
 def co_gia_tri(arr, x):
     """Tra ve True neu x co trong arr. Phai dung voi so lon va chuoi dai."""
     for phan_tu in arr:
-        if phan_tu is x:
+        if x == phan_tu:
             return True
     return False
 
@@ -64,13 +64,21 @@ def phan_tu_giua(arr):
     """
     if not arr:
         return None
-    return arr[(len(arr) - 1) / 2]
+    return arr[(len(arr)-1) //2]
 
 
 # ---------------------------------------------------------------- Bai 2.06
 def tao_bang(n):
     """Tao ma tran n x n toan 0, sau do dat duong cheo chinh = 1 (ma tran don vi)."""
-    bang = [[0] * n] * n
+    bang = []
+    for i in range(n):
+        hang=[]
+        for j in range(n):
+            hang.append(0)
+        
+        bang.append(hang)
+
+
     for i in range(n):
         bang[i][i] = 1
     return bang
@@ -79,7 +87,7 @@ def tao_bang(n):
 # ---------------------------------------------------------------- Bai 2.07
 def xoa_gia_tri_rong(d):
     """Xoa moi khoa co gia tri rong (0, "", None, [], {}) khoi dict, sua TAI CHO."""
-    for k in d:
+    for k in list(d):
         if not d[k]:
             del d[k]
     return d
@@ -90,8 +98,8 @@ def hoa_ky_tu_dau(s):
     """Viet hoa ky tu dau tien, giu nguyen phan con lai. "" -> ""."""
     if not s:
         return s
-    s[0] = s[0].upper()
-    return s
+    
+    return s[0].upper() + s[1:]
 
 
 # ---------------------------------------------------------------- Bai 2.09
@@ -99,7 +107,7 @@ def tim_max(arr):
     """Gia tri lon nhat trong arr. Mang rong -> None. Phai dung ca khi moi so deu am."""
     if not arr:
         return None
-    ket_qua = 0
+    ket_qua = arr[0]
     for x in arr:
         if x > ket_qua:
             ket_qua = x
@@ -112,7 +120,8 @@ def ba_so_nho_nhat(arr):
     Tra ve list 3 so nho nhat theo thu tu tang. It hon 3 phan tu -> tra ve toan bo da sap.
     KHONG duoc sua doi arr goc.
     """
-    return arr.sort()[:3]
+    new_arr = sorted(arr)
+    return new_arr[:3]
 
 
 # ---------------------------------------------------------------- Bai 2.11

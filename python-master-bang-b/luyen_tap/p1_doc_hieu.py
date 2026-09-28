@@ -160,10 +160,10 @@ def tim_cap_tong(arr, target):
     """
     da_gap = {}                 # gia_tri -> chi so
     for j, x in enumerate(arr):
-        can = ___1___
-        if ___2___:
+        can = target-x
+        if can in da_gap:
             return (da_gap[can], j)
-        da_gap[x] = ___3___
+        da_gap[x] = j
     return None
 
 
@@ -174,8 +174,8 @@ def xep_hang_hoc_sinh(hoc_sinh):
     Sap xep: diem GIAM dan; cung diem thi tuoi TANG dan; cung ca hai thi ten A-Z.
     Tra ve list ten.
     """
-    da_sap = sorted(hoc_sinh, key=lambda h: ___1___)
-    return ___2___
+    da_sap = sorted(hoc_sinh, key=lambda h: (-h["diem"], h["tuoi"], h["ten"]))
+    return [h["ten"] for h in da_sap]
 
 
 # ---------------------------------------------------------------- Bai 1.14
@@ -189,9 +189,9 @@ def doi_co_so(n, b):
     chu_so = "0123456789ABCDEF"
     ket_qua = []
     while n > 0:
-        ket_qua.append(___1___)
-        n = ___2___
-    return ___3___
+        ket_qua.append(chu_so[n % b])
+        n = n // b
+    return "".join(reversed(ket_qua))
 
 
 # ---------------------------------------------------------------- Bai 1.15
@@ -204,8 +204,8 @@ def ngoac_hop_le(s):
     ngan_xep = []
     for c in s:
         if c in "([{":
-            ngan_xep.append(___1___)
+            ngan_xep.append(c)
         elif c in cap:
-            if not ngan_xep or ___2___:
+            if not ngan_xep or ngan_xep.pop() != cap[c]:
                 return False
-    return ___3___
+    return len(ngan_xep) == 0

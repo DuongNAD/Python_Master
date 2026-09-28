@@ -27,6 +27,8 @@ DE = [
     ("de_2_vong_loai", "_cham_de2", "de_2_vong_loai_dapan.py"),
     ("de_3_vong_loai", "_cham_de3", "de_3_vong_loai_dapan.py"),
     ("de_4_chung_ket", "_cham_de4", "de_4_chung_ket_dapan.py"),
+    ("de_5_luyen_tap", "_cham_de5", "de_5_luyen_tap_dapan.py"),
+    ("de_6_luyen_tap", "_cham_de6", "de_6_luyen_tap_dapan.py"),
 ]
 
 

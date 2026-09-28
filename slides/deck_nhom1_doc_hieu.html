@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chuyên đề Đột phá · 15 Bài Đọc Hiểu Code (440 Điểm) · Python Master</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .vis-box {
+    background: rgba(13, 17, 32, 0.7);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: clamp(0.9rem, 2vw, 1.3rem);
+    margin: 0.6rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  }
+  .intuition-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+  }
+  @media (max-width: 768px) {
+    .intuition-grid { grid-template-columns: 1fr; }
+  }
+  .tag-ans {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+    background: rgba(94, 234, 212, 0.15);
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+  }
+</style>
+</head>
+<body data-deck="nhom1">
+<div class="deck">
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 1: HERO COVER
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-part="Mở đầu" data-title="Giải Mã 15 Bài Đọc Hiểu (440đ)">
+  <div class="wrap hero">
+    <div class="orb">🎯</div>
+    <h1 style="background: linear-gradient(105deg, var(--cyan), var(--amber) 80%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+      Giải Mã 15 Bài Đọc Hiểu Code<br>Bảng B (440 / 1000 Điểm)
+    </h1>
+    <p class="lead" style="max-width:760px">
+      Xóa sạch cảm giác khó hiểu về đề bài và thuật toán! Bóc tách bản chất từng bài bằng <b>ngôn ngữ bình dân đời thực</b>, tích hợp <b>hoạt họa mô phỏng từng bước (Step-by-Step)</b>, giải thích cặn kẽ từng chỗ trống và bẫy tử thần.
+    </p>
+    <div class="row" style="justify-content:center; gap:0.6rem; flex-wrap:wrap;">
+      <span class="chip py-blue">440 Điểm lớn nhất đề</span>
+      <span class="chip py-gold">15 Bài tập có hoạt họa riêng</span>
+      <span class="chip green">Mục tiêu 90s / bài</span>
+      <span class="chip violet">Chạy code trực tiếp trên slide</span>
+      <span class="chip rose">Trắc nghiệm phản xạ từng câu</span>
+    </div>
+    <p class="kbd-hint">Dùng phím <kbd>→</kbd> hoặc <kbd>Space</kbd> để lật slide · <kbd>O</kbd> mục lục 15 bài · <kbd>/</kbd> tìm kiếm · <kbd>?</kbd> trợ giúp</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 2: BẢN ĐỒ CHIẾN LƯỢC & 4 KHỐI TƯ DUY
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bản đồ 15 bài & 4 Khối tư duy">
+  <div class="wrap">
+    <h2><span class="k">01</span> Bản đồ 15 bài & 4 Nhóm tư duy phản xạ</h2>
+    <p>Dạng bài <b>Đọc hiểu / Điền chỗ trống</b> chiếm tới <b>44% tổng số điểm</b>. Mỗi câu chỉ thiếu từ 1 đến 3 vị trí (<code>___1___</code>, <code>___2___</code>). Nắm vững 4 nhóm tư duy dưới đây là bạn làm chủ 100%:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4 class="py-blue">Nhóm 1 · Xử lý Chuỗi & Ký tự</h4>
+        <p class="tiny"><b>Bài 1.01, 1.02, 1.06, 1.07, 1.10:</b> Tách từ bằng <code>split()</code>, viết hoa chữ cái đầu <code>capitalize()</code>, ghép chuỗi <code>join()</code>, lọc ký tự sạch <code>isalnum()</code>, nén chuỗi Run-Length (RLE).</p>
+      </div>
+
+      <div class="card">
+        <h4 class="amber">Nhóm 2 · Số học & Ép kiểu logic</h4>
+        <p class="tiny"><b>Bài 1.03, 1.09, 1.14:</b> Tách từng chữ số bằng <code>% 10</code> và <code>// 10</code>, định lý căn bậc hai <code>i * i &lt;= n</code> kiểm tra số nguyên tố $O(\sqrt{N})$, đổi cơ số hệ 2..16.</p>
+      </div>
+
+      <div class="card">
+        <h4 class="green">Nhóm 3 · Tập hợp (Set), Từ điển (Dict) & Slicing</h4>
+        <p class="tiny"><b>Bài 1.04, 1.05, 1.08, 1.11:</b> Lọc trùng bằng <code>set()</code> tìm Max thứ hai, đếm tần suất 1 dòng <code>bang.get(x, 0) + 1</code>, gộp dict không đè gốc <code>a.copy()</code>, xoay mảng tròn <code>k % len</code>.</p>
+      </div>
+
+      <div class="card">
+        <h4 class="violet">Nhóm 4 · Thuật toán Kinh điển & Cấu trúc Dữ liệu</h4>
+        <p class="tiny"><b>Bài 1.12, 1.13, 1.15:</b> Two Sum $O(N)$ dùng Hash Map "mảnh ghép còn thiếu", Sắp xếp đa tiêu chí với Tuple Key và đảo dấu <code>-diem</code>, Ngăn xếp (Stack) kiểm tra ngoặc hợp lệ.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Chiến thuật 90 giây:</b> Khi nhìn vào chỗ trống, đừng đoán mò! Hãy nhìn ngay: <b>(1)</b> Biến nào chưa được cập nhật? <b>(2)</b> Điều kiện dừng vòng lặp là gì? <b>(3)</b> Kiểu dữ liệu hàm cần return là gì?
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 3: BÀI 1.01 - DEM_NGUYEN_AM
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-part="Phần 1 · Chuỗi & Ký tự" data-title="Bài 1.01: dem_nguyen_am">
+  <div class="wrap">
+    <h2><span class="k">02</span> Bài 1.01 · Đếm số nguyên âm trong chuỗi</h2>
+    
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Đếm xem trong câu có bao nhiêu nguyên âm: <b>a, e, i, o, u</b>. Không phân biệt chữ hoa hay chữ thường (nghĩa là 'A' hay 'a' đều tính là 1).</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán</h4>
+        <p class="tiny">Hạ toàn bộ chuỗi về chữ thường bằng <code>s.lower()</code> để chỉ cần so với chuỗi <code>"aeiou"</code>. Duyệt từng ký tự, nếu <code>ky_tu in "aeiou"</code> thì tăng biến <code>dem += 1</code>.</p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="vowel-vis-box"></div>
+
+    <!-- Mổ xẻ Code & Điền chỗ trống -->
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Vị trí điền khuyết</b>
+          <span class="chip green">Đạt điểm tối đa</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def dem_nguyen_am(s: str):
+    nguyen_am = "aeiou"
+    dem = 0
+    for ky_tu in s.lower():      # <--- Chỗ trống (1): s.lower()
+        if ky_tu in nguyen_am:   # <--- Chỗ trống (2): ky_tu in nguyen_am
+            dem += 1
+    return dem</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Bẫy thường gặp</h4>
+        <ul class="tiny" style="padding-left:1.1rem; display:grid; gap:0.4rem;">
+          <li><b>Quên s.lower():</b> Nếu viết <code>for ky_tu in s:</code>, các ký tự viết hoa như <code>'A'</code>, <code>'E'</code> sẽ không khớp với <code>"aeiou"</code> và bị đếm sót!</li>
+          <li><b>Dùng toán tử == thay vì in:</b> Viết <code>ky_tu == nguyen_am</code> là so sánh 1 ký tự với cả chuỗi 5 chữ cái (luôn False). Bắt buộc dùng <code>in</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Runner thử nghiệm trực tiếp -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm trực tiếp với Skulpt Python:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def dem_nguyen_am(s: str):
+    nguyen_am = "aeiou"
+    dem = 0
+    for ky_tu in s.lower():
+        if ky_tu in nguyen_am:
+            dem += 1
+    return dem
+
+print("Chuỗi 'Python Master 2026':", dem_nguyen_am("Python Master 2026"))
+print("Chuỗi 'Nguyen Anh Duong':", dem_nguyen_am("Nguyen Anh Duong"))
+print("Chuỗi 'AEIOU aeiou':", dem_nguyen_am("AEIOU aeiou"))
+</textarea>
+      <div class="py-console-head">Kết quả thực thi (Console)</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="quiz">
+      <div class="quiz-q">Hàm <code>dem_nguyen_am("HELLO World")</code> trả về kết quả là bao nhiêu?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai vì 'E', 'O', 'o' đều là nguyên âm.">A. 1</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Có 3 nguyên âm là 'E', 'O', 'o'.">B. 3</button>
+        <button class="opt" data-k="C" data-why="Sai.">C. 2</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 4: BÀI 1.02 - CHUAN_HOA_TEN
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.02: chuan_hoa_ten">
+  <div class="wrap">
+    <h2><span class="k">03</span> Bài 1.02 · Chuẩn hóa họ tên người</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Biến chuỗi gõ lộn xộn <code>"  nGUYEN   anh   duong "</code> thành họ tên chuẩn <code>"Nguyen Anh Duong"</code>: bỏ sạch dấu cách thừa ở đầu, cuối và giữa; viết hoa chữ đầu mỗi từ, còn lại viết thường.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán (Tam tấu thần thánh)</h4>
+        <p class="tiny">
+          1. <code>s.split()</code> (không tham số) tự động dọn sạch mọi khoảng trắng thừa.<br>
+          2. <code>tu.capitalize()</code> biến chữ đầu thành HOA, các chữ sau thành THƯỜNG.<br>
+          3. <code>" ".join(...)</code> dán các từ lại với đúng 1 dấu cách duy nhất.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="normalize-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Điền chỗ trống</b>
+          <span class="chip green">3 Chỗ trống</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def chuan_hoa_ten(s):
+    cac_tu = s.split()                            # <--- Chỗ trống (1): s.split()
+    ket_qua = [tu.capitalize() for tu in cac_tu]  # <--- Chỗ trống (2): tu.capitalize()
+    return " ".join(ket_qua)                      # <--- Chỗ trống (3): " ".join(ket_qua)</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Phân biệt bẫy capitalize() vs title()</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Hàm <code>tu.capitalize()</code> chỉ viết hoa chữ cái đầu tiên và <b>ép các chữ cái sau thành chữ thường</b> (<code>'nGUYEN' -> 'Nguyen'</code>).<br>
+          Nếu dùng <code>s.title()</code> gặp từ có dấu nháy như <code>"o'connor"</code> sẽ bị biến thành <code>"O'Connor"</code> (viết hoa cả sau dấu nháy). Viết List Comprehension với <code>tu.capitalize()</code> là chuẩn mực 100%.
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm chuẩn hóa họ tên:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def chuan_hoa_ten(s):
+    cac_tu = s.split()
+    ket_qua = [tu.capitalize() for tu in cac_tu]
+    return " ".join(ket_qua)
+
+raw = "   tRAN   vAn    hA   "
+print("Trước:", repr(raw))
+print("Sau:  ", repr(chuan_hoa_ten(raw)))
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Nếu trong chuỗi có 4 dấu cách liên tiếp <code>"A    B"</code>, lệnh <code>"A    B".split()</code> trả về gì?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. Đó là khi dùng split(' ') có truyền dấu cách đơn.">A. ['A', '', '', '', 'B']</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! split() không tham số tự động nuốt trọn mọi khoảng trắng liên tiếp.">B. ['A', 'B']</button>
+        <button class="opt" data-k="C" data-why="Sai.">C. ['A B']</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 5: BÀI 1.03 - TONG_CHU_SO
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-part="Phần 2 · Số học & Ép kiểu" data-title="Bài 1.03: tong_chu_so">
+  <div class="wrap">
+    <h2><span class="k">04</span> Bài 1.03 · Tính tổng các chữ số của số nguyên</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Cho một số nguyên <code>n</code> (có thể âm, ví dụ -4567). Hãy cộng từng chữ số của nó lại: $4 + 5 + 6 + 7 = 22$.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán (Bóc tách chữ số)</h4>
+        <p class="tiny">
+          1. <code>n = abs(n)</code>: Khử ngay dấu âm để không bị sai phép toán số học.<br>
+          2. <code>n % 10</code>: Lấy chữ số hàng đơn vị.<br>
+          3. <code>n = n // 10</code>: Cắt bỏ chữ số hàng đơn vị vừa lấy. Lặp cho đến khi <code>n == 0</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="sumdigits-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & 3 Điểm khuyết</b>
+          <span class="chip green">Chuẩn O(log10(N))</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def tong_chu_so(n):
+    n = abs(n)
+    tong = 0
+    while n > 0:          # <--- Chỗ trống (1): n > 0
+        tong += n % 10    # <--- Chỗ trống (2): n % 10
+        n = n // 10       # <--- Chỗ trống (3): n // 10
+    return tong</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Bẫy số âm trong Python</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Trong Python, phép chia số âm làm tròn xuống sàn: <code>(-5) % 10 = 5</code>, nhưng <code>(-5) // 10 = -1</code> (bị kẹt vòng lặp vô hạn!).<br>
+          Vì vậy, lệnh <code>n = abs(n)</code> ở đầu hàm là <b>bắt buộc sống còn</b> trước khi vào vòng lặp <code>while n > 0</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm bóc chữ số:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def tong_chu_so(n):
+    n = abs(n)
+    tong = 0
+    while n > 0:
+        tong += n % 10
+        n = n // 10
+    return tong
+
+print("tong_chu_so(-4567) =", tong_chu_so(-4567)) # Kỳ vọng: 22
+print("tong_chu_so(999)   =", tong_chu_so(999))   # Kỳ vọng: 27
+print("tong_chu_so(0)     =", tong_chu_so(0))     # Kỳ vọng: 0
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Nếu n = 28, sau 1 bước lặp <code>tong += n % 10; n = n // 10</code>, biến tong và n nhận giá trị nào?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. n % 10 là 8, không phải 2.">A. tong = 2, n = 8</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! 28 % 10 = 8 (hàng đơn vị), 28 // 10 = 2.">B. tong = 8, n = 2</button>
+        <button class="opt" data-k="C" data-why="Sai.">C. tong = 10, n = 0</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 6: BÀI 1.04 - MAX_THU_HAI
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-part="Phần 3 · Set & Dict" data-title="Bài 1.04: max_thu_hai">
+  <div class="wrap">
+    <h2><span class="k">05</span> Bài 1.04 · Tìm số lớn thứ hai trong các giá trị phân biệt</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Tìm số lớn nhì trong mảng nhưng chỉ tính các giá trị <b>khác nhau</b>. Ví dụ <code>[5, 5, 4]</code> thì số lớn nhất là 5, số lớn nhì là 4 (chứ không phải 5). Nếu mảng không đủ 2 số khác nhau (như <code>[7, 7, 7]</code>) thì trả về <code>None</code>.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán</h4>
+        <p class="tiny">
+          1. <code>phan_biet = set(arr)</code>: Lọc sạch mọi phần tử trùng lặp.<br>
+          2. Nếu <code>len(phan_biet) &lt; 2</code>: Không đủ 2 số khác nhau ➔ <code>return None</code>.<br>
+          3. <code>phan_biet.remove(max(phan_biet))</code>: Bắn hạ số lớn nhất.<br>
+          4. <code>return max(phan_biet)</code>: Số lớn nhất còn lại chính là số lớn thứ hai ban đầu!
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="secondmax-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Điền chỗ trống</b>
+          <span class="chip green">set + remove max</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def max_thu_hai(arr):
+    phan_biet = set(arr)               # <--- Chỗ trống (1): set(arr)
+    if len(phan_biet) < 2:
+        return None
+    phan_biet.remove(max(phan_biet))   # <--- Chỗ trống (2): max(phan_biet)
+    return max(phan_biet)</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Tại sao không sort rồi lấy arr[-2]?</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Nếu làm ngây thơ <code>sorted(arr)[-2]</code> trên mảng <code>[5, 5, 4]</code>, mảng sắp xếp là <code>[4, 5, 5]</code> và vị trí kế cuối vẫn là <b>5</b> (SAI!).<br>
+          Vì vậy, bắt buộc phải đưa qua <code>set()</code> để triệt tiêu trùng lặp trước khi xét thứ hạng.
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm max_thu_hai:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def max_thu_hai(arr):
+    phan_biet = set(arr)
+    if len(phan_biet) < 2:
+        return None
+    phan_biet.remove(max(phan_biet))
+    return max(phan_biet)
+
+print("[3, 1, 4, 1, 5] ->", max_thu_hai([3, 1, 4, 1, 5])) # Ra 4
+print("[7, 7, 7]       ->", max_thu_hai([7, 7, 7]))       # Ra None
+print("[5, 5, 4]       ->", max_thu_hai([5, 5, 4]))       # Ra 4
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Với mảng <code>arr = [10]</code> (chỉ có 1 phần tử), hàm <code>max_thu_hai</code> trả về gì?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. Không có số thứ hai.">A. 10</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! len(set(arr)) = 1 < 2 nên rẽ vào nhánh return None.">B. None</button>
+        <button class="opt" data-k="C" data-why="Sai. Code không quăng lỗi vì có kiểm tra len < 2.">C. IndexError</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 7: BÀI 1.05 - DEM_TAN_SUAT
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.05: dem_tan_suat">
+  <div class="wrap">
+    <h2><span class="k">06</span> Bài 1.05 · Bảng đếm tần suất 1 dòng với dict.get()</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Đếm xem mỗi phần tử xuất hiện bao nhiêu lần và lưu vào từ điển (dict). Đề yêu cầu: <b>Chỉ được dùng đúng 1 dòng code trong vòng lặp</b>.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất tuyệt chiêu dict.get(x, 0) + 1</h4>
+        <p class="tiny">
+          Hàm <code>dict.get(key, default)</code> trả về giá trị của <code>key</code> nếu đã có, hoặc trả về <code>default</code> nếu chưa có.<br>
+          Do đó <code>bang[x] = bang.get(x, 0) + 1</code> tự động khởi tạo bằng 1 khi gặp lần đầu, và cộng thêm 1 ở các lần sau mà không lo lỗi KeyError!
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="frequency-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn 1 dòng trong vòng lặp</b>
+          <span class="chip green">Tuyệt chiêu Pythonic</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def dem_tan_suat(arr):
+    bang = {}
+    for x in arr:
+        bang[x] = bang.get(x, 0) + 1   # <--- Chỗ trống (1): bang.get(x, 0) + 1
+    return bang</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Bẫy KeyError tử thần</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Nếu bạn viết <code>bang[x] += 1</code>: Ở lần đầu tiên gặp <code>x</code>, khóa <code>x</code> chưa hề tồn tại trong từ điển, Python sẽ ném ngay lỗi <code>KeyError: x</code> và chương trình sụp đổ ngay lập tức!
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm đếm tần suất:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def dem_tan_suat(arr):
+    bang = {}
+    for x in arr:
+        bang[x] = bang.get(x, 0) + 1
+    return bang
+
+trai_cay = ['cam', 'tao', 'cam', 'le', 'cam', 'tao']
+print("Tần suất trái cây:", dem_tan_suat(trai_cay))
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Nếu từ điển <code>d = {'a': 3}</code>, kết quả của <code>d.get('b', 10)</code> là gì?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. Khóa 'b' chưa có trong d nên nó trả về giá trị mặc định được chỉ định.">A. 0</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! 'b' không có trong d nên hàm trả về tham số mặc định thứ hai là 10.">B. 10</button>
+        <button class="opt" data-k="C" data-why="Sai. get() không bao giờ quăng KeyError.">C. KeyError</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 8: BÀI 1.06 - DAO_THU_TU_TU
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.06: dao_thu_tu_tu">
+  <div class="wrap">
+    <h2><span class="k">07</span> Bài 1.06 · Đảo ngược thứ tự các từ trong câu</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Đảo thứ tự các TỪ trong câu: <code>"hom nay troi dep" -> "dep troi nay hom"</code>. Lưu ý là đảo các từ chứ không phải đảo từng chữ cái (chữ "dep" vẫn là "dep", không phải "ped").</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán</h4>
+        <p class="tiny">
+          1. <code>s.split()</code> cắt câu thành danh sách các từ sạch: <code>['hom', 'nay', 'troi', 'dep']</code>.<br>
+          2. <code>cac_tu.reverse()</code> đảo ngược danh sách tại chỗ.<br>
+          3. <code>" ".join(cac_tu)</code> nối lại thành một chuỗi duy nhất.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="reversewords-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Điền chỗ trống</b>
+          <span class="chip green">cac_tu.reverse()</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def dao_thu_tu_tu(s):
+    cac_tu = s.split()
+    cac_tu.reverse()             # <--- Chỗ trống (1): cac_tu.reverse()
+    return " ".join(cac_tu)</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Bẫy hàm trả về None của list.reverse()</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Phương thức <code>cac_tu.reverse()</code> sửa đổi mảng trực tiếp và <b>trả về None</b>!<br>
+          Nếu bạn viết <code>return " ".join(cac_tu.reverse())</code> thì chương trình sẽ quăng lỗi <code>TypeError: can only join an iterable (got NoneType)</code>!
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm đảo thứ tự từ:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def dao_thu_tu_tu(s):
+    cac_tu = s.split()
+    cac_tu.reverse()
+    return " ".join(cac_tu)
+
+s = "  Python   Master   2026   Bang   B "
+print("Gốc: ", repr(s))
+print("Đảo: ", repr(dao_thu_tu_tu(s)))
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Nếu muốn viết 1 dòng ngắn gọn không dùng reverse(), cách viết nào sau đây ĐÚNG?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. s[::-1] đảo ngược từng ký tự, làm méo mó các từ.">A. return s[::-1]</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! s.split()[::-1] cắt thành các từ rồi đảo ngược mảng từ đó.">B. return " ".join(s.split()[::-1])</button>
+        <button class="opt" data-k="C" data-why="Sai.">C. return " ".join(reversed(s))</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 9: BÀI 1.07 - LA_DOI_XUNG
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.07: la_doi_xung">
+  <div class="wrap">
+    <h2><span class="k">08</span> Bài 1.07 · Kiểm tra chuỗi đối xứng Palindrome (Lọc isalnum)</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Kiểm tra xem chuỗi đọc xuôi có giống đọc ngược không. Nhưng đề yêu cầu: <b>Bỏ qua mọi dấu câu, dấu cách và không phân biệt hoa thường</b>! Ví dụ <code>"A man, a plan, a canal: Panama"</code> là True.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán (Lọc sạch rồi lật ngược)</h4>
+        <p class="tiny">
+          1. <code>sach = [c.lower() for c in s if c.isalnum()]</code>: Chỉ giữ lại chữ cái và chữ số, hạ về chữ thường.<br>
+          2. <code>return sach == sach[::-1]</code>: So sánh mảng sạch với bản lật ngược của nó.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="palindrome-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Điền chỗ trống</b>
+          <span class="chip green">c.isalnum() + sach[::-1]</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def la_doi_xung(s):
+    # Lọc ký tự chữ/số và đưa về chữ thường
+    sach = [c.lower() for c in s if c.isalnum()]  # <--- Chỗ trống (1): c.lower()
+    return sach == sach[::-1]                     # <--- Chỗ trống (2): sach[::-1]</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Ký tự isalnum() là gì?</h4>
+        <p class="tiny" style="line-height:1.55;">
+          <code>c.isalnum()</code> là viết tắt của <b>is alpha-numeric</b>: trả về <code>True</code> nếu <code>c</code> là chữ cái (a-z, A-Z) HOẶC chữ số (0-9).<br>
+          Mọi dấu cách <code>' '</code>, phẩy <code>','</code>, hai chấm <code>':'</code>, chấm hỏi <code>'?'</code> đều bị loại bỏ sạch sẽ!
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm kiểm tra đối xứng:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def la_doi_xung(s):
+    sach = [c.lower() for c in s if c.isalnum()]
+    return sach == sach[::-1]
+
+print("Câu 1:", la_doi_xung("A man, a plan, a canal: Panama")) # True
+print("Câu 2:", la_doi_xung("race a car"))                    # False
+print("Câu 3:", la_doi_xung("Was it a car or a cat I saw?"))  # True
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Giá trị của <code>":".isalnum()</code> là gì?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. Dấu hai chấm là ký hiệu đặc biệt, không phải chữ hay số.">A. True</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Dấu hai chấm không phải alnum nên trả về False.">B. False</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 10: BÀI 1.08 - GOP_DICT_CONG_DON
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.08: gop_dict_cong_don">
+  <div class="wrap">
+    <h2><span class="k">09</span> Bài 1.08 · Gộp 2 Dict cộng dồn giá trị (Không đè gốc)</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Gộp 2 từ điển lại với nhau. Nếu có khóa trùng nhau thì <b>CỘNG</b> giá trị của chúng lại. Đề bài cấm: <b>Không được sửa đổi dict a hay dict b gốc</b>!</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán</h4>
+        <p class="tiny">
+          1. <code>ket_qua = a.copy()</code>: Tạo một bản sao độc lập của <code>a</code>.<br>
+          2. Duyệt qua từng cặp <code>(khoa, gia_tri)</code> trong <code>b.items()</code>.<br>
+          3. Cộng dồn: <code>ket_qua[khoa] = ket_qua.get(khoa, 0) + gia_tri</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="mergedict-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & 3 Vị trí điền khuyết</b>
+          <span class="chip green">a.copy() + b.items()</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def gop_dict_cong_don(a, b):
+    ket_qua = a.copy()                                    # <--- Chỗ trống (1): a.copy()
+    for khoa, gia_tri in b.items():                       # <--- Chỗ trống (2): b.items()
+        ket_qua[khoa] = ket_qua.get(khoa, 0) + gia_tri   # <--- Chỗ trống (3): ket_qua.get(khoa, 0) + gia_tri
+    return ket_qua</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Bẫy dùng phép gán ket_qua = a</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Nếu viết <code>ket_qua = a</code>: Hai biến cùng trỏ vào 1 vùng nhớ duy nhất! Khi bạn sửa <code>ket_qua["y"]</code>, dict <code>a</code> ban đầu cũng bị sửa theo, vi phạm thẳng yêu cầu "Không được sửa a" của đề bài!<br>
+          Bắt buộc dùng <code>a.copy()</code> hoặc <code>dict(a)</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm gộp dict:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def gop_dict_cong_don(a, b):
+    ket_qua = a.copy()
+    for khoa, gia_tri in b.items():
+        ket_qua[khoa] = ket_qua.get(khoa, 0) + gia_tri
+    return ket_qua
+
+d1 = {"x": 1, "y": 2}
+d2 = {"y": 5, "z": 3}
+res = gop_dict_cong_don(d1, d2)
+print("Kết quả gộp:", res)
+print("d1 gốc vẫn an toàn:", d1)
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Nếu dùng <code>d1.update(d2)</code> thay vì thuật toán trên, giá trị của <code>d1["y"]</code> sẽ thành bao nhiêu?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. update() chỉ ghi đè chứ không hề cộng dồn!">A. 7 (Cộng dồn)</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Đúng! update() sẽ lấy giá trị 5 của d2 ghi đè hoàn toàn lên giá trị 2 của d1.">B. 5 (Bị ghi đè)</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 11: BÀI 1.09 - LOC_SO_NGUYEN_TO
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.09: loc_so_nguyen_to">
+  <div class="wrap">
+    <h2><span class="k">10</span> Bài 1.09 · Lọc số nguyên tố & Định lý O(√N)</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Lọc ra tất cả các số nguyên tố trong mảng và giữ nguyên thứ tự ban đầu. Số nguyên tố là số $> 1$ chỉ chia hết cho 1 và chính nó.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Tại sao điều kiện là i * i &lt;= n?</h4>
+        <p class="tiny">
+          Nếu $n = a \times b$, thì chắc chắn 1 trong 2 số phải $\le \sqrt{n}$. Do đó, ta chỉ cần thử chia từ 2 đến $\sqrt{n}$ (tức <code>i * i &lt;= n</code>). Nếu không chia hết thì $n$ chắc chắn là số nguyên tố! Giúp giảm độ phức tạp từ $O(N)$ xuống $O(\sqrt{N})$.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="prime-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Điền chỗ trống</b>
+          <span class="chip green">i * i &lt;= n</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def loc_so_nguyen_to(arr):
+    def la_nguyen_to(n):
+        if n < 2:
+            return False
+        i = 2
+        while i * i <= n:        # <--- Chỗ trống (1): i * i <= n
+            if n % i == 0:
+                return False
+            i += 1
+        return True
+
+    return [x for x in arr if la_nguyen_to(x)]  # <--- Chỗ trống (2)</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Bẫy số &lt; 2</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Số 0, số 1 và các số âm <b>KHÔNG PHẢI</b> là số nguyên tố theo định nghĩa toán học!<br>
+          Điều kiện <code>if n &lt; 2: return False</code> ở đầu hàm chặn đứng mọi số âm, 0 và 1 trước khi vào vòng lặp.
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm lọc số nguyên tố:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def loc_so_nguyen_to(arr):
+    def la_nguyen_to(n):
+        if n < 2:
+            return False
+        i = 2
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 1
+        return True
+
+    return [x for x in arr if la_nguyen_to(x)]
+
+mang = [0, 1, 2, 3, 4, 5, 11, 15, 17, 19, 21, 49]
+print("Các số nguyên tố:", loc_so_nguyen_to(mang))
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Để kiểm tra số n = 100 có phải nguyên tố không, vòng lặp <code>while i * i &lt;= n</code> chạy đến i tối đa bằng bao nhiêu?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. i=100 là duyệt ngây thơ O(N).">A. 100</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! 10 * 10 = 100 <= 100, đến i = 11 thì 121 > 100 nên dừng ngay.">B. 10 (vì 10*10 = 100)</button>
+        <button class="opt" data-k="C" data-why="Sai.">C. 50</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 12: BÀI 1.10 - NEN_CHUOI
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.10: nen_chuoi">
+  <div class="wrap">
+    <h2><span class="k">11</span> Bài 1.10 · Nén chuỗi Run-Length Encoding (RLE)</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Đếm các ký tự lặp liên tiếp và gom lại: <code>"aaabbc" -> "a3b2c1"</code>. Chuỗi rỗng <code>""</code> thì trả về <code>""</code>.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán</h4>
+        <p class="tiny">
+          Lưu <code>ky_tu_truoc = s[0]</code> và <code>dem = 1</code>. Duyệt từ ký tự thứ hai <code>for c in s[1:]</code>:<br>
+          - Nếu <code>c == ky_tu_truoc</code>: <code>dem += 1</code>.<br>
+          - Nếu đổi ký tự: Đóng gói nhóm cũ <code>ket_qua.append(ky_tu_truoc + str(dem))</code>, chuyển sang theo dõi <code>c</code> mới.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="rle-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Vị trí đóng gói</b>
+          <span class="chip green">Bẫy nhóm cuối</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def nen_chuoi(s):
+    if not s:
+        return ""
+    ket_qua = []
+    ky_tu_truoc = s[0]
+    dem = 1
+    for c in s[1:]:                               # <--- Chỗ trống (1): s[1:]
+        if c == ky_tu_truoc:
+            dem += 1
+        else:
+            ket_qua.append(ky_tu_truoc + str(dem)) # <--- Chỗ trống (2)
+            ky_tu_truoc = c
+            dem = 1
+    ket_qua.append(ky_tu_truoc + str(dem))       # BẮT BUỘC: Đóng gói nhóm cuối!
+    return "".join(ket_qua)</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ BẪY TỬ THẦN: Quên nhóm cuối cùng</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Khi vòng for kết thúc, ký tự cuối cùng (như chữ <code>'c'</code> trong <code>"aaabbc"</code>) vẫn đang nằm trong <code>ky_tu_truoc</code> và <code>dem</code> chưa được đẩy vào <code>ket_qua</code>!<br>
+          Dòng <code>ket_qua.append(ky_tu_truoc + str(dem))</code> ở <b>ngoài vòng for</b> là bắt buộc để không làm rơi mất đuôi kết quả!
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm nén chuỗi:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def nen_chuoi(s):
+    if not s:
+        return ""
+    ket_qua = []
+    ky_tu_truoc = s[0]
+    dem = 1
+    for c in s[1:]:
+        if c == ky_tu_truoc:
+            dem += 1
+        else:
+            ket_qua.append(ky_tu_truoc + str(dem))
+            ky_tu_truoc = c
+            dem = 1
+    ket_qua.append(ky_tu_truoc + str(dem))
+    return "".join(ket_qua)
+
+print("nen_chuoi('aaabbc') =", nen_chuoi("aaabbc")) # Ra a3b2c1
+print("nen_chuoi('abc')    =", nen_chuoi("abc"))    # Ra a1b1c1
+print("nen_chuoi('')       =", repr(nen_chuoi(""))) # Ra ''
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Hàm <code>nen_chuoi("WWWB")</code> sẽ cho ra kết quả gì?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. Ký tự đơn chiếc vẫn có số 1 đằng sau.">A. W3B</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! 3 chữ W thành W3, 1 chữ B thành B1.">B. W3B1</button>
+        <button class="opt" data-k="C" data-why="Sai.">C. WWWB1</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 13: BÀI 1.11 - XOAY_PHAI
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.11: xoay_phai">
+  <div class="wrap">
+    <h2><span class="k">12</span> Bài 1.11 · Xoay mảng sang phải k bước (Negative Slicing)</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Đẩy cả mảng dịch sang phải <code>k</code> bước, phần tử nào bị tràn ra đuôi sẽ quay lại đầu mảng. Giá trị <code>k</code> có thể lớn hơn cả độ dài mảng (ví dụ mảng dài 3 mà xoay 7 bước).</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán</h4>
+        <p class="tiny">
+          1. <code>k = k % len(arr)</code>: Rút gọn chu kỳ vòng tròn (mảng dài 5, xoay 7 bước cũng như xoay 2 bước).<br>
+          2. Lấy <code>k</code> phần tử ở đuôi văng sang đầu: <code>arr[-k:]</code>.<br>
+          3. Ghép với phần còn lại ở đầu trượt sang: <code>arr[:-k]</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="rotateright-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Cắt lát âm</b>
+          <span class="chip green">arr[-k:] + arr[:-k]</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def xoay_phai(arr, k):
+    if not arr:
+        return []
+    k = k % len(arr)                                # <--- Chỗ trống (1): k % len(arr)
+    return arr[-k:] + arr[:-k] if k else list(arr)  # <--- Chỗ trống (2)</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Bẫy k = 0 trong slicing âm</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Nếu <code>k = 0</code> mà bạn cắt <code>arr[-0:]</code> thì <code>-0</code> bằng <code>0</code>, tức <code>arr[0:]</code> (lấy cả mảng), cộng với <code>arr[:-0]</code> (mảng rỗng) vẫn chạy được, nhưng đoạn code chuẩn dùng <code>if k else list(arr)</code> để xử lý dứt khoát và trả về bản sao list mới an toàn 100%!
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm xoay phải mảng:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def xoay_phai(arr, k):
+    if not arr:
+        return []
+    k = k % len(arr)
+    return arr[-k:] + arr[:-k] if k else list(arr)
+
+print("xoay [1,2,3,4,5] k=2 ->", xoay_phai([1, 2, 3, 4, 5], 2))
+print("xoay [1,2,3]     k=7 ->", xoay_phai([1, 2, 3], 7)) # 7 % 3 = 1 -> [3, 1, 2]
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Mảng gồm 4 phần tử <code>[10, 20, 30, 40]</code> khi xoay phải k = 4 bước sẽ ra kết quả gì?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai.">A. [40, 10, 20, 30]</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! 4 % 4 = 0, mảng xoay đúng 1 vòng tròn nên giữ nguyên.">B. [10, 20, 30, 40] (Không đổi)</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 14: BÀI 1.12 - TIM_CAP_TONG
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-part="Phần 4 · Thuật toán Kinh điển" data-title="Bài 1.12: tim_cap_tong (Two Sum)">
+  <div class="wrap">
+    <h2><span class="k">13</span> Bài 1.12 · Two Sum O(N) — Đi tìm mảnh ghép còn thiếu</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Tìm một cặp vị trí <code>(i, j)</code> sao cho <code>arr[i] + arr[j] == target</code>. Yêu cầu chạy trong thời gian <b>O(N)</b> (cấm duyệt 2 vòng lặp lồng nhau $O(N^2)$).</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán (Sổ tay ghi nhớ)</h4>
+        <p class="tiny">
+          Khi đang đứng ở số $x$ tại vị trí $j$, ta cần tìm số <code>can = target - x</code>.<br>
+          Tra cứu trong sổ <code>da_gap</code>: nếu <code>can in da_gap</code>, lấy ngay cặp <code>(da_gap[can], j)</code>! Nếu chưa có, ghi nhớ vào sổ <code>da_gap[x] = j</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="twosum-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & 3 Vị trí điền khuyết</b>
+          <span class="chip green">O(N) Hash Map</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def tim_cap_tong(arr, target):
+    da_gap = {}                 # gia_tri -> chi so
+    for j, x in enumerate(arr):
+        can = target - x        # <--- Chỗ trống (1): target - x
+        if can in da_gap:       # <--- Chỗ trống (2): can in da_gap
+            return (da_gap[can], j)
+        da_gap[x] = j           # <--- Chỗ trống (3): j
+    return None</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Tại sao Chỗ trống (3) lại là j?</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Dict <code>da_gap</code> có nhiệm vụ ánh xạ: <b>Giá trị số ➔ Vị trí (chỉ số) của nó</b>.<br>
+          Số hiện tại là <code>x</code>, đang đứng ở vị trí <code>j</code>, nên phải gán <code>da_gap[x] = j</code> để các phần tử đi sau có thể lấy được chỉ số của <code>x</code> khi cần!
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm Two Sum:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def tim_cap_tong(arr, target):
+    da_gap = {}
+    for j, x in enumerate(arr):
+        can = target - x
+        if can in da_gap:
+            return (da_gap[can], j)
+        da_gap[x] = j
+    return None
+
+print("tim_cap_tong([2, 7, 11, 15], 9)  ->", tim_cap_tong([2, 7, 11, 15], 9))
+print("tim_cap_tong([3, 2, 4], 6)        ->", tim_cap_tong([3, 2, 4], 6))
+print("tim_cap_tong([1, 2, 3], 10)       ->", tim_cap_tong([1, 2, 3], 10))
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Tại sao phép kiểm tra <code>can in da_gap</code> trên Dict chỉ mất O(1) trong khi trên List mất O(N)?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-ok="1" data-k="A" data-why="Chính xác! Dict dùng cơ chế Bảng Băm (Hash Table) nhảy thẳng vào địa chỉ ô nhớ.">A. Dict dùng bảng băm (Hash Table) truy xuất tức thì</button>
+        <button class="opt" data-k="B" data-why="Sai. Dict trong Python không dùng tìm kiếm nhị phân.">B. Dict tự động sắp xếp nhị phân</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 15: BÀI 1.13 - XEP_HANG_HOC_SINH
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.13: xep_hang_hoc_sinh">
+  <div class="wrap">
+    <h2><span class="k">14</span> Bài 1.13 · Sắp xếp đa tiêu chí & Tuyệt chiêu dấu trừ -diem</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Xếp hạng danh sách học sinh theo 3 tiêu chí: Điểm <b>GIẢM</b> dần; nếu bằng điểm thì Tuổi <b>TĂNG</b> dần; nếu bằng cả hai thì Tên theo bảng chữ cái <b>A-Z</b>. Trả về danh sách tên.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bí kíp Tuple Key & Đảo dấu</h4>
+        <p class="tiny">
+          Python so sánh Tuple từ trái sang phải và mặc định là TĂNG DẦN.<br>
+          Muốn <code>diem</code> giảm dần? Thêm dấu trừ: <code>-h["diem"]</code>! Khi đó điểm 9.0 thành -9.0 (nhỏ nhất ➔ đứng đầu bảng).<br>
+          Key hoàn chỉnh: <code>(-h["diem"], h["tuoi"], h["ten"])</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="studentsort-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & Điền chỗ trống</b>
+          <span class="chip green">Multi-key Lambda</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def xep_hang_hoc_sinh(hoc_sinh):
+    # Sắp xếp đa khóa bằng Tuple
+    da_sap = sorted(hoc_sinh, key=lambda h: (-h["diem"], h["tuoi"], h["ten"])) # <--- Chỗ trống (1)
+    return [h["ten"] for h in da_sap]                                          # <--- Chỗ trống (2)</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Chỗ trống (2) trả về cái gì?</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Đọc kỹ câu cuối của đề bài: <i>"Trả về list tên"</i>.<br>
+          Nếu bạn viết <code>return da_sap</code> (trả về cả danh sách dict) thì sẽ bị chấm 0 điểm!<br>
+          Phải trích xuất riêng trường tên: <code>[h["ten"] for h in da_sap]</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm xếp hạng học sinh:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def xep_hang_hoc_sinh(hoc_sinh):
+    da_sap = sorted(hoc_sinh, key=lambda h: (-h["diem"], h["tuoi"], h["ten"]))
+    return [h["ten"] for h in da_sap]
+
+ds = [
+    {"ten": "An", "diem": 8.0, "tuoi": 20},
+    {"ten": "Binh", "diem": 9.0, "tuoi": 19},
+    {"ten": "Cuong", "diem": 8.0, "tuoi": 19}
+]
+print("Thứ tự xếp hạng:", xep_hang_hoc_sinh(ds))
+# Kỳ vọng: ['Binh', 'Cuong', 'An'] (Binh 9đ; Cuong và An 8đ nhưng Cuong 19t trẻ hơn)
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Nếu sinh viên có điểm chữ như "A", "B", "C" thì có dùng dấu trừ -h["diem"] được không?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-k="A" data-why="Sai. Chuỗi không thể đặt dấu trừ số học được!">A. Có, Python tự hiểu</button>
+        <button class="opt" data-ok="1" data-k="B" data-why="Chính xác! Dấu trừ chỉ áp dụng cho số (int, float). Với chuỗi phải dùng reverse=True hoặc bảng ánh xạ điểm số.">B. Không, phép trừ với chuỗi sẽ quăng TypeError</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 16: BÀI 1.14 - DOI_CO_SO
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.14: doi_co_so">
+  <div class="wrap">
+    <h2><span class="k">15</span> Bài 1.14 · Đổi cơ số hệ 2..16 với bảng ký tự 0123456789ABCDEF</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Đổi một số nguyên không âm $n$ sang hệ cơ số $b$ (từ hệ nhị phân 2 đến hệ thập lục phân 16). Ví dụ đổi 255 sang hệ 16 thì ra <code>"FF"</code>, số 0 thì ra <code>"0"</code>.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất thuật toán (Chia lấy dư liên tiếp)</h4>
+        <p class="tiny">
+          1. Lấy số dư: <code>n % b</code>, tra vào bảng ký tự <code>chu_so[n % b]</code>.<br>
+          2. Cắt bỏ: <code>n = n // b</code>.<br>
+          3. Đảo ngược: Vì số dư đầu tiên là hàng đơn vị, nên danh sách thu được bị ngược, phải dùng <code>"".join(reversed(ket_qua))</code>!
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="baseconv-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & 3 Điểm khuyết</b>
+          <span class="chip green">chu_so[n % b] + reversed</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def doi_co_so(n, b):
+    if n == 0:
+        return "0"
+    chu_so = "0123456789ABCDEF"
+    ket_qua = []
+    while n > 0:
+        ket_qua.append(chu_so[n % b])         # <--- Chỗ trống (1): chu_so[n % b]
+        n = n // b                           # <--- Chỗ trống (2): n // b
+    return "".join(reversed(ket_qua))        # <--- Chỗ trống (3): "".join(reversed(ket_qua))</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Tại sao phải có reversed()?</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Khi đổi số 13 sang hệ 2:<br>
+          - Lần 1: 13 % 2 = 1 (đây là số ở hàng $2^0$, tận cùng bên phải).<br>
+          - Lần 2: 6 % 2 = 0 (hàng $2^1$).<br>
+          - Lần 3: 3 % 2 = 1 (hàng $2^2$).<br>
+          - Lần 4: 1 % 2 = 1 (hàng $2^3$).<br>
+          Mảng thu được là <code>['1', '0', '1', '1']</code>. Khi đảo ngược lại ta mới được số đúng là <code>"1101"</code>!
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm đổi cơ số:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def doi_co_so(n, b):
+    if n == 0:
+        return "0"
+    chu_so = "0123456789ABCDEF"
+    ket_qua = []
+    while n > 0:
+        ket_qua.append(chu_so[n % b])
+        n = n // b
+    return "".join(reversed(ket_qua))
+
+print("255 sang hệ 16 =", doi_co_so(255, 16)) # Ra FF
+print("13 sang hệ 2   =", doi_co_so(13, 2))   # Ra 1101
+print("0 sang hệ 2    =", doi_co_so(0, 2))    # Ra 0
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Trong hệ 16 (Hexadecimal), số dư bằng 10 được biểu diễn bởi ký tự nào?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-ok="1" data-k="A" data-why="Chính xác! 10 tương ứng với 'A', 11 là 'B', ..., 15 là 'F'.">A. 'A'</button>
+        <button class="opt" data-k="B" data-why="Sai. 'B' là 11.">B. 'B'</button>
+        <button class="opt" data-k="C" data-why="Sai.">C. '10'</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 17: BÀI 1.15 - NGOAC_HOP_LE
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-title="Bài 1.15: ngoac_hop_le (Stack)">
+  <div class="wrap">
+    <h2><span class="k">16</span> Bài 1.15 · Kiểm tra dấu ngoặc hợp lệ bằng Ngăn Xếp (Stack)</h2>
+
+    <div class="intuition-grid">
+      <div class="card">
+        <h4 class="cyan">💡 Đề bài nói gì? (Ngôn ngữ bình dân)</h4>
+        <p class="tiny">Kiểm tra xem các cặp ngoặc <code>()</code>, <code>[]</code>, <code>{}</code> có đóng mở đúng quy tắc không. Ví dụ <code>"{[()]}"</code> là True; còn <code>"([)]"</code> là False vì đóng lộn xộn.</p>
+      </div>
+      <div class="card">
+        <h4 class="amber">⚡ Bản chất cơ chế Ngăn xếp (LIFO)</h4>
+        <p class="tiny">
+          - Gặp ngoặc mở <code>([{</code>: Nhét vào đỉnh stack <code>ngan_xep.append(c)</code>.<br>
+          - Gặp ngoặc đóng <code>)]}</code>: Rút đỉnh ra so sánh <code>ngan_xep.pop() != cap[c]</code>. Lệch hoặc stack rỗng là False ngay!<br>
+          - Hết chuỗi: Stack phải sạch bóng <code>len(ngan_xep) == 0</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Hoạt họa tương tác -->
+    <div class="vis-box" id="parentheses-vis-box"></div>
+
+    <div class="diff-grid">
+      <div class="card good">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <b>Code chuẩn & 3 Điểm khuyết</b>
+          <span class="chip green">Stack LIFO Cổ điển</span>
+        </div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span>Python</span></div>
+<pre class="code" data-lang="python">def ngoac_hop_le(s):
+    cap = {")": "(", "]": "[", "}": "{"}
+    ngan_xep = []
+    for c in s:
+        if c in "([{":
+            ngan_xep.append(c)                     # <--- Chỗ trống (1): c
+        elif c in cap:
+            if not ngan_xep or ngan_xep.pop() != cap[c]: # <--- Chỗ trống (2)
+                return False
+    return len(ngan_xep) == 0                      # <--- Chỗ trống (3): len(ngan_xep) == 0</pre>
+      </div>
+
+      <div class="card">
+        <h4 class="rose">⚠️ Tại sao Chỗ trống (3) không phải là return True?</h4>
+        <p class="tiny" style="line-height:1.55;">
+          Nếu chuỗi đầu vào là <code>"((("</code> (toàn mở mà không hề có đóng): Vòng for sẽ chạy hết mà không hề gặp ngoặc đóng nào, nếu bạn viết <code>return True</code> thì chuỗi thiếu đóng này sẽ bị chấm là hợp lệ (SAI HOÀN TOÀN!).<br>
+          Bắt buộc kiểm tra <code>len(ngan_xep) == 0</code> để đảm bảo mọi ngoặc mở đều đã được đóng hết.
+        </p>
+      </div>
+    </div>
+
+    <!-- Runner -->
+    <div class="py-runner">
+      <div class="py-runner-head">
+        <span class="tiny">Thử nghiệm kiểm tra ngoặc:</span>
+        <button class="btn cyan btn-run">Chạy code ▶</button>
+      </div>
+      <textarea class="py-editor">
+def ngoac_hop_le(s):
+    cap = {")": "(", "]": "[", "}": "{"}
+    ngan_xep = []
+    for c in s:
+        if c in "([{":
+            ngan_xep.append(c)
+        elif c in cap:
+            if not ngan_xep or ngan_xep.pop() != cap[c]:
+                return False
+    return len(ngan_xep) == 0
+
+print("'{[()]}' ->", ngoac_hop_le("{[()]}")) # True
+print("'([)]'   ->", ngoac_hop_le("([)]"))   # False
+print("'((('    ->", ngoac_hop_le("((("))    # False
+print("''       ->", ngoac_hop_le(""))       # True
+</textarea>
+      <div class="py-console-head">Console Output</div>
+      <div class="py-out">Nhấn 'Chạy code ▶' để kiểm tra kết quả...</div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q">Nếu chuỗi là <code>")"</code> (chỉ có duy nhất 1 dấu ngoặc đóng), điều kiện nào trong code phát hiện lỗi?</div>
+      <div class="quiz-opts">
+        <button class="opt" data-ok="1" data-k="A" data-why="Chính xác! Gặp ngoặc đóng nhưng ngan_xep đang rỗng (not ngan_xep là True) nên return False ngay.">A. if not ngan_xep</button>
+        <button class="opt" data-k="B" data-why="Sai. Vì ngan_xep rỗng nên chưa thể gọi pop() được.">B. len(ngan_xep) == 0 ở cuối hàm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 18: BẢNG TỔNG KẾT PHẢN XẠ & BÍ KÍP 90 GIÂY
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" data-part="Tổng kết" data-title="Bảng phản xạ 15 bài trong 90s">
+  <div class="wrap">
+    <h2><span class="k">17</span> Bảng Phản Xạ 15 Bài Đọc Hiểu & Bí Kíp 90 Giây</h2>
+    <p>Thuộc lòng các điểm neo (Anchor Points) này để quét đề trong 10 giây và điền chỗ trống trong 20 giây:</p>
+
+    <div style="overflow-x:auto;">
+      <table class="matrix-table" style="font-size:0.86rem;">
+        <thead>
+          <tr>
+            <th>Bài</th>
+            <th>Tên hàm</th>
+            <th>Chìa khóa nhận diện</th>
+            <th>Cụm code cốt lõi cần điền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>1.01</b></td>
+            <td><code>dem_nguyen_am</code></td>
+            <td>Không phân biệt hoa thường</td>
+            <td><code class="tag-ans">s.lower()</code> và <code class="tag-ans">ky_tu in nguyen_am</code></td>
+          </tr>
+          <tr>
+            <td><b>1.02</b></td>
+            <td><code>chuan_hoa_ten</code></td>
+            <td>Khoảng trắng thừa bừa bãi</td>
+            <td><code class="tag-ans">s.split()</code>, <code class="tag-ans">tu.capitalize()</code>, <code class="tag-ans">" ".join(...)</code></td>
+          </tr>
+          <tr>
+            <td><b>1.03</b></td>
+            <td><code>tong_chu_so</code></td>
+            <td>Tách chữ số hàng đơn vị</td>
+            <td><code class="tag-ans">while n &gt; 0</code>, <code class="tag-ans">n % 10</code>, <code class="tag-ans">n // 10</code></td>
+          </tr>
+          <tr>
+            <td><b>1.04</b></td>
+            <td><code>max_thu_hai</code></td>
+            <td>Giá trị lớn nhì PHÂN BIỆT</td>
+            <td><code class="tag-ans">set(arr)</code>, <code class="tag-ans">remove(max(phan_biet))</code></td>
+          </tr>
+          <tr>
+            <td><b>1.05</b></td>
+            <td><code>dem_tan_suat</code></td>
+            <td>Đếm tần suất đúng 1 dòng</td>
+            <td><code class="tag-ans">bang[x] = bang.get(x, 0) + 1</code></td>
+          </tr>
+          <tr>
+            <td><b>1.06</b></td>
+            <td><code>dao_thu_tu_tu</code></td>
+            <td>Đảo thứ tự TỪ trong câu</td>
+            <td><code class="tag-ans">cac_tu = s.split()</code>, <code class="tag-ans">cac_tu.reverse()</code></td>
+          </tr>
+          <tr>
+            <td><b>1.07</b></td>
+            <td><code>la_doi_xung</code></td>
+            <td>Bỏ qua dấu câu & khoảng trắng</td>
+            <td><code class="tag-ans">[c.lower() for c in s if c.isalnum()]</code>, <code class="tag-ans">sach[::-1]</code></td>
+          </tr>
+          <tr>
+            <td><b>1.08</b></td>
+            <td><code>gop_dict_cong_don</code></td>
+            <td>Không được sửa dict gốc</td>
+            <td><code class="tag-ans">a.copy()</code>, <code class="tag-ans">b.items()</code>, <code class="tag-ans">get(khoa, 0) + gia_tri</code></td>
+          </tr>
+          <tr>
+            <td><b>1.09</b></td>
+            <td><code>loc_so_nguyen_to</code></td>
+            <td>Thuật toán tối ưu $O(\sqrt{N})$</td>
+            <td><code class="tag-ans">while i * i &lt;= n</code>, <code class="tag-ans">[x for x in arr if la_nguyen_to(x)]</code></td>
+          </tr>
+          <tr>
+            <td><b>1.10</b></td>
+            <td><code>nen_chuoi</code></td>
+            <td>Run-Length "aaabbc" -> "a3b2c1"</td>
+            <td><code class="tag-ans">for c in s[1:]</code> và đóng gói nhóm cuối ngoài for!</td>
+          </tr>
+          <tr>
+            <td><b>1.11</b></td>
+            <td><code>xoay_phai</code></td>
+            <td>Xoay mảng vòng tròn k bước</td>
+            <td><code class="tag-ans">k % len(arr)</code>, <code class="tag-ans">arr[-k:] + arr[:-k]</code></td>
+          </tr>
+          <tr>
+            <td><b>1.12</b></td>
+            <td><code>tim_cap_tong</code></td>
+            <td>Two Sum $O(N)$ bằng Hash Map</td>
+            <td><code class="tag-ans">can = target - x</code>, <code class="tag-ans">can in da_gap</code>, <code class="tag-ans">da_gap[x] = j</code></td>
+          </tr>
+          <tr>
+            <td><b>1.13</b></td>
+            <td><code>xep_hang_hoc_sinh</code></td>
+            <td>Điểm giảm, tuổi tăng, tên A-Z</td>
+            <td><code class="tag-ans">key=lambda h: (-h["diem"], h["tuoi"], h["ten"])</code></td>
+          </tr>
+          <tr>
+            <td><b>1.14</b></td>
+            <td><code>doi_co_so</code></td>
+            <td>Đổi số sang hệ cơ số $2..16$</td>
+            <td><code class="tag-ans">chu_so[n % b]</code>, <code class="tag-ans">n // b</code>, <code class="tag-ans">"".join(reversed(ket_qua))</code></td>
+          </tr>
+          <tr>
+            <td><b>1.15</b></td>
+            <td><code>ngoac_hop_le</code></td>
+            <td>Kiểm tra ngoặc bằng Ngăn xếp</td>
+            <td><code class="tag-ans">ngan_xep.append(c)</code>, <code class="tag-ans">ngan_xep.pop() != cap[c]</code>, <code class="tag-ans">len(ngan_xep) == 0</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row" style="justify-content:space-between; margin-top:0.8rem; flex-wrap:wrap; gap:0.6rem;">
+      <a class="btn" href="index.html">⌂ Về Trang Chủ</a>
+      <a class="btn" href="deck1_foundation.html">← Xem Slide Phase 1 (Nền tảng)</a>
+      <a class="btn cyan" href="practice.html">Vào Phòng Luyện Tập & Chấm Bài Trực Tuyến →</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/vendor/skulpt.min.js"></script>
+<script src="assets/vendor/skulpt-stdlib.js"></script>
+<script src="assets/nhom1_visualizers.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/python_lab.js"></script>
+
+<!-- Tự động kích hoạt visualizer cho slide đang hiển thị -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeSlide = document.querySelector('.slide.active');
+    if (activeSlide) {
+      const visBox = activeSlide.querySelector('.vis-box');
+      if (visBox && visBox.id) {
+        const id = visBox.id;
+        if (id === 'vowel-vis-box' && window.initVowelVisualizer) window.initVowelVisualizer(id);
+        else if (id === 'normalize-vis-box' && window.initNormalizeNameVisualizer) window.initNormalizeNameVisualizer(id);
+        else if (id === 'sumdigits-vis-box' && window.initSumDigitsVisualizer) window.initSumDigitsVisualizer(id);
+        else if (id === 'secondmax-vis-box' && window.initSecondMaxVisualizer) window.initSecondMaxVisualizer(id);
+        else if (id === 'frequency-vis-box' && window.initFrequencyVisualizer) window.initFrequencyVisualizer(id);
+        else if (id === 'reversewords-vis-box' && window.initReverseWordsVisualizer) window.initReverseWordsVisualizer(id);
+        else if (id === 'palindrome-vis-box' && window.initPalindromeVisualizer) window.initPalindromeVisualizer(id);
+        else if (id === 'mergedict-vis-box' && window.initMergeDictVisualizer) window.initMergeDictVisualizer(id);
+        else if (id === 'prime-vis-box' && window.initPrimeFilterVisualizer) window.initPrimeFilterVisualizer(id);
+        else if (id === 'rle-vis-box' && window.initRleVisualizer) window.initRleVisualizer(id);
+        else if (id === 'rotateright-vis-box' && window.initRotateRightVisualizer) window.initRotateRightVisualizer(id);
+        else if (id === 'twosum-vis-box' && window.initTwoSumHashVisualizer) window.initTwoSumHashVisualizer(id);
+        else if (id === 'studentsort-vis-box' && window.initStudentSortVisualizer) window.initStudentSortVisualizer(id);
+        else if (id === 'baseconv-vis-box' && window.initBaseConversionVisualizer) window.initBaseConversionVisualizer(id);
+        else if (id === 'parentheses-vis-box' && window.initParenthesesStackVisualizer) window.initParenthesesStackVisualizer(id);
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -23,7 +23,7 @@ def bai_15_dem_so_tu(chuoi):
         if i == " ":
             count = count + 1
     
-    return count
+    return count +1
     pass
 
 
@@ -85,11 +85,21 @@ def bai_18_so_lon_thu_hai(danh_sach):
     4. Nếu số đang xét không lớn hơn `lon_nhat`, nhưng lại > `lon_nhi`:
        -> Số lớn nhì = số đang xét.
     """
-    max = danh_sach[0]
-    for i in danh_sach:
-        if i > max:
-            max = i
-
-    second_max= 
+    if danh_sach[0] > danh_sach[1]:
+        max1 = danh_sach[0]
+        max2 = danh_sach[1]
+    else:
+        max2 = danh_sach[0]
+        max1 = danh_sach[1]
     
+    for i in danh_sach[2:]:
+        if i > max1:
+            max2 = max1
+            max1 = i
+        
+        elif i > max2:
+            max2 = i
+
+    return max2
+
     pass

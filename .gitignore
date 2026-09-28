@@ -6,3 +6,5 @@ __pycache__/
 *$py.class
 .DS_Store
 tien_do.json
+.agents/
+._*
