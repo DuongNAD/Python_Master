@@ -24,8 +24,8 @@ def ky_tu_khac_nhau(s):
       "Hello, World!" -> ["d","e","h","l","o","r","w"]
       "123 !!" -> []
     """
-    tap = {___1___ for c in s if c.isalpha()}
-    return ___2___
+    tap = { c.lower() for c in s if c.isalpha()}
+    return sorted(tap)
 
 
 def tinh_phi_ship(kg, tinh_xa):
@@ -41,9 +41,9 @@ def tinh_phi_ship(kg, tinh_xa):
         return 0
     phi = 20000
     if kg > 1:
-        phi += 5000 * ___1___
+        phi += 5000 * (math.ceil(kg)-1)
     if tinh_xa:
-        phi = ___2___
+        phi = int(phi*1.5)
     return phi
 
 

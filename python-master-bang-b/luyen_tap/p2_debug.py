@@ -125,15 +125,19 @@ def ba_so_nho_nhat(arr):
 
 
 # ---------------------------------------------------------------- Bai 2.11
-def tao_cac_ham_nhan(n):
+def tong_duong_cheo(matrix):
     """
-    Tra ve list n ham; ham thu i khi goi voi x phai tra ve x * i.
-      f = tao_cac_ham_nhan(3);  f[0](10) -> 0, f[1](10) -> 10, f[2](10) -> 20
+    Tinh tong cac phan tu tren duong cheo chinh cua ma tran vuong N x N.
+    Ma tran rong -> tra ve 0.
+      tong_duong_cheo([[1, 2], [3, 4]]) -> 1 + 4 = 5
+      tong_duong_cheo([[1, 0, 0], [0, 5, 0], [0, 0, 9]]) -> 1 + 5 + 9 = 15
     """
-    cac_ham = []
-    for i in range(n):
-        cac_ham.append(lambda x: x * i)
-    return cac_ham
+    if not matrix:
+        return 0
+    tong = 0
+    for i in range(len(matrix) ):
+        tong += matrix[i][i]
+    return tong
 
 
 # ---------------------------------------------------------------- Bai 2.12
@@ -151,7 +155,9 @@ def fib(n, ghi_nho={}):
 # ---------------------------------------------------------------- Bai 2.13
 def gan_bang(a, b):
     """Tra ve True neu a va b bang nhau trong sai so 1e-9. gan_bang(0.1+0.2, 0.3) -> True"""
-    return a == b
+    if abs(a-b) <= 1e-9:
+        return True
+    return False
 
 
 # ---------------------------------------------------------------- Bai 2.14
@@ -161,12 +167,13 @@ def xoa_theo_chi_so(arr, i):
     KHONG duoc sua arr goc.
     """
     ban_sao = list(arr)
-    ban_sao.remove(i)
+    if 0 <= i < len(ban_sao):
+        ban_sao.pop(i)
     return ban_sao
 
 
 # ---------------------------------------------------------------- Bai 2.15
-DEM_TOAN_CUC = 0
+
 
 
 def dem_tu(s):
@@ -175,6 +182,77 @@ def dem_tu(s):
       dem_tu("a b") -> 2, sau do DEM_TOAN_CUC == 2
       dem_tu("c")   -> 1, sau do DEM_TOAN_CUC == 3
     """
+    global DEM_TOAN_CUC 
     so_tu = len(s.split())
     DEM_TOAN_CUC = DEM_TOAN_CUC + so_tu
     return so_tu
+
+
+# ================================================================
+# CHAY THU CAC BAI VOI INPUT CO SAN (BAM RUN HOAC CHAY FILE NAY)
+# ================================================================
+if __name__ == "__main__":
+    import sys
+    if sys.platform == "win32":
+        try:
+            sys.stdout.reconfigure(encoding="utf-8")
+            sys.stderr.reconfigure(encoding="utf-8")
+        except Exception:
+            pass
+
+    print("=" * 60)
+    print("KET QUA CHAY THU CAC HAM (DA CO SAN INPUT):")
+    print("=" * 60)
+
+    # --- Bài 2.11: tong_duong_cheo
+    m1 = [[1, 2], [3, 4]]
+    print("\n[Bài 2.11] tong_duong_cheo:")
+    print(f"  Input: {m1}")
+    print(f"  Output thực tế: {tong_duong_cheo(m1)}")
+    print(f"  Mong đợi:       5  (1 + 4)")
+
+    m2 = [[1, 0, 0], [0, 5, 0], [0, 0, 9]]
+    print(f"  Input: {m2}")
+    print(f"  Output thực tế: {tong_duong_cheo(m2)}")
+    print(f"  Mong đợi:       15 (1 + 5 + 9)")
+
+    # --- Bài 2.12: fib
+    print("\n[Bài 2.12] fib:")
+    try:
+        print(f"  Input: n = 1")
+        print(f"  Output thực tế: {fib(1)}")
+        print(f"  Mong đợi:       1")
+    except Exception as e:
+        print(f"  Output thực tế: LỖI -> {type(e).__name__}: {e}")
+        print(f"  Mong đợi:       fib(1) = 1")
+
+    # --- Bài 2.13: gan_bang
+    print("\n[Bài 2.13] gan_bang:")
+    print(f"  Input: a = 0.1 + 0.2, b = 0.3")
+    print(f"  Output thực tế: {gan_bang(0.1 + 0.2, 0.3)}")
+    print(f"  Mong đợi:       True")
+
+    # --- Bài 2.14: xoa_theo_chi_so
+    arr_test = [10, 20, 30]
+    print("\n[Bài 2.14] xoa_theo_chi_so:")
+    print(f"  Input: arr = [10, 20, 30], chi_so = 1")
+    try:
+        print(f"  Output thực tế: {xoa_theo_chi_so(arr_test, 1)}")
+        print(f"  Mong đợi:       [10, 30]")
+    except Exception as e:
+        print(f"  Output thực tế: LỖI -> {type(e).__name__}: {e}")
+        print(f"  Mong đợi:       [10, 30]")
+
+    # --- Bài 2.15: dem_tu
+    print("\n[Bài 2.15] dem_tu:")
+    try:
+        DEM_TOAN_CUC = 0
+        kq = dem_tu("a b")
+        print(f"  Input: 'a b'")
+        print(f"  Output thực tế: so_tu = {kq}, DEM_TOAN_CUC = {DEM_TOAN_CUC}")
+        print(f"  Mong đợi:       so_tu = 2, DEM_TOAN_CUC = 2")
+    except Exception as e:
+        print(f"  Output thực tế: LỖI -> {type(e).__name__}: {e}")
+        print(f"  Mong đợi:       so_tu = 2, DEM_TOAN_CUC = 2")
+
+    print("\n" + "=" * 60)

@@ -158,6 +158,12 @@ TEST_P2 = [
         (([2, 1],), [1, 2]),
         (([],), []),
     ]),
+    ("2.11", "tong_duong_cheo", [
+        (([[1, 2], [3, 4]],), 5),
+        (([[1, 0, 0], [0, 5, 0], [0, 0, 9]],), 15),
+        (([[7]],), 7),
+        (([],), 0),
+    ]),
     ("2.13", "gan_bang", [
         ((0.1 + 0.2, 0.3), True),
         ((1.0, 1.5), False),
@@ -181,15 +187,6 @@ def kt_2_02(m):
     assert ds == [9, 1], "khi truyen danh_sach thi phai sua tai cho"
 
 
-def kt_2_11(m):
-    """tao_cac_ham_nhan: closure phai bat dung gia tri i."""
-    f = m.tao_cac_ham_nhan(3)
-    assert len(f) == 3
-    assert f[0](10) == 0, "ham thu 0 phai tra ve 0"
-    assert f[1](10) == 10, "late binding: tat ca ham dang dung cung mot i"
-    assert f[2](10) == 20
-
-
 def kt_2_12(m):
     """fib: dung gia tri + memo khong ro ri giua cac lan goi."""
     assert m.fib(0) == 0
@@ -208,7 +205,7 @@ def kt_2_15(m):
     assert m.DEM_TOAN_CUC == 3
 
 
-TEST_P2_DAC_BIET = [("2.02", kt_2_02), ("2.11", kt_2_11),
+TEST_P2_DAC_BIET = [("2.02", kt_2_02),
                     ("2.12", kt_2_12), ("2.15", kt_2_15)]
 
 # ============================================================ NHOM 3

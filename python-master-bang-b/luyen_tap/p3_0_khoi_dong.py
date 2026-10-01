@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 """
 BƯỚC ĐỆM DESIGN: 6 BÀI TẬP KHỞI ĐỘNG TƯ DUY TỰ CODE (TỪ DỄ ĐẾN VỪA)
 ================================================================================
@@ -255,8 +257,9 @@ def kiem_tra_hai_khoang_trung_nhau(k1, k2):
       Chỉ cần 1 dòng code duy nhất:
           return max(k1[0], k2[0]) <= min(k1[1], k2[1])
     """
-    pass  # <-- Viết code của bạn ở đây
-
+    if max(k1[0],k2[0]) <= min(k1[1],k2[1]):
+      return True
+    return False 
 
 # ==============================================================================
 # BỘ TỰ ĐỘNG CHẤM ĐIỂM (TỰ CHẠY KHI ẤN NÚT PLAY HOẶC CHẠY FILE NÀY)

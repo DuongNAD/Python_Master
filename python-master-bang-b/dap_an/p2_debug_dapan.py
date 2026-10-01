@@ -124,15 +124,17 @@ def ba_so_nho_nhat(arr):
 
 
 # ---------------------------------------------------------------- Bai 2.11
-def tao_cac_ham_nhan(n):
+def tong_duong_cheo(matrix):
     """
-    Tra ve list n ham, ham thu i nhan doi so voi i.
-    LOI GOC: closure bat bien 'i' theo THAM CHIEU -> moi ham deu nhan voi n-1.
+    Tinh tong cac phan tu tren duong cheo chinh cua ma tran vuong N x N.
+    LOI GOC: range(len(matrix) - 1) bo sot phan tu o goc cuoi cung matrix[N-1][N-1].
     """
-    cac_ham = []
-    for i in range(n):
-        cac_ham.append(lambda x, he_so=i: x * he_so)
-    return cac_ham
+    if not matrix:
+        return 0
+    tong = 0
+    for i in range(len(matrix)):
+        tong += matrix[i][i]
+    return tong
 
 
 # ---------------------------------------------------------------- Bai 2.12
