@@ -8,3 +8,64 @@ __pycache__/
 tien_do.json
 .agents/
 ._*
+
+# >>> smart-drive managed (do not edit inside) >>>
+# Base patterns (exFAT, OS metadata, agent scratch, secrets, runtime)
+._*
+.DS_Store
+.AppleDouble/
+.Spotlight-V100/
+.Trashes
+.fseventsd/
+.TemporaryItems/
+.DocumentRevisions-V100/
+.VolumeIcon.icns
+.apdisk
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+System Volume Information/
+.Trash-*/
+*~
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+**/.agents/*
+!**/.agents/skills/
+!**/.agents/workflows/
+!**/.agents/rules/
+.claude/settings.local.json
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.key
+credentials*.json
+.smart_drive/
+node_modules/
+
+# Stack: python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+# <<< smart-drive managed <<<
