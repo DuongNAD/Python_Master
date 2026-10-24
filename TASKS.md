@@ -33,7 +33,7 @@ Launch Hub CLI: [launch_hub.py](file:///D:/02_Learning_Knowledge/Python_Master/l
 - [x] [Deadline: 2026-09-22 23:59] [Priority: P2] Hoàn thiện hệ thống ghi nhớ cú pháp và chiến thuật thi: [CHIEN_THUAT_PHONG_THI.md](file:///D:/02_Learning_Knowledge/Python_Master/python-master-bang-b/CHIEN_THUAT_PHONG_THI.md).
 
 ## 2. Table B Problem Sets & Practice (`launch_hub.py`)
-- [ ] [Deadline: 2026-09-27 23:59] [Priority: P1] Khởi chạy [launch_hub.py](file:///D:/02_Learning_Knowledge/Python_Master/launch_hub.py) và chọn giải bài tập theo từng chuyên đề Bảng B.
+- [x] [Deadline: 2026-09-27 23:59] [Priority: P1] Khởi chạy [launch_hub.py](file:///D:/02_Learning_Knowledge/Python_Master/launch_hub.py) và chọn giải bài tập theo từng chuyên đề Bảng B.
 - [ ] [Deadline: 2026-09-27 23:59] [Priority: P1] Hoàn thành chuyên đề Xử lý Chuỗi & Mảng 1 chiều trong [luyen_tap](file:///D:/02_Learning_Knowledge/Python_Master/python-master-bang-b/luyen_tap).
 - [ ] [Deadline: 2026-09-28 23:59] [Priority: P1] Hoàn thành chuyên đề Ma trận và Mảng 2 chiều (thao tác hàng, cột, đường chéo chính/phụ).
 - [ ] [Deadline: 2026-09-29 23:59] [Priority: P2] Hoàn thành chuyên đề Cấu trúc dữ liệu: Dictionary, Set, Stack, Queue và Counting.
@@ -53,7 +53,7 @@ Launch Hub CLI: [launch_hub.py](file:///D:/02_Learning_Knowledge/Python_Master/l
 - [ ] [Deadline: 2026-10-09 23:59] [Priority: P2] Rà soát kiến thức nền tảng trong [KIEN_THUC.md](file:///D:/02_Learning_Knowledge/Python_Master/python-master-bang-b/KIEN_THUC.md) và các file giải thích chi tiết.
 
 ## 5. Roadmap v2 Milestones ([ROADMAP.md](file:///D:/02_Learning_Knowledge/Python_Master/Roadmaps/ROADMAP.md))
-- [ ] [Deadline: 2026-10-13 22:00] [Priority: P1] M0: chạy so_theo_doi.py all, làm tiếp đề 1 Q3-Q10 bấm giờ 40 phút, ghi Sổ lỗi 3 mục.
+- [x] [Deadline: 2026-10-13 22:00] [Priority: P1] M0: Kết thúc giai đoạn cày đề tập trung; chuyển giao thức sang luyện duy trì 1 bài/ngày từ tuần tới theo chỉ thị người học.
 - [ ] [Deadline: 2026-10-25 21:00] [Priority: P1] M1-M2: 4.01, 4.02, 4.03, 4.09, 4.10, 4.13 PASS; Tự kiểm tra M1 đúng từ 4/5.
 - [ ] [Deadline: 2026-11-01 21:00] [Priority: P1] M2-M3: 4.04, 4.11, 4.12, 4.14, 4.15 PASS; vẽ được sơ đồ aliasing.
 - [ ] [Deadline: 2026-11-08 21:00] [Priority: P1] M3-M4: 3.02, 3.04 PASS; sửa 2.12 để Nhóm 2 đạt 15/15.
@@ -63,3 +63,6 @@ Launch Hub CLI: [launch_hub.py](file:///D:/02_Learning_Knowledge/Python_Master/l
 - [ ] [Deadline: 2026-12-08 22:00] [Priority: P1] M7: Nhóm 4 đạt 15/15, Nhóm 3 từ 12/15.
 - [ ] [Deadline: 2026-12-19 21:00] [Priority: P1] M8: thi thử bấm giờ đề 2 từ 700, đề 5 từ 750, đề 6 từ 800.
 - [ ] [Deadline: 2026-12-29 22:00] [Priority: P2] Dự án A: đề tự soạn từ Sổ lỗi, bộ chấm đạt 1000/1000, bản trống từ 900 trong 25 phút.
+
+## 6. Daily Micro-Habit (1 Bài/Ngày - Quy Tắc Cộng Dồn)
+- [ ] [Deadline: 2026-10-12 23:59] [Priority: P2] Khởi động chế độ duy trì vi mô: Mỗi ngày làm 1 bài Python từ kho luyen_tap, nếu ngày nào không làm thì nợ cộng dồn sang ngày hôm sau.
